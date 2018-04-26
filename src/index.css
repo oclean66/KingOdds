@@ -1,0 +1,23 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:'Roboto', sans-serif;
+  font-size: 12px;
+}
+.btn {
+  font-size: 12px;
+}
+#navbarNavDropdown > ul > li.nav-item.active > a{
+  padding: 15px;
+  background-color: #007bff;
+  color:white;
+}
+#navbarNavDropdown > ul > li.nav-item > a{
+  padding: 15px;
+  color:white;
+}
+#navbarNavDropdown > ul > li.nav-item > a:hover{
+  padding: 15px;
+  background-color: #007bff;
+  /* color; */
+}
