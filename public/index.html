@@ -8,18 +8,20 @@
 
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-  <link rel="stylesheet" href="./css/sport.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/sport.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
-
+  
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-    crossorigin="anonymous">
-
+  crossorigin="anonymous">
+  
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/sidebar.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/index.css">
 
   <style>
     @media (max-width: 768px) {
       #logo-banner {
-        background: url(img/logo-small.png) no-repeat center center;
+        background: url(%PUBLIC_URL%/img/logo-small.png) no-repeat center center;
         height: 200px;
         width: 200px;
       }
@@ -27,17 +29,17 @@
 
     @media (min-width: 768px) {
       #logo-banner {
-        background: url(img/logo-big.png) no-repeat center center;
+        background: url(%PUBLIC_URL%/img/logo-big.png) no-repeat center center;
         height: 200px;
         width: 200px;
       }
     }
   </style>
-  <title>React App</title>
+  <title>RockStartSportBetting</title>
 
 </head>
 
-<body class="be-alt-bg bg-dark" style="background-image: url(img/background.jpg);
+<body class="be-alt-bg bg-dark" style="background-image: url(%PUBLIC_URL%/img/background.jpg);
 background-position: left top;
 background-size: auto;
 background-repeat: repeat;
@@ -63,13 +65,13 @@ background-attachment: fixed !important;
 
 
 
-  <script type="text/javascript">
+  <!-- <script type="text/javascript">
     $(document).ready(function () {
       $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
       });
     });
-  </script>
+  </script> -->
 
 </body>
 

@@ -1,5 +1,5 @@
 import React from "react";
-import "../css/sidebar.css";
+// import "../css/sidebar.css";
 import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
@@ -10,9 +10,9 @@ var yyyy = today.getFullYear();
 dd = dd < 10 ? '0' + dd : dd;
 mm = mm < 10 ? '0' + mm : mm;
 today = yyyy + mm + dd;
-    
+     
 const sports = firebase.database().ref().child('sports');
-const groups = firebase.database().ref('groups/'+today);
+const groups = firebase.database().ref('groups/20180426');
 
 class SideBar extends React.Component {
   constructor() {

@@ -1,15 +1,28 @@
 import React from 'react'
 import {
-    BrowserRouter as Router, Link,
-    Route,
+    BrowserRouter as Router, Link, Redirect,
+    Route,Switch 
 } from 'react-router-dom'
 
 import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
 import Odds from "./components/odds";
+import Match from "./components/match"; 
 
-import "./App.css";
+// import "./App.css";
 
+const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
+    <Route
+      path={to}
+      exact={activeOnlyWhenExact}
+      children={({ match }) => (
+        <li className={match ? "nav-item active" : "nav-item"}>          
+          <Link className="nav-link" to={to}>{label}</Link>
+        </li>
+      )}
+    />
+);
+const currentdate = new Date();
 
 class App extends React.Component {
     constructor(props) {
@@ -23,8 +36,7 @@ class App extends React.Component {
     }
     setTime() {
         let utcOffset = 0;
-        var currentdate = new Date();
-        var hours = currentdate.getUTCHours() + parseInt(utcOffset);
+        var hours = currentdate.getUTCHours() + parseInt(utcOffset,10);
 
         // correct for number over 24, and negatives
         if (hours >= 24) { hours -= 24; }
@@ -45,28 +57,31 @@ class App extends React.Component {
         seconds = seconds + "";
         if (seconds.length === 1) { seconds = "0" + seconds; }
 
-        var dd = currentdate.getDate() + 1;
-        var mm = currentdate.getMonth() + 1; //January is 0!
-        var yyyy = currentdate.getFullYear();
-        dd = dd < 10 ? '0' + dd : dd;
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var today = months[mm - 1] + " " + dd + ", " + yyyy;
-
-        mm = mm < 10 ? '0' + mm : mm;
-        var todayUTM = yyyy + "" + mm + "" + dd;
-        // console.log(hours, minutes, seconds)
+        var dd = currentdate.getDate() + 1;
+        dd = dd < 10 ? '0' + dd : dd;
+        var today = months[currentdate.getMonth() - 1] + " " + dd + ", " + currentdate.getFullYear();
         this.setState({
-
             hours: hours,
             minutes: minutes,
             seconds: seconds,
             date: today,
-            dateUTC: todayUTM
+           
         });
 
     }
     componentDidMount() {
-        this.setState({ fire: this.state.dateUTC })
+      
+        var mm = currentdate.getMonth() + 1; //January is 0!
+        mm = mm < 10 ? '0' + mm : mm;
+
+        var dd = currentdate.getDate();
+        dd = dd < 10 ? '0' + dd : dd;
+
+        var todayUTM = currentdate.getFullYear() + "" + mm + "" + dd;
+
+
+        this.setState({ dateUTC: todayUTM })
         setInterval(function () {
             this.setTime();
         }.bind(this), 1000);
@@ -108,15 +123,10 @@ class App extends React.Component {
                             </button>
                             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul className="navbar-nav mr-auto">
-                                    <li className="nav-item active">
-                                        {/* <a className="nav-link" href="">Home <span className="sr-only">(current)</span></a> */}
-                                        <Link className="nav-link" to="/"> Home </Link>
-                                    </li>
-                                    <li className="nav-item">
-                                        {/* <a className="nav-link" href="">Odds Comparison</a> */}
-                                        <Link className="nav-link" to="/odds">Odds Comparison</Link>
-
-                                    </li>
+                                   
+                                    <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
+                                    <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
+                                   
                                     <li className="nav-item">
                                         <a className="nav-link" href="">LiveScores</a>
                                     </li>
@@ -135,12 +145,13 @@ class App extends React.Component {
                             </div>
                         </nav>
 
-
-                        <Route exact path="/" component={Affil} />
-                        <Route path="/odds" component={Odds} something="foo" />
-                        {/* <Route path="/odds" render={(props) => <Odds {...props} firebase={this.state.fire} />} /> */}
-                        <Route path="/about" />
-
+                        <Switch>
+                            <Route exact path="/" component={Affil} />
+                            {/* <Route path="/odds" component={Odds} something="foo" /> */}
+                            <Route path="/odds" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
+                            <Route path="/match/:id" render={(props) => <Match {...props} date={this.state.dateUTC} />} />
+                            <Redirect to="/" />
+                        </Switch>
                     </div>
                 </div>
             </Router >

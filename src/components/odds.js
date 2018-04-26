@@ -1,5 +1,6 @@
 import React from 'react';
 import firebase from '../fire';
+import { Link } from 'react-router-dom';
 
 
 var today = new Date();
@@ -11,7 +12,7 @@ mm = mm < 10 ? '0' + mm : mm;
 today = yyyy + mm + dd;
 
 const p = "5%";
-const matches = firebase.database().ref('matches/'+today);
+const matches = firebase.database().ref('matches/20180426');
 
 class Odds extends React.Component {
     constructor(props) {
@@ -19,7 +20,6 @@ class Odds extends React.Component {
         this.state = { matches: [], pictures: [] }
         // matches = this.props.firebase;
     }
-
     componentDidMount() {
         // console.log(matches);
         matches.orderByChild('timestamp').on("value", snapshot => {
@@ -44,7 +44,7 @@ class Odds extends React.Component {
             let time = d.getHours() + ":" + min;
             return <tr key={picture.id}>
                 <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{time}</th>
-                <td>{picture.hteamName + " vs " + picture.ateamName}</td>
+                <td><Link to={"/match/"+picture.id}>{picture.hteamName + " vs " + picture.ateamName}</Link></td>
                 <td className="text-center" style={{ width: p, fontWeight: "bolder" }}>{picture.status + " " + picture.timestamp}</td>
                 <td className="text-center" style={{ width: p }}>{picture.data["1X2 Full Time"][Object.keys(picture.data["1X2 Full Time"])[0]].o1}</td>
                 <td className="text-center" style={{ width: p }}>{picture.data["1X2 Full Time"][Object.keys(picture.data["1X2 Full Time"])[0]].o2}</td>
