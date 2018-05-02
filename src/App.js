@@ -9,7 +9,7 @@ import Affil from "./components/affil";
 import Odds from "./components/odds";
 import Match from "./components/match"; 
 
-// import "./App.css";
+
 
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
     <Route
