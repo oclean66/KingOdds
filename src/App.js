@@ -22,7 +22,7 @@ const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
       )}
     />
 );
-const currentdate = new Date();
+// var currentdate = new Date();
 
 class App extends React.Component {
     constructor(props) {
@@ -34,57 +34,8 @@ class App extends React.Component {
             date: 0
         }
     }
-    setTime() {
-        let utcOffset = 0;
-        var hours = currentdate.getUTCHours() + parseInt(utcOffset,10);
-
-        // correct for number over 24, and negatives
-        if (hours >= 24) { hours -= 24; }
-        if (hours < 0) { hours += 12; }
-
-        // add leading zero, first convert hours to string
-        hours = hours + "";
-        if (hours.length === 1) { hours = "0" + hours; }
-
-        // minutes are the same on every time zone
-        var minutes = currentdate.getUTCMinutes();
-
-        // add leading zero, first convert hours to string
-        minutes = minutes + "";
-        if (minutes.length === 1) { minutes = "0" + minutes; }
-
-        var seconds = currentdate.getUTCSeconds();
-        seconds = seconds + "";
-        if (seconds.length === 1) { seconds = "0" + seconds; }
-
-        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var dd = currentdate.getDate() + 1;
-        dd = dd < 10 ? '0' + dd : dd;
-        var today = months[currentdate.getMonth() - 1] + " " + dd + ", " + currentdate.getFullYear();
-        this.setState({
-            hours: hours,
-            minutes: minutes,
-            seconds: seconds,
-            date: today,
-           
-        });
-
-    }
-    componentDidMount() {
-      
-        var mm = currentdate.getMonth() + 1; //January is 0!
-        mm = mm < 10 ? '0' + mm : mm;
-
-        var dd = currentdate.getDate();
-        dd = dd < 10 ? '0' + dd : dd;
-
-        var todayUTM = currentdate.getFullYear() + "" + mm + "" + dd;
-
-
-        this.setState({ dateUTC: todayUTM })
-        setInterval(function () {
-            this.setTime();
-        }.bind(this), 1000);
+   
+    componentDidMount() {          
 
     }
     render() {
@@ -98,6 +49,8 @@ class App extends React.Component {
                             margin: 0,
                             padding: 0,
                             top: 0,
+                            left: 0,
+                            borderRadius:0,
                             height: 160,
                             width: "100%"
                         }}
@@ -109,17 +62,22 @@ class App extends React.Component {
                     <Sidebar />
                     <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
-                        <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: 0, backgroundColor: "rgb(0, 173, 238)", marginRight: 12 }}>
+                        <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",/* marginRight: 12*/ }}>
+                            
+                            {/* <a href="#" class="btn btn-light btn-sm active">Primary link</a> */}
                             <button
                                 type="button"
                                 id="sidebarCollapse"
-                                className="btn btn-flat bg-white"
-                                style={{ height: "48px", fontSize: 12 }}
+                                aria-pressed="false"
+                                className="btn btn-flat bg-light"
+                                style={{ height: "48px", fontSize: 12, marginLeft:-10,borderRadius:0,backgroundColor:"white",boxShadow:"2px 0px 0px rgba(0, 0, 0, 0.45)" }}
                             >
-                                <i className="sicon-live-betting"> </i> {this.state.hours + ":" + this.state.minutes + "." + this.state.seconds}
+                                <i className="sicon-live-betting"> </i>
+                                {/* {this.state.hours + ":" + this.state.minutes + "." + this.state.seconds} */}
                             </button>
-                            <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                                MENU <span className="navbar-toggler-icon"></span>
+                            <div className="navbar-toggler" style={{color:"white",border:0}}>MENU</div>
+                            <button className=" btn btn-flat bg-light navbar-toggler"  style={{ height: "48px",borderRadius:0, color:"black", marginRight:-10,fontSize: 12,backgroundColor:"white",boxShadow:"2px 0px 0px rgba(0, 0, 0, 0.45)" }} type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                            <i className="fas fa-ellipsis-v"></i>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarNavDropdown">
                                 <ul className="navbar-nav mr-auto">
@@ -140,16 +98,16 @@ class App extends React.Component {
                                         </div>
                                     </li>
                                 </ul>
-                                <button type="button" className="btn btn-primary" style={{ marginRight: 10 }}>  {this.state.date}</button>
-                                {/* <span className="navbar-text"> </span> */}
+                                <button id="cdate" className="btn btn-primary"> 0</button>
+                                
                             </div>
                         </nav>
 
                         <Switch>
                             <Route exact path="/" component={Affil} />
                             {/* <Route path="/odds" component={Odds} something="foo" /> */}
-                            <Route path="/odds" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
-                            <Route path="/match/:id" render={(props) => <Match {...props} date={this.state.dateUTC} />} />
+                            <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
+                            <Route path="/match/:sport/:group/:league/:id" component={Match} />
                             <Redirect to="/" />
                         </Switch>
                     </div>

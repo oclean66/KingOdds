@@ -7,14 +7,19 @@
   <meta name="theme-color" content="#000000">
 
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
-  <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+  <link rel="shortcut icon" href="%PUBLIC_URL%/logo-fav.png">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/sport.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/bookmaker.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
+    crossorigin="anonymous">
+
+
   <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
-  
+
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
-  crossorigin="anonymous">
-  
+    crossorigin="anonymous">
+
   <link rel="stylesheet" href="%PUBLIC_URL%/css/sidebar.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/index.css">
 
@@ -49,7 +54,7 @@ background-attachment: fixed !important;
   <noscript>
     You need to enable JavaScript to run this app.
   </noscript>
-  <div id="root" >
+  <div id="root">
 
   </div>
 
@@ -64,14 +69,53 @@ background-attachment: fixed !important;
     crossorigin="anonymous"></script>
 
 
-
-  <!-- <script type="text/javascript">
+  <!-- Importante para activar y desactivar el sidebar -->
+  <script type="text/javascript">
     $(document).ready(function () {
       $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
       });
+      
+
+      setInterval(function () {
+        $('#mySelect').on('change', function (e) {
+            console.log('#'+$(this).val()+"-tab");
+            $('#'+$(this).val()+"-tab").tab('show');
+        });
+
+        currentdate = new Date();
+        let utcOffset = 0;
+        var hours = currentdate.getUTCHours() + parseInt(utcOffset, 10);
+
+        // correct for number over 24, and negatives
+        if (hours >= 24) { hours -= 24; }
+        if (hours < 0) { hours += 12; }
+
+        // add leading zero, first convert hours to string
+        hours = hours + "";
+        if (hours.length === 1) { hours = "0" + hours; }
+
+        // minutes are the same on every time zone
+        var minutes = currentdate.getUTCMinutes();
+
+        // add leading zero, first convert hours to string
+        minutes = minutes + "";
+        if (minutes.length === 1) { minutes = "0" + minutes; }
+
+        var seconds = currentdate.getUTCSeconds();
+        seconds = seconds + "";
+        if (seconds.length === 1) { seconds = "0" + seconds; }
+
+        var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+        var dd = currentdate.getDate();
+        dd = dd < 10 ? '0' + dd : dd;
+        var today = months[currentdate.getMonth() - 1] + " " + dd + ", " + currentdate.getFullYear();
+
+        $('#cdate').text(today + " " + hours + ":" + minutes + "." + seconds);
+      }.bind(this), 1000);
+
     });
-  </script> -->
+  </script>
 
 </body>
 

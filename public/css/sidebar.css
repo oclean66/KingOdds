@@ -59,9 +59,10 @@ i, span {
 }
 
 #sidebar {
-    min-width: 250px;
+    min-width: 160px;
     max-width: 250px;
     background: rgba(0, 173, 238, 0.68);
+    background: #007bffbf;
     color: #fff;
     transition: all 0.3s;
 }
@@ -147,6 +148,7 @@ i, span {
 #sidebar ul li a:hover {
     color: #7386D5;
     background: #fff;
+    
 }
 #sidebar ul li a i {
     margin-right: 10px;
@@ -155,9 +157,22 @@ i, span {
 #sidebar ul li.active > a, a[aria-expanded="true"] {
     color: #fff;
     background: #007bff;
+    background: rgba(76, 0, 255, 0.18);
+}
+#sidebar ul ul li a[aria-expanded="true"] {
+    color: #fff;
+    background: #ff0000;
+    background: #1200ff5c;
+}
+#sidebar.active ul li a span{
+display: none;
 }
 .dropdown-menu{
     font-size: 12px;
+}
+#sports {
+    border-radius: 10px 0px 0px;
+    transition: 0ms;
 }
 /* 
 a[data-toggle="collapse"] {
@@ -181,7 +196,14 @@ ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
     background: rgb(0, 173, 238);
+    background: rgba(202, 255, 0, 0.15);
+    background: rgba(76, 0, 255, 0.18);
 }
+ul ul ul a {
+    background-color: #1200ff5c;
+    padding-left: 40px !important;
+}
+
 
 ul.CTAs {
     padding: 20px;
@@ -220,7 +242,7 @@ a.article, a.article:hover {
 /* ---------------------------------------------------
     MEDIAQUERIES
 ----------------------------------------------------- */
-@media (max-width: 768px) {
+@media (max-width: 575px) {
     #sidebar {
         min-width: 80px;
         max-width: 80px;

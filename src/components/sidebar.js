@@ -4,120 +4,121 @@ import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
 var today = new Date();
-var dd = today.getDate()+1;
-var mm = today.getMonth()+1; //January is 0!
-var yyyy = today.getFullYear();
+var dd = today.getUTCDate();
+var mm = today.getUTCMonth() + 1; //January is 0!
+var yyyy = today.getUTCFullYear();
 dd = dd < 10 ? '0' + dd : dd;
 mm = mm < 10 ? '0' + mm : mm;
 today = yyyy + mm + dd;
-     
-const sports = firebase.database().ref().child('sports');
-const groups = firebase.database().ref('groups/20180426');
+var utctoday = yyyy + "-" + mm + "-" + dd;
+
+const menu = firebase.database().ref().child('menu');
+
 
 class SideBar extends React.Component {
   constructor() {
     super()
-    this.state = { sports: [], groups:[] }
+    this.state = { menu: [] }
   }
   componentDidMount() {
 
-    sports.on("value", snapshot => {
+    menu.on("value", snapshot => {
       this.setState({
-        sports: []
+        menu: []
       });
-      this.state.sports.push(snapshot.val())
+      this.state.menu.push(snapshot.val())
       this.setState({
-        sports: snapshot.val()
+        menu: snapshot.val()
       });
 
       // console.log(snapshot.val());
     });
-    groups.on("value", snapshot => {
-      this.setState({
-        groups: []
-      });
-      this.state.groups.push(snapshot.val())
-      this.setState({
-        groups: snapshot.val()
-      });
 
-      // console.log(this.state.groups);
-    });
 
   }
   render() {
-    let a = this.state.sports;
-    let b = this.state.groups;
-    let s = Object.keys(a).map(function (i) {
-      let g = Object.keys(b).map(function (y) {
-        if (b[y].spid === a[i].id) { 
-  
-          return (
-            <li key={y}>
-              <a href="">{b[y].name}</a>
-            </li>
-         )
-        }
-      });
-      
-      // console.log(g);
-      
+    let a, b, c, s, t, q, w,k;
+    a = this.state.menu;
 
-      return (
-        <li key={i} className="">
-          <a href={"#"+i} data-toggle="collapse" aria-expanded="false">
-           <i className={"icons "+a[i].class} />
-            { a[i].name}
-          </a>
-          <ul className="collapse list-unstyled" id={i}>
-            <li>
-              <a href="#">Today's Matches</a>
-            </li>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            {g}
-            <li>
-              <a href="#2b" data-toggle="collapse" aria-expanded="false">x</a>
-              <ul className="collapse list-unstyled" id="2b">
-                <li><a href="#">z</a> </li>
+    if (a !== null && a !== undefined) {
+      // console.log(a);
+      s = Object.keys(a).map(function (i) {
+        k = false;
+        b = a[i].groups;
+        t = b ? Object.keys(b).map((y) => {
+          w = false;
+          c = b[y];
+          q = Object.keys(c).map((z) => {
+            if (c[z].lastseen) {
+              let ls = new Date(c[z].lastseen);
+              // console.log(ls.getUTCFullYear() + "-" + (ls.getUTCMonth() + 1) + "-" + ls.getUTCDate());
+              ls = Date.UTC(ls.getUTCFullYear(), ls.getUTCMonth() + 1, ls.getUTCDate());
+              // console.log("ls: " + ls);
+              utctoday = Date.UTC(yyyy, mm, dd);
+              // console.log("today: " + utctoday);
+              // console.log("today+5: " + Date.UTC(yyyy, mm, dd+5));
+
+              // console.log("today+5: "+new Date(Date.UTC(yyyy, mm, dd+5)).getUTCDate());
+              if (ls >= utctoday && ls <= Date.UTC(yyyy, mm, dd + 5)) {
+                // console.log("true");
+                w = true;
+                k = true;
+                return <li key={z}><Link to={"/odds/" + i + "/" + y + "/" + z+"#card"}>{c[z].name}</Link></li>
+              } else return null;
+            } else return null;
+           
+          });
+          if (w)
+            return (
+              <li key={y}>
+                <a href={"#" + i + "b" + y} data-toggle="collapse" aria-expanded="false">{y}</a>
+                <ul className="collapse list-unstyled" id={i + "b" + y}>
+                  {q}
+                </ul>
+              </li>)
+          else return null;
+        }) : "";
+        if (k)
+          return (
+            <li key={i} className="">
+              <a href={"#" + i} data-toggle="collapse" aria-expanded="false">
+                <i className={"icons " + a[i].class || i} />
+                <span>{a[i].name || i}</span>
+
+              </a>
+              <ul className="collapse list-unstyled" id={i}>
+                {/* <li><Link to="">Today's Matches</Link></li> */}
+                {t}                
               </ul>
             </li>
-            </ul>
-        </li>
-      )
-    });
-    
-   
+          )
+        else
+          return null;  
+      });
+
+    } else {
+      s = <li>
+        <a href="#a1">
+          <i className="fa fa-spinner fa-spin" />
+          <span className="">Loading...</span>
+        </a>
+      </li>
+    }
+
     return (
-      <nav id="sidebar" className="active" style={{ borderRadius: "10px 0 0 10px" }}>
+      <nav id="sidebar" className="" style={{ borderRadius: "10px 0 0 10px" }}>
 
 
         <ul className="list-unstyled components">
           <li className="sidebar-header-item" style={{ color: "#7386D5", background: "#fff", borderRadius: "10px 0 0 0" }}>
-            <a href="" style={{ borderRadius: "10 0 0 0" }}>
+            <a id="sports" href="" style={{ borderRadius: "10 0 0 0" }}>
               <i className="icons sicon-olympic-games" />
               SPORTS
             </a>
           </li>
-          
-         {s}
-          <li>
-            <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">
-              <i className="icons sicon-sport-7" />
-              Pages
-            </a>
-            <ul className="collapse list-unstyled" id="pageSubmenu">
-              <li>
-                <a href="">Page 1</a>
-              </li>
-              <li>
-                <a href="">Page 2</a>
-              </li>
-              <li>
-                <a href="">Page 3</a>
-              </li>
-            </ul>
-          </li>
+
+          {s}
+
         </ul>
       </nav>
     );
