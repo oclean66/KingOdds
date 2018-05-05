@@ -2,8 +2,6 @@ import React, { Component } from "react";
 import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
-
-
 const affils = firebase.database().ref().child('affil');
 class Affil extends Component {
 

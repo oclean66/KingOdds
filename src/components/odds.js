@@ -78,7 +78,7 @@ class Odds extends React.Component {
     render() {
 
         next = <tr><td>Nothing found</td></tr>
-        // if (this.state.matches.data)  
+        // if (this.state.matches.data)   
         let display = {};
        
         this.state.matches.map((item, i) => {
