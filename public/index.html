@@ -9,11 +9,18 @@
   <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
   <link rel="shortcut icon" href="%PUBLIC_URL%/logo-fav.png">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/sport.css">
+  <link rel="stylesheet" href="%PUBLIC_URL%/css/flags.css">
   <link rel="stylesheet" href="%PUBLIC_URL%/css/bookmaker.css">
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
     crossorigin="anonymous">
-
+  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({
+      google_ad_client: "ca-pub-7445245862757118",
+      enable_page_level_ads: true
+    });
+  </script>
 
   <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 
@@ -75,12 +82,12 @@ background-attachment: fixed !important;
       $('#sidebarCollapse').on('click', function () {
         $('#sidebar').toggleClass('active');
       });
-      
+
 
       setInterval(function () {
         $('#mySelect').on('change', function (e) {
-            console.log('#'+$(this).val()+"-tab");
-            $('#'+$(this).val()+"-tab").tab('show');
+          console.log('#' + $(this).val() + "-tab");
+          $('#' + $(this).val() + "-tab").tab('show');
         });
 
         currentdate = new Date();
@@ -107,16 +114,28 @@ background-attachment: fixed !important;
         if (seconds.length === 1) { seconds = "0" + seconds; }
 
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var dd = currentdate.getDate();
+        var dd = currentdate.getUTCDate();
         dd = dd < 10 ? '0' + dd : dd;
-        var today = months[currentdate.getMonth() - 1] + " " + dd + ", " + currentdate.getFullYear();
+        var today = months[currentdate.getUTCMonth()] + " " + dd + ", " + currentdate.getUTCFullYear();
 
         $('#cdate').text(today + " " + hours + ":" + minutes + "." + seconds);
       }.bind(this), 1000);
 
     });
   </script>
-
+  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+  <script>
+    // Initialize Firebase
+    var config = {
+      apiKey: "AIzaSyAx6A4hFSwSeUI0SUvCUDF8Fpe27mtGi2s",
+      authDomain: "oclean66-casper.firebaseapp.com",
+      databaseURL: "https://oclean66-casper.firebaseio.com",
+      projectId: "oclean66-casper",
+      storageBucket: "oclean66-casper.appspot.com",
+      messagingSenderId: "665182115697"
+    };
+    firebase.initializeApp(config);
+  </script>
 </body>
 
 </html>

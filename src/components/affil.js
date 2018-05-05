@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import firebase from '../fire';
+import { Link } from 'react-router-dom';
+
 
 
 const affils = firebase.database().ref().child('affil');
@@ -34,10 +36,10 @@ class Affil extends Component {
                     <div className="card card-full-color border border-dark" >
                         <div className="card-body">
                             {/* {a[trait].text} */}
-                            <a href={a[trait].url}>
+                            <Link to={a[trait].url}>
                                 <img src={a[trait].img} alt="" style={{ width: "100%" }} />
                                 <div className="card-caption"> Clementine Thson </div>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -135,9 +137,9 @@ class Affil extends Component {
                                     </div>
                                 </div>
                             </div>
-                            <a
+                            <Link
                                 className="carousel-control-prev"
-                                href="#carouselExampleCaptions"
+                                to="#carouselExampleCaptions"
                                 role="button"
                                 data-slide="prev"
                             >
@@ -146,10 +148,10 @@ class Affil extends Component {
                                     aria-hidden="true"
                                 />
                                 <span className="sr-only">Previous</span>
-                            </a>
-                            <a
+                            </Link>
+                            <Link
                                 className="carousel-control-next"
-                                href="#carouselExampleCaptions"
+                                to="#carouselExampleCaptions"
                                 role="button"
                                 data-slide="next"
                             >
@@ -158,7 +160,7 @@ class Affil extends Component {
                                     aria-hidden="true"
                                 />
                                 <span className="sr-only">Next</span>
-                            </a>
+                            </Link>
                         </div>
                     </div>
                 </div>

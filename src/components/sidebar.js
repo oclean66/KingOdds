@@ -10,7 +10,8 @@ var yyyy = today.getUTCFullYear();
 dd = dd < 10 ? '0' + dd : dd;
 mm = mm < 10 ? '0' + mm : mm;
 today = yyyy + mm + dd;
-var utctoday = yyyy + "-" + mm + "-" + dd;
+// var utctoday='';
+// var utctoday = yyyy + "-" + mm + "-" + dd;
 
 const menu = firebase.database().ref().child('menu');
 
@@ -54,12 +55,12 @@ class SideBar extends React.Component {
               // console.log(ls.getUTCFullYear() + "-" + (ls.getUTCMonth() + 1) + "-" + ls.getUTCDate());
               ls = Date.UTC(ls.getUTCFullYear(), ls.getUTCMonth() + 1, ls.getUTCDate());
               // console.log("ls: " + ls);
-              utctoday = Date.UTC(yyyy, mm, dd);
+              // utctoday = Date.UTC(yyyy, mm, dd);
               // console.log("today: " + utctoday);
               // console.log("today+5: " + Date.UTC(yyyy, mm, dd+5));
 
               // console.log("today+5: "+new Date(Date.UTC(yyyy, mm, dd+5)).getUTCDate());
-              if (ls >= utctoday && ls <= Date.UTC(yyyy, mm, dd + 5)) {
+              if (ls >= Date.UTC(yyyy, mm, dd - 7) && ls <= Date.UTC(yyyy, mm, dd + 5)) {
                 // console.log("true");
                 w = true;
                 k = true;
@@ -71,7 +72,7 @@ class SideBar extends React.Component {
           if (w)
             return (
               <li key={y}>
-                <a href={"#" + i + "b" + y} data-toggle="collapse" aria-expanded="false">{y}</a>
+                <Link to={"#" + i + "b" + y} data-toggle="collapse" aria-expanded="false">{y}</Link>
                 <ul className="collapse list-unstyled" id={i + "b" + y}>
                   {q}
                 </ul>
@@ -81,11 +82,11 @@ class SideBar extends React.Component {
         if (k)
           return (
             <li key={i} className="">
-              <a href={"#" + i} data-toggle="collapse" aria-expanded="false">
+              <Link to={"#" + i} data-toggle="collapse" aria-expanded="false">
                 <i className={"icons " + a[i].class || i} />
                 <span>{a[i].name || i}</span>
 
-              </a>
+              </Link>
               <ul className="collapse list-unstyled" id={i}>
                 {/* <li><Link to="">Today's Matches</Link></li> */}
                 {t}                
@@ -98,10 +99,10 @@ class SideBar extends React.Component {
 
     } else {
       s = <li>
-        <a href="#a1">
+        <Link to="#a1">
           <i className="fa fa-spinner fa-spin" />
           <span className="">Loading...</span>
-        </a>
+        </Link>
       </li>
     }
 
@@ -111,10 +112,10 @@ class SideBar extends React.Component {
 
         <ul className="list-unstyled components">
           <li className="sidebar-header-item" style={{ color: "#7386D5", background: "#fff", borderRadius: "10px 0 0 0" }}>
-            <a id="sports" href="" style={{ borderRadius: "10 0 0 0" }}>
+            <Link id="sports" to="/" style={{ borderRadius: "10 0 0 0" }}>
               <i className="icons sicon-olympic-games" />
               SPORTS
-            </a>
+            </Link>
           </li>
 
           {s}

@@ -64,7 +64,7 @@ class App extends React.Component {
 
                         <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",/* marginRight: 12*/ }}>
                             
-                            {/* <a href="#" class="btn btn-light btn-sm active">Primary link</a> */}
+                            {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
                             <button
                                 type="button"
                                 id="sidebarCollapse"
@@ -85,18 +85,19 @@ class App extends React.Component {
                                     <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
                                     <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
                                    
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="">LiveScores</a>
+                                    {/* <li className="nav-item">
+                                        <Link className="nav-link" to="">LiveScores</Link>
                                     </li>
                                     <li className="nav-item dropdown">
-                                        <a className="nav-link dropdown-toggle" href="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Bookmakers        </a>
+                                        <Link className="nav-link dropdown-toggle" to="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Bookmakers
+                                            </Link>
                                         <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <a className="dropdown-item" href="">Action</a>
-                                            <a className="dropdown-item" href="">Another action</a>
-                                            <a className="dropdown-item" href="">Something else here</a>
+                                            <Link className="dropdown-item" to="">Action</Link>
+                                            <Link className="dropdown-item" to="">Another action</Link>
+                                            <Link className="dropdown-item" to="">Something else here</Link>
                                         </div>
-                                    </li>
+                                    </li> */}
                                 </ul>
                                 <button id="cdate" className="btn btn-primary"> 0</button>
                                 

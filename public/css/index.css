@@ -7,6 +7,10 @@ body {
 .btn {
   font-size: 12px;
 }
+.breadcrumb-item{
+  color: #00adee;
+    font-weight: bolder;
+}
 #navbarNavDropdown > ul > li.nav-item.active > a{
   padding: 15px;
   background-color: #007bff;
