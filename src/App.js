@@ -8,6 +8,7 @@ import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
 import Odds from "./components/odds";
 import Match from "./components/match"; 
+import Sport from './components/sport';
 
 
 
@@ -56,9 +57,7 @@ class App extends React.Component {
                         }}
                         className="col-sm-12"
                     >
-                        {/* <img src="img/logo-big.png" className="img-fluid" alt="Responsive image"  /> */}
-                        {/* <img src="img/logo-small.png" className="img-fluid" alt="Responsive image" /> */}
-                    </div>
+                     </div>
                     <Sidebar />
                     <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
@@ -109,6 +108,7 @@ class App extends React.Component {
                             {/* <Route path="/odds" component={Odds} something="foo" /> */}
                             <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
                             <Route path="/match/:sport/:group/:league/:id" component={Match} />
+                            <Route path="/sport/:id" component={Sport} />
                             <Redirect to="/" />
                         </Switch>
                     </div>

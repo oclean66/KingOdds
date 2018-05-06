@@ -1,7 +1,12 @@
 {
-  "name": "page",
+  "name": "reactfirebase",
+  "description": "Using react to connect to firebase realtime database",
   "version": "0.1.2",
   "private": true,
+  "keywords": [],
+  "author": "oclean66",
+  "license": "ISC",
+  "homepage": "http://rockstarsportbook.com",
   "dependencies": {
     "firebase": "^4.12.1",
     "glob": "^7.1.2",

@@ -60,7 +60,7 @@ class SideBar extends React.Component {
               // console.log("today+5: " + Date.UTC(yyyy, mm, dd+5));
 
               // console.log("today+5: "+new Date(Date.UTC(yyyy, mm, dd+5)).getUTCDate());
-              if (ls >= Date.UTC(yyyy, mm, dd - 7) && ls <= Date.UTC(yyyy, mm, dd + 5)) {
+              if (ls >= Date.UTC(yyyy, mm, dd) && ls <= Date.UTC(yyyy, mm, dd + 5)) {
                 // console.log("true");
                 w = true;
                 k = true;

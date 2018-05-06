@@ -1,7 +1,7 @@
 import React from 'react';
 import firebase from '../fire';
 import { Link } from 'react-router-dom';
-
+//staged
 
 var today = new Date();
 var dd = today.getUTCDate();
@@ -32,7 +32,9 @@ class Odds extends React.Component {
 
     }
     static getDerivedStateFromProps(props, current_state) {
-        // console.log(context.state);
+        // if(current_state.sport)
+        console.log(current_state);
+        console.log(props.match.params);
         if (current_state.sport !== props.match.params.sport || current_state.group !== props.match.params.group || current_state.league !== props.match.params.league) {
             matches = firebase.database().ref('matches/' + props.match.params.sport + "/" + props.match.params.group + "/" + props.match.params.league);
 
@@ -41,46 +43,68 @@ class Odds extends React.Component {
             matches.orderByChild('timestamp').on("value", snapshot => {
                 snapshot.forEach(function (child) {
                     let post = child.val();
+
                     aux = aux.concat(post);
                 })
+                // return {
+                //     sport: props.match.params.sport,
+                //     group: props.match.params.group,
+                //     league: props.match.params.league,
+                //     matches: aux,
+                //     groupId: 205
+    
+                // }
                 context.setState({
-                    matches: aux
+                   sport: props.match.params.sport,
+                    group: props.match.params.group,
+                    league: props.match.params.league,
+                    matches: aux,
+                    groupId: 205
                 });
+                console.log(aux);
+
             })
+            // matches.off();
+            return null;
+            // return {
+            //     sport: props.match.params.sport,
+            //     group: props.match.params.group,
+            //     league: props.match.params.league,
+            //     // matches: aux,
+            //     groupId: 205
 
-            return {
-                sport: props.match.params.sport,
-                group: props.match.params.group,
-                league: props.match.params.league,
-                groupId: 205
-
-            }
+            // }
         }
+        return null;
+    }
+    componentWillUnmount() {
+        matches.off();
     }
     componentDidMount() {
+        console.log(this.state.sport)
         // console.log(labeldata)
         // console.log(today);
 
-        matches.orderByChild('timestamp').on("value", snapshot => {
-            let aux = [];
-            snapshot.forEach(function (child) {
-                const post = child.val();
-                aux = aux.concat(post);
+        // matches.orderByChild('timestamp').on("value", snapshot => {
+        //     let aux = [];
+        //     snapshot.forEach(function (child) {
+        //         const post = child.val();
+        //         aux = aux.concat(post);
 
-            })
-            this.setState({
-                matches: aux
-            });
+        //     })
+        //     this.setState({
+        //         matches: aux
+        //     });
 
-            // console.log(snapshot.val());
-        });
+        //     // console.log(snapshot.val());
+        // });
     }
     render() {
 
         next = <tr><td>Nothing found</td></tr>
-        // if (this.state.matches.data)   
+        // if (this.state.matches.data)
         let display = {};
-       
+
         this.state.matches.map((item, i) => {
             let d = new Date(item.time);
             let index = d.getUTCFullYear() + '-' + (d.getUTCMonth() + 1) + '-' + d.getUTCDate();
@@ -226,7 +250,7 @@ class Odds extends React.Component {
             <div>
                 <nav className="breadcrumb bg-white border">
                     <Link className="breadcrumb-item" to="#">Home</Link>
-                    <Link className="breadcrumb-item" to="#">{this.state.sportName}</Link>
+                    <Link className="breadcrumb-item" to={"/sport/" + this.state.sport}>{this.state.sportName}</Link>
                     <Link className="breadcrumb-item" to="#">{this.state.group}</Link>
                     <Link className="breadcrumb-item active" to="#">{this.state.leagueName}</Link>
                     {/* <span className="breadcrumb-item active">Bootstrap</span> */}
