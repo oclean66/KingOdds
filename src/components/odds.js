@@ -84,7 +84,7 @@ class Odds extends React.Component {
         let array = Object.keys(display);
         var gid2, spname, name;
         next = array.map((item, i) => {
-            
+             
             name = display[item][0].group.name;
             spname = display[item][0].group.spname;
             gid2 = display[item][0].group.gid2;
