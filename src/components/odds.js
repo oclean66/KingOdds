@@ -33,8 +33,8 @@ class Odds extends React.Component {
     }
     static getDerivedStateFromProps(props, current_state) {
         // if(current_state.sport)
-        console.log(current_state);
-        console.log(props.match.params);
+        // console.log(current_state);
+        // console.log(props.match.params);
         if (current_state.sport !== props.match.params.sport || current_state.group !== props.match.params.group || current_state.league !== props.match.params.league) {
             matches = firebase.database().ref('matches/' + props.match.params.sport + "/" + props.match.params.group + "/" + props.match.params.league);
 
@@ -46,14 +46,7 @@ class Odds extends React.Component {
 
                     aux = aux.concat(post);
                 })
-                // return {
-                //     sport: props.match.params.sport,
-                //     group: props.match.params.group,
-                //     league: props.match.params.league,
-                //     matches: aux,
-                //     groupId: 205
-    
-                // }
+               
                 context.setState({
                    sport: props.match.params.sport,
                     group: props.match.params.group,
@@ -61,44 +54,19 @@ class Odds extends React.Component {
                     matches: aux,
                     groupId: 205
                 });
-                console.log(aux);
+                // console.log(aux);
 
             })
             // matches.off();
             return null;
-            // return {
-            //     sport: props.match.params.sport,
-            //     group: props.match.params.group,
-            //     league: props.match.params.league,
-            //     // matches: aux,
-            //     groupId: 205
-
-            // }
+            
         }
         return null;
     }
     componentWillUnmount() {
         matches.off();
     }
-    componentDidMount() {
-        console.log(this.state.sport)
-        // console.log(labeldata)
-        // console.log(today);
-
-        // matches.orderByChild('timestamp').on("value", snapshot => {
-        //     let aux = [];
-        //     snapshot.forEach(function (child) {
-        //         const post = child.val();
-        //         aux = aux.concat(post);
-
-        //     })
-        //     this.setState({
-        //         matches: aux
-        //     });
-
-        //     // console.log(snapshot.val());
-        // });
-    }
+    
     render() {
 
         next = <tr><td>Nothing found</td></tr>
@@ -114,25 +82,18 @@ class Odds extends React.Component {
         });
 
         let array = Object.keys(display);
-
+        var gid2, spname, name;
         next = array.map((item, i) => {
-
-            if (context.state.groupId !== display[item][0].group.gid2) context.setState({ groupId: display[item][0].group.gid2 });
-            if (context.state.sportName !== display[item][0].group.spname) context.setState({ sportName: display[item][0].group.spname });
-            if (context.state.leagueName !== display[item][0].group.name) context.setState({ leagueName: display[item][0].group.name });
-
-
-            let d = new Date(item);
-            // console.log(d, '=', today);
-            // console.log(d >= today)
+            
+            name = display[item][0].group.name;
+            spname = display[item][0].group.spname;
+            gid2 = display[item][0].group.gid2;
+           
+            let d = new Date(item);            
             if (d >= today) {
 
                 let x = display[item].map((e, i) => {
-
-                    if (context.state.sportName !== e.group.spname) context.setState({ sportName: e.group.spname });
-                    if (context.state.leagueName !== e.group.name) context.setState({ leagueName: e.group.name });
-                    if (context.state.groupId !== e.group.gid2) context.setState({ groupId: e.group.gid2 });
-
+                   
                     let d = new Date(e.time);
                     let min = d.getUTCMinutes() < 10 ? "0" + d.getUTCMinutes() : d.getUTCMinutes();
                     let time = d.getUTCHours() + ":" + min;
@@ -186,6 +147,9 @@ class Odds extends React.Component {
                 // console.log('false');
             } else return null;
         });
+        if (context.state.groupId !== gid2) context.setState({ groupId: gid2 });
+        if (context.state.sportName !== spname) context.setState({ sportName: spname });
+        if (context.state.leagueName !== name) context.setState({ leagueName: name });
 
         array = array.sort((a, b) => new Date(b) - new Date(a));
 

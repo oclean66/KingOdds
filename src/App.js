@@ -1,26 +1,26 @@
 import React from 'react'
 import {
     BrowserRouter as Router, Link, Redirect,
-    Route,Switch 
+    Route, Switch
 } from 'react-router-dom'
 
 import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
 import Odds from "./components/odds";
-import Match from "./components/match"; 
+import Match from "./components/match";
 import Sport from './components/sport';
 
 
 
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
     <Route
-      path={to}
-      exact={activeOnlyWhenExact}
-      children={({ match }) => (
-        <li className={match ? "nav-item active" : "nav-item"}>          
-          <Link className="nav-link" to={to}>{label}</Link>
-        </li>
-      )}
+        path={to}
+        exact={activeOnlyWhenExact}
+        children={({ match }) => (
+            <li className={match ? "nav-item active" : "nav-item"}>
+                <Link className="nav-link" to={to}>{label}</Link>
+            </li>
+        )}
     />
 );
 // var currentdate = new Date();
@@ -35,56 +35,57 @@ class App extends React.Component {
             date: 0
         }
     }
-   
-    componentDidMount() {          
+
+    componentDidMount() {
 
     }
     render() {
         return (
             <Router>
-                <div className="wrapper container" style={{ paddingTop: 160, paddingBottom: 15 }}>
-                    <div
-                        id="logo-banner"
-                        style={{
-                            position: "absolute",
-                            margin: 0,
-                            padding: 0,
-                            top: 0,
-                            left: 0,
-                            borderRadius:0,
-                            height: 160,
-                            width: "100%"
-                        }}
-                        className="col-sm-12"
-                    >
-                     </div>
-                    <Sidebar />
-                    <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
+                <div>
+                    <div className="wrapper container" style={{ paddingTop: 160, paddingBottom: 15 }}>
+                        <div
+                            id="logo-banner"
+                            style={{
+                                position: "absolute",
+                                margin: 0,
+                                padding: 0,
+                                top: 0,
+                                left: 0,
+                                borderRadius: 0,
+                                height: 160,
+                                width: "100%"
+                            }}
+                            className="col-sm-12"
+                        >
+                        </div>
+                        <Sidebar />
+                        <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
-                        <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",/* marginRight: 12*/ }}>
-                            
-                            {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
-                            <button
-                                type="button"
-                                id="sidebarCollapse"
-                                aria-pressed="false"
-                                className="btn btn-flat bg-light"
-                                style={{ height: "48px", fontSize: 12, marginLeft:-10,borderRadius:0,backgroundColor:"white",boxShadow:"2px 0px 0px rgba(0, 0, 0, 0.45)" }}
-                            >
-                                <i className="sicon-live-betting"> </i>
-                                {/* {this.state.hours + ":" + this.state.minutes + "." + this.state.seconds} */}
-                            </button>
-                            <div className="navbar-toggler" style={{color:"white",border:0}}>MENU</div>
-                            <button className=" btn btn-flat bg-light navbar-toggler"  style={{ height: "48px",borderRadius:0, color:"black", marginRight:-10,fontSize: 12,backgroundColor:"white",boxShadow:"2px 0px 0px rgba(0, 0, 0, 0.45)" }} type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-                            <i className="fas fa-ellipsis-v"></i>
-                            </button>
-                            <div className="collapse navbar-collapse" id="navbarNavDropdown">
-                                <ul className="navbar-nav mr-auto">
-                                   
-                                    <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
-                                    <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
-                                   
-                                    {/* <li className="nav-item">
+                            <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",/* marginRight: 12*/ }}>
+
+                                {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
+                                <button
+                                    type="button"
+                                    id="sidebarCollapse"
+                                    aria-pressed="false"
+                                    className="btn btn-flat bg-light"
+                                    style={{ height: "48px", fontSize: 12, marginLeft: -10, borderRadius: 0, backgroundColor: "white", boxShadow: "2px 0px 0px rgba(0, 0, 0, 0.45)" }}
+                                >
+                                    <i className="sicon-live-betting"> </i>
+                                    {/* {this.state.hours + ":" + this.state.minutes + "." + this.state.seconds} */}
+                                </button>
+                                <div className="navbar-toggler" style={{ color: "white", border: 0 }}>MENU</div>
+                                <button className=" btn btn-flat bg-light navbar-toggler" style={{ height: "48px", borderRadius: 0, color: "black", marginRight: -10, fontSize: 12, backgroundColor: "white", boxShadow: "2px 0px 0px rgba(0, 0, 0, 0.45)" }} type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                                    <i className="fas fa-ellipsis-v"></i>
+                                </button>
+                                <div className="collapse navbar-collapse" id="navbarNavDropdown">
+                                    <ul className="navbar-nav mr-auto">
+
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
+
+                                        {/* <li className="nav-item">
                                         <Link className="nav-link" to="">LiveScores</Link>
                                     </li>
                                     <li className="nav-item dropdown">
@@ -97,21 +98,40 @@ class App extends React.Component {
                                             <Link className="dropdown-item" to="">Something else here</Link>
                                         </div>
                                     </li> */}
-                                </ul>
-                                <button id="cdate" className="btn btn-primary"> 0</button>
-                                
-                            </div>
-                        </nav>
+                                    </ul>
+                                    <button id="cdate" className="btn btn-primary"> 0</button>
 
-                        <Switch>
-                            <Route exact path="/" component={Affil} />
-                            {/* <Route path="/odds" component={Odds} something="foo" /> */}
-                            <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
-                            <Route path="/match/:sport/:group/:league/:id" component={Match} />
-                            <Route path="/sport/:id" component={Sport} />
-                            <Redirect to="/" />
-                        </Switch>
+                                </div>
+                            </nav>
+
+                            <Switch>
+                                <Route exact path="/" component={Affil} />
+                                {/* <Route path="/odds" component={Odds} something="foo" /> */}
+                                <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
+                                <Route path="/match/:sport/:group/:league/:id" component={Match} />
+                                <Route path="/sport/:id" component={Sport} />
+                                <Redirect to="/" />
+                            </Switch>
+                        </div>
+                        {/* <ins className="adsbygoogle" style={{display:"inline-block",width:"300px",height:"250px"}} data-ad-client="ca-pub-9811219830710276" data-ad-slot="2727562977" data-ad-format="auto"></ins> */}
                     </div>
+                    <div id="myFooter" className="white-text" style={{ backgroundColor: "black" }}>
+                        <div className="row" style={{ margin: 0, padding: 0, paddingTop: 15 }} >
+                            <div className="col-sm-4 "></div>
+
+                            <div className="col-sm-4 text-center" >
+                                <Link to="https://www.facebook.com/RockstarSports2/" className="btn btn-primary" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-facebook-square"></i> </Link>
+                                <Link to="https://twitter.com/RockstarSports2" className="btn btn-info" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-twitter"></i></Link>
+                                <a href="mailto:contact@rockstarsportsbook.com" className="btn btn-danger" style={{ marginRight: 5, fontSize: 30 }}><i className="fas fa-envelope"></i></a>
+                            </div>
+                            <div className="col-sm-4 "></div>
+                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportstats.com - Part of the Rockstart Sports Network Limited</div>
+                            <div className="col-sm-4 "></div>
+                            <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
+                            <div className="col-sm-4 "></div>
+                        </div>
+                    </div>
+
                 </div>
             </Router >
         )

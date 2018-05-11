@@ -36,7 +36,7 @@ class Affil extends Component {
                             {/* {a[trait].text} */}
                             <Link to={a[trait].url}>
                                 <img src={a[trait].img} alt="" style={{ width: "100%" }} />
-                                <div className="card-caption"> Clementine Thson </div>
+                                {/* <div className="card-caption"> Clementine Thson </div> */}
                             </Link>
                         </div>
                     </div>
@@ -81,15 +81,12 @@ class Affil extends Component {
                                         data-holder-rendered="true"
                                     />
                                     <div className="carousel-caption d-none d-md-block">
-                                        <h1
-                                            className="font-weight-bold"
-                                            style={{ textShadow: "2px 2px 4px #000000" }}
-                                        >
-                                            Welcome Rockstar Sport Betting
-                            </h1>
-                                        <p style={{ textShadow: "2px 2px 4px #000000" }}>
-                                            All the online bookmakers you need right here in one
-                                            place. No bull, just sites.
+                                        <h2 className="font-weight-bold" style={{ textShadow: "2px 2px 4px #000000" }} >
+                                            Welcome to Rockstar Sports Betting
+                                        </h2>
+                                        <p style={{ textShadow: "2px 2px 4px #000000", color:"white" }}>
+                                        Best for odds comparison, Online betting and Live Scores
+
                             </p>
                                     </div>
                                 </div>
@@ -108,10 +105,7 @@ class Affil extends Component {
                                         >
                                             No. 1 For Online Betting Sites
                             </h1>
-                                        <p style={{ textShadow: "2px 2px 4px #000000" }}>
-                                            No reviews to try and push you to an affiliates favoured
-                                            sites.
-                            </p>
+                                        
                                     </div>
                                 </div>
                                 <div className="carousel-item" style={{ height: 200 }}>
@@ -123,14 +117,12 @@ class Affil extends Component {
                                         data-holder-rendered="true"
                                     />
                                     <div className="carousel-caption d-none d-md-block">
-                                        <h1
-                                            className="font-weight-bold"
-                                            style={{ textShadow: "2px 2px 4px #000000" }}
-                                        >
-                                            Welcome Rockstar Sport Betting
-                            </h1>
-                                        <p style={{ textShadow: "2px 2px 4px #000000" }}>
-                                            Just links and they are all here.
+                                        <h2 className="font-weight-bold" style={{ textShadow: "2px 2px 4px #000000" }} >
+                                            Welcome to Rockstar Sports Betting
+                                        </h2>
+                                        <p style={{ textShadow: "2px 2px 4px #000000",color:"white" }}>
+                                        Best for odds comparison, Online betting and Live Scores
+
                             </p>
                                     </div>
                                 </div>

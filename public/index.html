@@ -14,7 +14,7 @@
   <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg"
     crossorigin="anonymous">
-  
+
 
   <!-- <link href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css" rel="stylesheet"> -->
 
@@ -85,7 +85,7 @@ background-attachment: fixed !important;
         });
 
         currentdate = new Date();
-        let utcOffset = 0;
+        let utcOffset = 1;
         var hours = currentdate.getUTCHours() + parseInt(utcOffset, 10);
 
         // correct for number over 24, and negatives
@@ -117,19 +117,32 @@ background-attachment: fixed !important;
 
     });
   </script>
-  <script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-116318850-1"></script>
   <script>
-    // Initialize Firebase
-    var config = {
-      apiKey: "AIzaSyAx6A4hFSwSeUI0SUvCUDF8Fpe27mtGi2s",
-      authDomain: "oclean66-casper.firebaseapp.com",
-      databaseURL: "https://oclean66-casper.firebaseio.com",
-      projectId: "oclean66-casper",
-      storageBucket: "oclean66-casper.appspot.com",
-      messagingSenderId: "665182115697"
-    };
-    firebase.initializeApp(config);
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'UA-116318850-1');
   </script>
+
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <!-- Sportsbook.com -->
+  <!-- <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-9811219830710276" data-ad-slot="1817805986" data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script> -->
+
+
+  <!-- <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script> -->
+  <!-- Sportsbook.com 2 -->
+  <!-- <ins class="adsbygoogle" style="position:absolute;top:160px;display:inline-block;width:200px;height:250px" data-ad-client="ca-pub-9811219830710276" data-ad-slot="2727562977" data-ad-format="auto"></ins>
+  <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+  </script> -->
+
 </body>
 
 </html>
