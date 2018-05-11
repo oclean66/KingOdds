@@ -30,7 +30,7 @@ class Sport extends React.Component {
 
     render() {
         return (
-            "hola"
+            "hola, cmo estas"
         );
     }
 }
