@@ -40,6 +40,14 @@
         width: 200px;
       }
     }
+
+    iframe {
+      overflow: hidden;
+    }
+
+    iframe::-webkit-scrollbar {
+      display: none;
+    }
   </style>
   <title>RockStartSportBetting</title>
 
@@ -80,7 +88,7 @@ background-attachment: fixed !important;
 
       setInterval(function () {
         $('#mySelect').on('change', function (e) {
-          console.log('#' + $(this).val() + "-tab");
+          // console.log('#' + $(this).val() + "-tab");
           $('#' + $(this).val() + "-tab").tab('show');
         });
 

@@ -2,8 +2,6 @@ import React from "react";
 import firebase from '../fire';
 
 const matches = firebase.database().ref('menu');
-
-
 class Sport extends React.Component {
     constructor() {
         super()

@@ -9,10 +9,14 @@ import Affil from "./components/affil";
 import Odds from "./components/odds";
 import Match from "./components/match";
 import Sport from './components/sport';
+import Bookmaker from './components/bookmaker';
+import Results from './components/results';
+
 
 
 
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
+
     <Route
         path={to}
         exact={activeOnlyWhenExact}
@@ -81,26 +85,12 @@ class App extends React.Component {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                                     <ul className="navbar-nav mr-auto">
-
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />                                        
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
-
-                                        {/* <li className="nav-item">
-                                        <Link className="nav-link" to="">LiveScores</Link>
-                                    </li>
-                                    <li className="nav-item dropdown">
-                                        <Link className="nav-link dropdown-toggle" to="" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Bookmakers
-                                            </Link>
-                                        <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                                            <Link className="dropdown-item" to="">Action</Link>
-                                            <Link className="dropdown-item" to="">Another action</Link>
-                                            <Link className="dropdown-item" to="">Something else here</Link>
-                                        </div>
-                                    </li> */}
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/results" label="Live Scores" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />                                        
                                     </ul>
                                     <button id="cdate" className="btn btn-primary"> 0</button>
-
                                 </div>
                             </nav>
 
@@ -110,6 +100,8 @@ class App extends React.Component {
                                 <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
                                 <Route path="/match/:sport/:group/:league/:id" component={Match} />
                                 <Route path="/sport/:id" component={Sport} />
+                                <Route path="/bookmaker" component={Bookmaker} />
+                                <Route path="/results/:id?" component={Results} />
                                 <Redirect to="/" />
                             </Switch>
                         </div>
