@@ -1,5 +1,12 @@
-npm version patch|minor|major
+npm version <patch|minor|major>
 
+git status
+git add .
+git tag
+git commit -m "msg"
+git push origin --tags
+git remote
+git remote add <shortname> <url>
 
 
 
