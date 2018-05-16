@@ -1,7 +1,7 @@
 {
   "name": "reactfirebase",
   "description": "Using react to connect to firebase realtime database",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "private": true,
   "keywords": [],
   "author": "oclean66",
