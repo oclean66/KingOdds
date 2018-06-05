@@ -25,8 +25,10 @@ class Affil extends Component {
 
     }
     render() {
+        let list;
         let a = this.state.affil;
-        let list = Object.keys(a).map(function (trait) {
+        if(a){
+         list = Object.keys(a).map(function (trait) {
             // console.log('id ', trait, ': ', a[trait]);
             return (
 
@@ -44,7 +46,7 @@ class Affil extends Component {
             )
         });
         // console.log(list);
-
+    }
         return (
             <div>
                 <div className="page-head" style={{ padding: 0 }}>

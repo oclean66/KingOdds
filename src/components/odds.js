@@ -111,7 +111,7 @@ class Odds extends React.Component {
                         <tr key={e.id}>
                             <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{time}</th>
                             <td><Link to={"/match/" + context.state.sport + "/" + context.state.group + "/" + context.state.league + "/" + e.id}>{e.hteamName + " vs " + e.ateamName}</Link></td>
-                            <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{e.status}</td>
+                            <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }} data-toggle="tooltip" data-placement="top" title={e.statusText?e.statusText:"No info"} >{e.status}</td>
                             <td className="text-center" style={{ width: p }}>{data.o1}</td>
                             <td className="text-center" style={{ width: p }}>{data.o2}</td>
                             <td className="text-center" style={{ width: p }}>{data.o3}</td>

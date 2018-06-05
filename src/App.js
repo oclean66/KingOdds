@@ -8,12 +8,11 @@ import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
 import Odds from "./components/odds";
 import Match from "./components/match";
-import Sport from './components/sport';
+// import Sport from './components/sport';
 import Bookmaker from './components/bookmaker';
 import Results from './components/results';
-
-
-
+import Resultslive from './components/resultslive';
+import Search from './components/search';
 
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 
@@ -87,10 +86,10 @@ class App extends React.Component {
                                     <ul className="navbar-nav mr-auto">
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />                                        
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/odds" label="Odds Comparison" />
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/results" label="Live Scores" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/resultslive" label="Live Scores" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />                                        
                                     </ul>
-                                    <button id="cdate" className="btn btn-primary"> 0</button>
+                                    <button id="cdate" className="btn btn-primary"> 0 </button>
                                 </div>
                             </nav>
 
@@ -98,10 +97,14 @@ class App extends React.Component {
                                 <Route exact path="/" component={Affil} />
                                 {/* <Route path="/odds" component={Odds} something="foo" /> */}
                                 <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
-                                <Route path="/match/:sport/:group/:league/:id" component={Match} />
-                                <Route path="/sport/:id" component={Sport} />
+                                <Route path="/match/:id" component={Match} />
+                                {/* <Route path="/match/:sport/:group/:league/:id" component={Match} /> */}
+                                {/* <Route path="/sport/:id" component={Sport} /> */}
                                 <Route path="/bookmaker" component={Bookmaker} />
+                                <Route path="/sport/:sport/country/:league/search/:id" component={Search} />
                                 <Route path="/results/:id?" component={Results} />
+                                <Route path="/resultslive" component={Resultslive} />
+                                <Route path="/resultslive/:id" component={Resultslive} />
                                 <Redirect to="/" />
                             </Switch>
                         </div>
@@ -115,6 +118,7 @@ class App extends React.Component {
                                 <Link to="https://www.facebook.com/RockstarSports2/" className="btn btn-primary" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-facebook-square"></i> </Link>
                                 <Link to="https://twitter.com/RockstarSports2" className="btn btn-info" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-twitter"></i></Link>
                                 <a href="mailto:contact@rockstarsportsbook.com" className="btn btn-danger" style={{ marginRight: 5, fontSize: 30 }}><i className="fas fa-envelope"></i></a>
+                                <a href="http://www.livescore.in/" rel="noopener noreferrer" className="btn" title="Livescore.in" target="_blank" style={{width:250,height: 34, background: "url(http://www.livescore.in/res/_in/image/logo.gif) no-repeat"}}></a>
                             </div>
                             <div className="col-sm-4 "></div>
                             <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportstats.com - Part of the Rockstart Sports Network Limited</div>

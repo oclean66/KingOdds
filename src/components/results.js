@@ -21,7 +21,7 @@ class Results extends React.Component {
         if (current_state.sport !== props.match.params.id && props.match.params.id && props.match.params.id!=="blank.txt") {  
             res.child(self.state.date + "/"+props.match.params.id).on("value",snapshot=>{
 
-                console.log(snapshot.val());
+                // console.log(snapshot.val());
                 self.setState({
                     data: snapshot.val()
                   });
@@ -78,10 +78,6 @@ class Results extends React.Component {
 
             // console.log(snapshot.val());
         });
-
-        
-        
-
         this.setState({
             sport:this.props.match.params.id?this.props.match.params.id:this.state.sport
         })            
@@ -134,11 +130,11 @@ class Results extends React.Component {
                 // r
                 return (
                     <tr key={id} data-toggle="modal" data-target="#exampleModal" onClick={this.openModal.bind(this)}>
-                        <th id={"http://www.livescore.in/match/"+id}  className='text-center' style={{ width: w }}>{y[id].time}</th>
-                        <th id={"http://www.livescore.in/match/"+id}  className='text-center' style={{ width: w }}>{y[id].status}</th>
-                        <th id={"http://www.livescore.in/match/"+id}  className='text-center' style={{ width:"25%"}}>{y[id].a}</th>
-                        <th id={"http://www.livescore.in/match/"+id}  className='text-center' style={{ width: w }}>{r?r[1].value:"0-0"}</th>
-                        <th id={"http://www.livescore.in/match/"+id}  className='text-center' style={{ width:"25%" }}>{y[id].b}</th>
+                        <th id={"https://www.livescore.in/match/"+id+"/"}  className='text-center' style={{ width: w }}>{y[id].time}</th>
+                        <th id={"https://www.livescore.in/match/"+id+"/"}  className='text-center' style={{ width: w }}>{y[id].status}</th>
+                        <th id={"https://www.livescore.in/match/"+id+"/"}  className='text-center' style={{ width:"25%"}}>{y[id].a}</th>
+                        <th id={"https://www.livescore.in/match/"+id+"/"}  className='text-center' style={{ width: w }}>{r?r[1].value:"0-0"}</th>
+                        <th id={"https://www.livescore.in/match/"+id+"/"}  className='text-center' style={{ width:"25%" }}>{y[id].b}</th>
                     </tr>
                 )
             })

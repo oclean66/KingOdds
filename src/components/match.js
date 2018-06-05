@@ -21,15 +21,20 @@ class Match extends React.Component {
         oddsRef.off();
     }
     componentDidMount() {
-        const { sport, group, league, id } = this.props.match.params;
+        const { id } = this.props.match.params;
         if (!id) return;
         detail = this.state.detail;
-        detailRef = firebase.database().ref('matches/' + sport + '/' + group + '/' + league + '/' + id);
+        // detailRef = firebase.database().ref('matches/' + sport + '/' + group + '/' + league + '/' + id);
+        // detailRef = firebase.database().ref('odds/' + id);
+        detailRef = firebase.database().ref('matches/' + id);
+        // console.table(detailRef);
         detailRef.on("value", snapshot => {
             detail = snapshot.val();
-            oddsRef = firebase.database().ref('odds/' + sport + '/' + group + '/' + league + '/' + id);
+            // oddsRef = firebase.database().ref('odds/' + sport + '/' + group + '/' + league + '/' + id);
+            oddsRef = firebase.database().ref('odds/' + id);
             if (detail) oddsRef.on("value", snapshot => {
                 detail.data = snapshot.val();
+                // console.log(detail)
 
                 this.setState({
                     detail: detail
@@ -38,13 +43,11 @@ class Match extends React.Component {
 
         });
     }
-
-
     render() {
 
         let e = this.state.detail ? this.state.detail : { time: 0, id: 0 };
         // console.log(e);
-        let timess = new Date(e.time);
+        let timess = new Date(e.timestamp*1000);
         let utcOffset = 0;
         var hours = timess.getUTCHours() + parseInt(utcOffset, 10);
         // correct for number over 24, and negatives
@@ -64,11 +67,11 @@ class Match extends React.Component {
 
 
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var dd = timess.getDate();
+        var dd = timess.getUTCDate(); 
         dd = dd < 10 ? '0' + dd : dd;
-        var today = months[timess.getMonth()] + " " + dd + ", " + timess.getFullYear();
+        var today = months[timess.getUTCMonth()] + " " + dd + ", " + timess.getUTCFullYear();
         timess = today;
-        // console.log(timess);
+        console.log(timess);
         let list = e.data ? Object.keys(e.data).map(function (key) {
             let i = key.replace(/\s|&/g, "");
             return (
@@ -156,22 +159,22 @@ class Match extends React.Component {
 
         }) : "";
         // document.getElementById("status").innerHTML = e.statusText;
-        return (e.id ?
+        return (e.idmatch ?
             <div className="r">
-                <nav className="breadcrumb bg-white border">
+                {/* <nav className="breadcrumb bg-white border">
                     <Link className="breadcrumb-item" to="/">Home</Link>
                     <Link className="breadcrumb-item" to="">{e.group.spname}</Link>
                     <Link className="breadcrumb-item" to="">{e.group.gname}</Link>
                     <Link className="breadcrumb-item" to={'/odds/' + this.props.match.params.sport + '/' + this.props.match.params.group + '/' + this.props.match.params.league}>{e.group.name}</Link>
                     <span className="breadcrumb-item active">{e.hteamName + " vs " + e.ateamName}</span>
-                </nav>
+                </nav> */}
                 <div key={e.id} className="card">
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
                         <i className="far fa-clock"></i>
                         {hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName }
                     </h5>
                     <h6 className="card-subtitle mb-2 text-muted" style={{ padding: "0px 0px 0px 10px" }}>
-                        {e.group ? e.group.gname + " | " + e.group.name + " - " + timess : ""}
+                        {e.group ? e.group.gname + " | " + e.group.name + " - " + timess : timess}
                     </h6>
                     <h6 className="card-subtitle mb-2 text-black" style={{ color: 'black !important', padding: "0px 0px 0px 10px" }} id="status">
                         {e.statusText ? e.statusText.replace(/(<\/?(\s|\S)*?>)/g, '') : e.status}
@@ -195,8 +198,8 @@ class Match extends React.Component {
                                 <div className="float-right">
                                     <small>provided by
                                     <Link
-                                            onClick={() => { window.open('https://www.flashscore.com/match/', 'popup', 'width=600,height=600,scrollbars=no,resizable=no'); return false; }}
-                                            target="popup" to={"https://www.flashscore.com/match/" + e.xeid}> flashscore</Link></small>
+                                            onClick={() => { window.open('https://www.livescore.in/match/', 'popup', 'width=600,height=600,scrollbars=no,resizable=no'); return false; }}
+                                            target="popup" to={"https://www.livescore.in/match/" + e.gsmid}> flashscore</Link></small>
                                 </div>
                             </div>
 
