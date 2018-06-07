@@ -1,6 +1,8 @@
 import React from 'react';
 import firebase from '../fire';
 import { Link } from 'react-router-dom';
+
+// import { O_NONBLOCK } from 'constants';
 //staged
 
 var today = new Date();
@@ -15,7 +17,7 @@ var today = new Date();
 let next = <tr><td>Loading...</td></tr>;
 // let last = <tr><td>Loading...</td></tr>;
 const p = "10%";
-let matches, context;
+let matches, context, oddData;
 // let sport, league, group;
 class Odds extends React.Component {
     constructor(props) {
@@ -42,8 +44,31 @@ class Odds extends React.Component {
             matches.orderByChild('searchId').equalTo(props.match.params.id).on("value", snapshot => {
 
                 snapshot.forEach(function (child) {
-                    if ((child.val().timestamp) > (today.getUTCMilliseconds() / 1000)) {
+                    if ((child.val().timestamp) > (today.getTime() / 1000)) {
                         let post = child.val();
+
+                     post.data=   firebase.database().ref('odds/' + post.idmatch + "/19992").once("value").then( snap => {
+                            if (snap.val()) {
+                                console.log(" - Logros enc");
+                                let temKeys = [];
+                                snap.forEach(i => {
+                                    // console.log(i.key);
+                                    temKeys.push(i.key);
+                                    // return i.key;
+                                });
+                                // console.log(temKeys[0]);
+                                // post.data = snap.val()[temKeys[0]];
+                                return snap.val()[temKeys[0]];
+
+                            } else {
+                                console.log(" - logros nof");
+                                // post.data = { o1: "-", o2: "-", o3: "-" };
+                                return  { o1: "-", o2: "-", o3: "-" };
+                            }
+
+
+                        });
+                        // firebase.database().ref('odds/' + post.idmatch + "/19992").off();
                         aux = aux.concat(post);
                     } else {
                         console.log("descartado", child.val().idmatch)
@@ -71,6 +96,7 @@ class Odds extends React.Component {
     }
     componentDidMount() {
         matches = firebase.database().ref('matches');
+        oddData = firebase.database().ref('odds');
         matches.orderByChild('searchId').equalTo(this.props.match.params.id).on("value", snapshot => {
             this.setState({
                 menu: snapshot.val()
@@ -108,22 +134,21 @@ class Odds extends React.Component {
                 let min = time.getMinutes() < 10 ? "0" + time.getMinutes() : time.getMinutes();
                 time = hour + ":" + min;
                 date = year + "/" + month + "/" + day;
+                // console.log(event[y].timestamp, " > ", (today.getTime() / 1000))
+                if (event[y].timestamp > (today.getTime() / 1000)) {
 
-                return (
-                    <tr key={y}>
-                        <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{time}<br /><small><b>{date}</b></small></th>
-                        <td><Link to={"/match/" + event[y].idmatch}><b>{event[y].hteamName + " vs " + event[y].ateamName}</b></Link></td>
-                        <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{event[y].results ? event[y].results[1].value : event[y].status}</td>
-                        <td className="text-center" style={{ width: p }}>{"data.o1"}</td>
-                        <td className="text-center" style={{ width: p }}>{"data.o2"}</td>
-                        <td className="text-center" style={{ width: p }}>{"data.o3"}</td>
-                    </tr>
-                )
+                    return (
+                        <tr key={y}>
+                            <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{time}<br /><small><b>{date}</b></small></th>
+                            <td><Link to={"/match/" + event[y].idmatch}><b>{event[y].hteamName + " vs " + event[y].ateamName}</b></Link></td>
+                            <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{event[y].results ? event[y].results[1].value : event[y].status}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o1 : "-"}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o2 : "-"}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o3 : "-"}</td>
+                        </tr>
+                    )
+                } else return null;
             })
-
-
-
-
             return (
                 <table key={i} className="table table-sm table-bordered bg-light">
                     <thead className="table-primary">
@@ -147,7 +172,7 @@ class Odds extends React.Component {
 
         return (
             <div>
-               
+
                 <div id="card" className="card">
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
                         <div><i className={"sicon-sport-" + this.state.sportId}></i> {this.state.sport}</div>
@@ -158,14 +183,14 @@ class Odds extends React.Component {
                     {/* <h6 className="card-subtitle mb-2 text-muted" style={{ padding: "0px 0px 0px 10px" }}>{e.group ? e.group.gname + " | " + e.group.name + " - " + timess : ""}</h6> */}
 
                     <div className="card-body">
-                       
+
                         <div className="cold-sm-12">
                             <div className="tab-content">
                                 <div id="home" className="tab-pane fade in active show">
                                     <div className="table-responsive-lg">
                                         {next}
                                     </div>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
 
