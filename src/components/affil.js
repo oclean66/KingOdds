@@ -27,26 +27,26 @@ class Affil extends Component {
     render() {
         let list;
         let a = this.state.affil;
-        if(a){
-         list = Object.keys(a).map(function (trait) {
-            // console.log('id ', trait, ': ', a[trait]);
-            return (
+        if (a) {
+            list = Object.keys(a).map(function (trait) {
+                // console.log('id ', trait, ': ', a[trait]);
+                return (
 
-                <div key={trait} className="col-lg-4">
-                    <div className="card card-full-color border border-dark" >
-                        <div className="card-body">
-                            {/* {a[trait].text} */}
-                            <Link to={a[trait].url}>
-                                <img src={a[trait].img} alt="" style={{ width: "100%" }} />
-                                {/* <div className="card-caption"> Clementine Thson </div> */}
-                            </Link>
+                    <div key={trait} className="col-lg-4">
+                        <div className="card card-full-color border border-dark" >
+                            <div className="card-body">
+                                {/* {a[trait].text} */}
+                                <Link to={a[trait].url}>
+                                    <img src={a[trait].img} alt="" style={{ width: "100%" }} />
+                                    {/* <div className="card-caption"> Clementine Thson </div> */}
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-            )
-        });
-        // console.log(list);
-    }
+                )
+            });
+            // console.log(list);
+        }
         return (
             <div>
                 <div className="page-head" style={{ padding: 0 }}>
@@ -86,9 +86,9 @@ class Affil extends Component {
                                         <h2 className="font-weight-bold" style={{ textShadow: "2px 2px 4px #000000" }} >
                                             Welcome to Rockstar Sports Betting
                                         </h2>
-                                        <p style={{ textShadow: "2px 2px 4px #000000", color:"white" }}>
-                                        Best for odds comparison, Online betting and Live Scores
-
+                                        <p style={{ textShadow: "2px 2px 4px #000000", color: "white" }}>
+                                            Best for odds comparison, Online betting and Live Scores
+    
                             </p>
                                     </div>
                                 </div>
@@ -107,7 +107,7 @@ class Affil extends Component {
                                         >
                                             No. 1 For Online Betting Sites
                             </h1>
-                                        
+
                                     </div>
                                 </div>
                                 <div className="carousel-item" style={{ height: 200 }}>
@@ -122,9 +122,9 @@ class Affil extends Component {
                                         <h2 className="font-weight-bold" style={{ textShadow: "2px 2px 4px #000000" }} >
                                             Welcome to Rockstar Sports Betting
                                         </h2>
-                                        <p style={{ textShadow: "2px 2px 4px #000000",color:"white" }}>
-                                        Best for odds comparison, Online betting and Live Scores
-
+                                        <p style={{ textShadow: "2px 2px 4px #000000", color: "white" }}>
+                                            Best for odds comparison, Online betting and Live Scores
+    
                             </p>
                                     </div>
                                 </div>
@@ -158,6 +158,15 @@ class Affil extends Component {
                 </div>
                 <div className="line" />
                 <div className="row">
+                    <div className="col-lg-12" style={{ textAlign: "-webkit-center", padding: 20 }}>
+                        <a href="http://www.livescore.in/" title="Livescore" target="_blank" rel="noopener noreferrer">
+                            <div className="card card-full-color border border-dark" style={{ background: "url('https://www.livescore.in/res/image/content/livescore_in_345x70.gif'),black", backgroundSize: "345px 70px", backgroundRepeat: "no-repeat", width: 345,height:70 }} >
+                                <div className="card-body center">
+
+                                </div>
+                            </div>
+                        </a>
+                    </div>
                     {list}
                 </div>
             </div>)
