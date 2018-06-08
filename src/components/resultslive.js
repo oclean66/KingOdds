@@ -5,7 +5,10 @@ const Resultslive = ({ name }) => (
     <div>
         <ul className="nav nav-tabs">
             <li className="nav-item">
-                <Link className="nav-link active" data-toggle="tab" to="#Soccer">Soccer</Link>
+                <Link className="nav-link active" data-toggle="tab" to="#Baseball">Baseball</Link>
+            </li>
+            <li className="nav-item">
+                <Link className="nav-link" data-toggle="tab" to="#Soccer">Soccer</Link>
             </li>
             <li className="nav-item">
                 <Link className="nav-link " data-toggle="tab" to="#Tennis">Tennis</Link>
@@ -15,9 +18,6 @@ const Resultslive = ({ name }) => (
             </li>
             <li className="nav-item">
                 <Link className="nav-link " data-toggle="tab" to="#Hockey">Hockey</Link>
-            </li>
-            <li className="nav-item">
-                <Link className="nav-link " data-toggle="tab" to="#Baseball">Baseball</Link>
             </li>
             <li className="nav-item">
                 <Link className="nav-link " data-toggle="tab" to="#AM-Football">AM Football</Link>
@@ -40,7 +40,12 @@ const Resultslive = ({ name }) => (
         </ul>
         <div className="cold-sm-12">
             <div className="tab-content">
-                <div id="Socer" className="tab-pane fade in active show">
+                <div id="Baseball" className="tab-pane fade in active show">
+                    <div className="table-responsive-lg">
+                        <iframe title="livescore05" id="inscore-xdc-540333" src="https://www.livescore.in/free/540333/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
+                    </div>
+                </div>
+                <div id="Soccer" className="tab-pane fade">
                     <div className="table-responsive-lg">
                         <iframe title="livescore01" id="inscore-xdc-844206" src="https://www.livescore.in/free/844206/" width="1000" height="1200" frameBorder="0" scrolling="no"></iframe>
                     </div>
@@ -60,11 +65,7 @@ const Resultslive = ({ name }) => (
                     <div className="table-responsive-lg">
                         <iframe title="livescore04" id="inscore-xdc-903961" src="https://www.livescore.in/free/903961/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>                    </div>
                 </div>
-                <div id="Baseball" className="tab-pane fade">
-                    <div className="table-responsive-lg">
-                        <iframe title="livescore05" id="inscore-xdc-540333" src="https://www.livescore.in/free/540333/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
-                    </div>
-                </div>
+
                 <div id="AM-Football" className="tab-pane fade">
                     <div className="table-responsive-lg">
                         <iframe title="livescore06" id="inscore-xdc-101042" src="https://www.livescore.in/free/101042/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
@@ -80,14 +81,14 @@ const Resultslive = ({ name }) => (
                         <iframe title="livescore08" id="inscore-xdc-480657" src="https://www.livescore.in/free/480657/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
                     </div>
                 </div>
-                <div id="Rugby-U" className="tab-pane fade">
+                <div id="RugbyU" className="tab-pane fade">
                     <div className="table-responsive-lg">
                         <iframe title="livescore09" id="inscore-xdc-485604" src="https://www.livescore.in/free/485604/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
                     </div>
                 </div>
                 <div id="Cricket" className="tab-pane fade">
                     <div className="table-responsive-lg">
-                    <iframe title="livescore19" id="inscore-xdc-734675" src="https://www.livescore.in/free/734675/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
+                        <iframe title="livescore19" id="inscore-xdc-734675" src="https://www.livescore.in/free/734675/" width="1000" height="1200" frameborder="0" scrolling="no"></iframe>
                     </div>
                 </div>
 
