@@ -23,24 +23,17 @@ class Match extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         if (!id) return;
-        detail = this.state.detail;
-        // detailRef = firebase.database().ref('matches/' + sport + '/' + group + '/' + league + '/' + id);
-        // detailRef = firebase.database().ref('odds/' + id);
-        detailRef = firebase.database().ref('matches/' + id);
-        // console.table(detailRef);
+        detail = this.state.detail;       
+        detailRef = firebase.database().ref('matches/' + id);        
         detailRef.on("value", snapshot => {
-            detail = snapshot.val();
-            // oddsRef = firebase.database().ref('odds/' + sport + '/' + group + '/' + league + '/' + id);
+            detail = snapshot.val();           
             oddsRef = firebase.database().ref('odds/' + id);
             if (detail) oddsRef.on("value", snapshot => {
                 detail.data = snapshot.val();
-                // console.log(detail)
-
                 this.setState({
                     detail: detail
                 });
             });
-
         });
     }
     render() {
@@ -169,12 +162,22 @@ class Match extends React.Component {
                     <span className="breadcrumb-item active">{e.hteamName + " vs " + e.ateamName}</span>
                 </nav> */}
                 <div key={e.id} className="card">
+                
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
-                        <i className="far fa-clock"></i>
-                        {hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName }
+                        <i className={"ficon-inline f-"+e.countryId}></i>
+                        {/* {"SportId:"+e.sportId+" LeagueId:"+e.leagueId+" CountryId:"+e.countryId}    
+                        {}  */}
+
+                        {e.sportName?e.sportName+" ":"Sport "}                   
+                        {e.countryName?e.countryName+" ":"Country "} 
+                        {e.leagueName?e.leagueName+" ":"League "} 
+                    </h5>
+                    <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
+                        <i className="far fa-clock"></i>  
+                        {" "+hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName }
                     </h5>
                     <h6 className="card-subtitle mb-2 text-muted" style={{ padding: "0px 0px 0px 10px" }}>
-                        {e.group ? e.group.gname + " | " + e.group.name + " - " + timess : timess}
+                        { timess}
                     </h6>
                     <h6 className="card-subtitle mb-2 text-black" style={{ color: 'black !important', padding: "0px 0px 0px 10px" }} id="status">
                         {e.statusText ? e.statusText.replace(/(<\/?(\s|\S)*?>)/g, '') : e.status}
