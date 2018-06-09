@@ -52,7 +52,7 @@ class Search extends React.Component {
             next = <tr><td>Loading...</td></tr>
             matches.orderByChild('searchId').equalTo(props.match.params.id).on("value", snapshot => {
                 let matchesList = snapshot;
-                // console.table(matchesList);
+                
                 matchesList.forEach(child => {
                     let item = child.val()
                     // console.log(item);
