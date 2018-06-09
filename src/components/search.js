@@ -19,14 +19,15 @@ let next = <tr><td>Loading...</td></tr>;
 const p = "10%";
 let matches, context, oddData;
 // let sport, league, group;
-class Odds extends React.Component {
+class Search extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
             matches: [],
+            alterMatches: {},
             sportId: this.props.match.params.id.split("c")[0],
             sport: this.props.match.params.sport,
-            league: "Venezuela",
+            league: this.props.match.params.league,
             groupId: this.props.match.params.id.split("c")[1]
         }
         context = this;
@@ -39,75 +40,56 @@ class Odds extends React.Component {
         if (current_state.id !== props.match.params.id) {
             matches = firebase.database().ref('matches');
 
-            let aux = [];
+            // let aux = [];
+            context.setState({
+                alterMatches: {},
+                sportId: props.match.params.id.split("c")[0],
+                sport: props.match.params.sport,
+                league: props.match.params.league,
+                groupId: props.match.params.id.split("c")[1]
+            })
+            let aux2 = {};
             next = <tr><td>Loading...</td></tr>
             matches.orderByChild('searchId').equalTo(props.match.params.id).on("value", snapshot => {
+                let matchesList = snapshot;
+                // console.table(matchesList);
+                matchesList.forEach(child => {
+                    let item = child.val()
+                    // console.log(item);
+                    oddData = firebase.database().ref('odds/' + item.idmatch + "/19992");
+                    oddData.once("value").then(snap => {
+                        // console.log(snap.val())
+                        if (snap.val()) {
+                            let tempkey = Object.keys(snap.val());
+                            // console.log(tempkey);
 
-                snapshot.forEach(function (child) {
-                    if ((child.val().timestamp) > (today.getTime() / 1000)) {
-                        let post = child.val();
+                            // item.data = {};
+                            item.data = snap.val()[tempkey[0]];
+                            aux2[item.idmatch] = item;
+                            console.log(item);
 
-                     post.data=   firebase.database().ref('odds/' + post.idmatch + "/19992").once("value").then( snap => {
-                            if (snap.val()) {
-                                console.log(" - Logros enc");
-                                let temKeys = [];
-                                snap.forEach(i => {
-                                    // console.log(i.key);
-                                    temKeys.push(i.key);
-                                    // return i.key;
-                                });
-                                // console.log(temKeys[0]);
-                                // post.data = snap.val()[temKeys[0]];
-                                return snap.val()[temKeys[0]];
+                            let temporal = context.state.alterMatches;
+                            temporal[item.idmatch] = item;
+                            context.setState({
+                                alterMatches: temporal
+                            })
+                        }
 
-                            } else {
-                                console.log(" - logros nof");
-                                // post.data = { o1: "-", o2: "-", o3: "-" };
-                                return  { o1: "-", o2: "-", o3: "-" };
-                            }
-
-
-                        });
-                        // firebase.database().ref('odds/' + post.idmatch + "/19992").off();
-                        aux = aux.concat(post);
-                    } else {
-                        console.log("descartado", child.val().idmatch)
-                    }
+                    });
                 })
-
-                context.setState({
-                    sportId: props.match.params.id.split("c")[0],
-                    sport: props.match.params.sport,
-                    league: props.match.params.league,
-                    matches: aux,
-                    groupId: props.match.params.id.split("c")[1]
-                });
-                // console.log(aux);
-
             })
-            // matches.off();
             return null;
-
         }
         return null;
     }
     componentWillUnmount() {
         matches.off();
-    }
-    componentDidMount() {
-        matches = firebase.database().ref('matches');
-        oddData = firebase.database().ref('odds');
-        matches.orderByChild('searchId').equalTo(this.props.match.params.id).on("value", snapshot => {
-            this.setState({
-                menu: snapshot.val()
-            });
-            // console.table(snapshot.val());
-        });
+        oddData.off();
     }
 
     render() {
 
-        let display = this.state.matches;
+        let display = this.state.alterMatches;
         let orga = {}
 
         let array = Object.keys(display);
@@ -124,9 +106,11 @@ class Odds extends React.Component {
         next = Object.keys(orga).map((i) => {
             let event = orga[i];
             // console.table(event);
+            let leagueName = "Loading...";
             let x = Object.keys(event).map((y) => {
                 let time = new Date(event[y].timestamp * 1000);
                 let date;
+                leagueName = event[y].leagueName;
                 let day = time.getDate() < 10 ? "0" + time.getDate() : time.getDate();
                 let month = time.getMonth() < 10 ? "0" + (time.getMonth() + 1) : time.getMonth() + 1;
                 let year = time.getFullYear();
@@ -153,7 +137,7 @@ class Odds extends React.Component {
                 <table key={i} className="table table-sm table-bordered bg-light">
                     <thead className="table-primary">
                         <tr >
-                            <th colSpan='3' >{""}</th>
+                            <th colSpan='3' >{leagueName}</th>
                             <th className='text-center'>1</th>
                             <th className='text-center'>X</th>
                             <th className='text-center'>2</th>
@@ -202,4 +186,4 @@ class Odds extends React.Component {
 
 }
 
-export default Odds
+export default Search
