@@ -6,11 +6,11 @@ import {
 
 import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
-import Odds from "./components/odds";
+// import Odds from "./components/odds";
 import Match from "./components/match";
 import Sport from './components/sport';
 import Bookmaker from './components/bookmaker';
-import Results from './components/results';
+// import Results from './components/results';
 import Resultslive from './components/resultslive';
 import Search from './components/search';
 
@@ -96,15 +96,15 @@ class App extends React.Component {
                             <Switch>
                                 <Route exact path="/" component={Affil} />
                                 {/* <Route path="/odds" component={Odds} something="foo" /> */}
-                                <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} />
+                                {/* <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} /> */}
                                 <Route path="/match/:id" component={Match} />
                                 {/* <Route path="/match/:sport/:group/:league/:id" component={Match} /> */}
                                 <Route path="/sports" component={Sport} />
                                 <Route path="/bookmaker" component={Bookmaker} />
                                 <Route path="/sport/:sport/country/:league/search/:id" component={Search} />
-                                <Route path="/results/:id?" component={Results} />
+                                {/* <Route path="/results/:id?" component={Results} /> */}
                                 <Route path="/resultslive" component={Resultslive} />
-                                <Route path="/resultslive/:id" component={Resultslive} />
+                                {/* <Route path="/resultslive/:id" component={Resultslive} /> */}
                                 <Redirect to="/" />
                             </Switch>
                         </div>

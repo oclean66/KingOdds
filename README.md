@@ -1,12 +1,12 @@
 npm version <patch|minor|major>
-
-git status
-git add .
-git tag
-git commit -m "msg"
-git push origin --tags
-git remote
-git remote add <shortname> <url>
+<br>
+git status<br>
+git add .<br>
+git tag<br>
+git commit -m "msg"<br>
+git push master --tags<br>
+git remote<br>
+git remote add <shortname> <url><br>
 
 
 

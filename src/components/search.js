@@ -52,7 +52,7 @@ class Search extends React.Component {
             next = <tr><td>Loading...</td></tr>
             matches.orderByChild('searchId').equalTo(props.match.params.id).on("value", snapshot => {
                 let matchesList = snapshot;
-                
+
                 matchesList.forEach(child => {
                     let item = child.val()
                     // console.log(item);
@@ -61,20 +61,15 @@ class Search extends React.Component {
                         // console.log(snap.val())
                         if (snap.val()) {
                             let tempkey = Object.keys(snap.val());
-                            // console.log(tempkey);
-
-                            // item.data = {};
                             item.data = snap.val()[tempkey[0]];
                             aux2[item.idmatch] = item;
-                            console.log(item);
-
-                            let temporal = context.state.alterMatches;
-                            temporal[item.idmatch] = item;
-                            context.setState({
-                                alterMatches: temporal
-                            })
+                            // console.log(item);
                         }
-
+                        let temporal = context.state.alterMatches;
+                        temporal[item.idmatch] = item;
+                        context.setState({
+                            alterMatches: temporal
+                        })
                     });
                 })
             })
@@ -120,15 +115,15 @@ class Search extends React.Component {
                 date = year + "/" + month + "/" + day;
                 // console.log(event[y].timestamp, " > ", (today.getTime() / 1000))
                 if (event[y].timestamp > (today.getTime() / 1000)) {
-
+                    let min = 1, max = 4.5;
                     return (
                         <tr key={y}>
                             <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{time}<br /><small><b>{date}</b></small></th>
                             <td><Link to={"/match/" + event[y].idmatch}><b>{event[y].hteamName + " vs " + event[y].ateamName}</b></Link></td>
                             <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{event[y].results ? event[y].results[1].value : event[y].status}</td>
-                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o1 : "-"}</td>
-                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o2 : "-"}</td>
-                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o3 : "-"}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            <td className="text-center" style={{ width: p }}>{event[y].data ? event[y].data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
                         </tr>
                     )
                 } else return null;

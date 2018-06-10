@@ -23,13 +23,33 @@ class Match extends React.Component {
     componentDidMount() {
         const { id } = this.props.match.params;
         if (!id) return;
-        detail = this.state.detail;       
-        detailRef = firebase.database().ref('matches/' + id);        
+        let data={};
+        detail = this.state.detail;
+        detailRef = firebase.database().ref('matches/' + id);
         detailRef.on("value", snapshot => {
-            detail = snapshot.val();           
+            detail = snapshot.val();
             oddsRef = firebase.database().ref('odds/' + id);
             if (detail) oddsRef.on("value", snapshot => {
-                detail.data = snapshot.val();
+                // detail.data = snapshot.val();
+                
+                snapshot.forEach(i=>{
+                //    data[] 
+                console.log(i.key) //clave del logro
+                console.log(i.val()); //valores
+                let n = Object.keys(i.val())
+                let name =i.key;
+                n.map(z=>{
+                    // console.log(z)//clave de bookmaker
+                    // console.log(i.val()[z].activeType) //nombre logro
+                    name = i.val()[z].activeType+" "+i.val()[z].activeTime;
+                    return null;
+                })
+
+                data[name]=i.val();
+                })
+                detail.data = data;
+
+                // console.log(Object.keys(snapshot.val()));
                 this.setState({
                     detail: detail
                 });
@@ -40,9 +60,9 @@ class Match extends React.Component {
 
         let e = this.state.detail ? this.state.detail : { time: 0, id: 0 };
         // console.log(e);
-        let timess = new Date(e.timestamp*1000);
-        let utcOffset = 0;
-        var hours = timess.getUTCHours() + parseInt(utcOffset, 10);
+        let timess = new Date(e.timestamp * 1000);
+        // let utcOffset = 0;
+        var hours = timess.getHours();
         // correct for number over 24, and negatives
         if (hours >= 24) { hours -= 24; }
         if (hours < 0) { hours += 12; }
@@ -52,7 +72,7 @@ class Match extends React.Component {
         if (hours.length === 1) { hours = "0" + hours; }
 
         // minutes are the same on every time zone
-        var minutes = timess.getUTCMinutes();
+        var minutes = timess.getMinutes();
 
         // add leading zero, first convert hours to string
         minutes = minutes + "";
@@ -60,11 +80,11 @@ class Match extends React.Component {
 
 
         var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-        var dd = timess.getUTCDate(); 
+        var dd = timess.getDate();
         dd = dd < 10 ? '0' + dd : dd;
-        var today = months[timess.getUTCMonth()] + " " + dd + ", " + timess.getUTCFullYear();
+        var today = months[timess.getMonth()] + " " + dd + ", " + timess.getFullYear();
         timess = today;
-        console.log(timess);
+        // console.log(timess);
         let list = e.data ? Object.keys(e.data).map(function (key) {
             let i = key.replace(/\s|&/g, "");
             return (
@@ -101,6 +121,7 @@ class Match extends React.Component {
         }) : <li className="nav-item border-primary" style={{ border: "solid 1px" }}>
                 <Link className="nav-link " data-toggle="tab" to={"#b"} role="tab" aria-selected="true">No data found!</Link>
             </li>;
+
         let tabsConten = e.data ? Object.keys(e.data).map(function (key) {
             let i = key.replace(/\s|&/g, "");
             let table = Object.keys(e.data[key]).map(function (kei) {
@@ -162,22 +183,22 @@ class Match extends React.Component {
                     <span className="breadcrumb-item active">{e.hteamName + " vs " + e.ateamName}</span>
                 </nav> */}
                 <div key={e.id} className="card">
-                
+
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
-                        <i className={"ficon-inline f-"+e.countryId}></i>
+                        <i className={"ficon-inline f-" + e.countryId}></i>
                         {/* {"SportId:"+e.sportId+" LeagueId:"+e.leagueId+" CountryId:"+e.countryId}    
                         {}  */}
 
-                        {e.sportName?e.sportName+" ":"Sport "}                   
-                        {e.countryName?e.countryName+" ":"Country "} 
-                        {e.leagueName?e.leagueName+" ":"League "} 
+                        {e.sportName ? e.sportName + " " : "Sport "}
+                        {e.countryName ? e.countryName + " " : "Country "}
+                        {e.leagueName ? e.leagueName + " " : "League "}
                     </h5>
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
-                        <i className="far fa-clock"></i>  
-                        {" "+hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName }
+                        <i className="far fa-clock"></i>
+                        {" " + hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName}
                     </h5>
                     <h6 className="card-subtitle mb-2 text-muted" style={{ padding: "0px 0px 0px 10px" }}>
-                        { timess}
+                        {timess}
                     </h6>
                     <h6 className="card-subtitle mb-2 text-black" style={{ color: 'black !important', padding: "0px 0px 0px 10px" }} id="status">
                         {e.statusText ? e.statusText.replace(/(<\/?(\s|\S)*?>)/g, '') : e.status}
