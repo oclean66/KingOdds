@@ -13,7 +13,7 @@ class Sport extends React.Component {
 
     componentDidMount() {
         let context = this;
-        fetch('http://localhost/oddsMaster/api/list/model/next').then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/list/model/next').then(results => {
             return results.json();
         }).then(data => {
             context.setState({
