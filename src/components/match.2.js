@@ -1,38 +1,59 @@
 import React from "react";
-
+import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
-// let match;
-// let odds;
+
+// import { Link } from 'react-router-dom';
+// const match = firebase.database().ref('groups/'+"20180426");
+let detail;
+let detailRef, oddsRef;
 class Match extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            match: {},
-            odds: {}
+            detail: {
+                data: {}
+            }
         }
     }
-
+    componentWillUnmount() {
+        // detailRef.off();
+        // oddsRef.off();
+    }
     componentDidMount() {
         const { id } = this.props.match.params;
-        let context = this;
         if (!id) return;
-       
-        fetch('http://localhost/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
-            return results.json();
-        }).then(data => {
-            context.setState({
-                match: data
-            })
-            console.log(data);
-        });
-        fetch('http://localhost/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
-            return results.json();
-        }).then(data => {
-            context.setState({
-                odds: JSON.stringify(data)
-            })
-            console.log(data);
+        let data={};
+        detail = this.state.detail;
+        detailRef = firebase.database().ref('matches/' + id);
+        detailRef.on("value", snapshot => {
+            detail = snapshot.val();
+            oddsRef = firebase.database().ref('odds/' + id);
+            if (detail) oddsRef.on("value", snapshot => {
+                // detail.data = snapshot.val();
+                
+                snapshot.forEach(i=>{
+                //    data[] 
+                console.log(i.key) //clave del logro
+                console.log(i.val()); //valores
+                let n = Object.keys(i.val())
+                let name =i.key;
+                n.map(z=>{
+                    // console.log(z)//clave de bookmaker
+                    // console.log(i.val()[z].activeType) //nombre logro
+                    name = i.val()[z].activeType+" "+i.val()[z].activeTime;
+                    return null;
+                })
+
+                data[name]=i.val();
+                })
+                detail.data = data;
+
+                // console.log(Object.keys(snapshot.val()));
+                this.setState({
+                    detail: detail
+                });
+            });
         });
     }
     render() {

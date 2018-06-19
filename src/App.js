@@ -101,7 +101,7 @@ class App extends React.Component {
                                 {/* <Route path="/match/:sport/:group/:league/:id" component={Match} /> */}
                                 <Route path="/sports" component={Sport} />
                                 <Route path="/bookmaker" component={Bookmaker} />
-                                <Route path="/sport/:sport/country/:league/search/:id" component={Search} />
+                                <Route path="/search/:id" component={Search} />
                                 {/* <Route path="/results/:id?" component={Results} /> */}
                                 <Route path="/resultslive" component={Resultslive} />
                                 {/* <Route path="/resultslive/:id" component={Resultslive} /> */}

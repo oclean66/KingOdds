@@ -1,9 +1,9 @@
-npm version <patch|minor|major>
-<br>
 git status<br>
 git add .<br>
 git tag<br>
 git commit -m "msg"<br>
+npm version <patch|minor|major>
+<br>
 git push master --tags<br>
 git remote<br>
 git remote add <shortname> <url><br>

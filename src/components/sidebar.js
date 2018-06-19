@@ -1,6 +1,6 @@
 import React from "react";
 // import "../css/sidebar.css";
-import firebase from '../fire';
+// import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
 var today = new Date();
@@ -10,23 +10,22 @@ var yyyy = today.getUTCFullYear();
 dd = dd < 10 ? '0' + dd : dd;
 mm = mm < 10 ? '0' + mm : mm;
 today = yyyy + mm + dd;
-// var utctoday='';
-// var utctoday = yyyy + "-" + mm + "-" + dd;
-
-const menu = firebase.database().ref().child('menu');
 
 
 class SideBar extends React.Component {
   constructor() {
     super()
     this.state = { menu: [] }
+
   }
   componentDidMount() {
-    menu.on("value", snapshot => {
-      this.setState({
-        menu: snapshot.val()
-      });
-      // console.table(snapshot.val());
+    var context = this;
+    fetch('http://localhost/oddsMaster/api/list/model/menu/'
+    ).then(results => {
+      return results.json();
+    }).then(data => {
+      context.setState({ menu: data })
+      // console.log(data);
     });
   }
 
@@ -51,7 +50,7 @@ class SideBar extends React.Component {
               return (
                 <li key={y}>
 
-                  <Link to={"/sport/"+a[i].name+"/country/"+b[y].name+"/search/" + i + "c" + y}>
+                  <Link to={"/search/" + b[y].id}>
                     <i className={"ficon-inline f-" + y}></i>
                     {b[y].name}
                   </Link>

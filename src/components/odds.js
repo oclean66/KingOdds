@@ -64,7 +64,7 @@ class Odds extends React.Component {
         return null;
     }
     componentWillUnmount() {
-        matches.off();
+        // matches.off();
     }
     
     render() {
