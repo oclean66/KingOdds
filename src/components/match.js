@@ -18,7 +18,7 @@ class Match extends React.Component {
         let context = this;
         if (!id) return;
        
-        fetch('http://localhost/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -26,7 +26,7 @@ class Match extends React.Component {
             })
             console.log(data);
         });
-        fetch('http://localhost/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -37,7 +37,7 @@ class Match extends React.Component {
     }
     render() {
 
-        let e = this.state.detail ? this.state.detail : { time: 0, id: 0 };
+        let e = this.state.match ? this.state.match : { time: 0, id: 0 };
         // console.log(e);
         let timess = new Date(e.timestamp * 1000);
         // let utcOffset = 0;
@@ -153,28 +153,17 @@ class Match extends React.Component {
         }) : "";
         // document.getElementById("status").innerHTML = e.statusText;
         return (e.idmatch ?
-            <div className="r">
-                {/* <nav className="breadcrumb bg-white border">
-                    <Link className="breadcrumb-item" to="/">Home</Link>
-                    <Link className="breadcrumb-item" to="">{e.group.spname}</Link>
-                    <Link className="breadcrumb-item" to="">{e.group.gname}</Link>
-                    <Link className="breadcrumb-item" to={'/odds/' + this.props.match.params.sport + '/' + this.props.match.params.group + '/' + this.props.match.params.league}>{e.group.name}</Link>
-                    <span className="breadcrumb-item active">{e.hteamName + " vs " + e.ateamName}</span>
-                </nav> */}
+            <div className="r">               
                 <div key={e.id} className="card">
-
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
                         <i className={"ficon-inline f-" + e.countryId}></i>
-                        {/* {"SportId:"+e.sportId+" LeagueId:"+e.leagueId+" CountryId:"+e.countryId}    
-                        {}  */}
-
                         {e.sportName ? e.sportName + " " : "Sport "}
-                        {e.countryName ? e.countryName + " " : "Country "}
+                        {/* {e.countryName ? e.countryName + " " : "Country "} */}
                         {e.leagueName ? e.leagueName + " " : "League "}
                     </h5>
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
                         <i className="far fa-clock"></i>
-                        {" " + hours + ":" + minutes + " | " + e.hteamName + " vs " + e.ateamName}
+                        {" " + hours + ":" + minutes + " | " + e.name}
                     </h5>
                     <h6 className="card-subtitle mb-2 text-muted" style={{ padding: "0px 0px 0px 10px" }}>
                         {timess}
