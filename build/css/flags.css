@@ -1,0 +1,1067 @@
+.f {
+    background: url('http://rb.oddsportal.com/x/oddsportal180430131925/img/flags/flags.png') no-repeat scroll -4px -621px;
+    height: 11px;
+    line-height: 11px;
+    width: 16px;
+    display: block;
+    float: left;
+    margin: 1px 0 0 6px
+}
+
+.ficon {
+    background: url('http://rb.oddsportal.com/x/oddsportal180430131925/img/flags/flags.png') no-repeat scroll -4px -621px;
+    height: 11px;
+    line-height: 11px;
+    width: 16px;
+    display: block;
+    float: left;
+    text-decoration: none;
+    margin: 3px 5px 0 0;
+    cursor: pointer;
+    font-size: 1px !important
+}
+
+.ficon-pure {
+    background: url('http://rb.oddsportal.com/x/oddsportal180430131925/img/flags/flags.png') no-repeat scroll -4px -621px;
+    height: 11px;
+    line-height: 11px;
+    width: 16px;
+    font-size: 1px !important
+}
+
+.ficon-inline {
+    background: url('http://rb.oddsportal.com/x/oddsportal180430131925/img/flags/flags.png') no-repeat scroll -4px -621px;
+    height: 11px;
+    line-height: 18px;
+    width: 16px;
+    display: block;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 0px 5px 0px 0 !important;
+    font-size: 1px !important
+}
+
+.f2 {
+    margin: 1px 5px 1px 0 !important
+}
+
+.f-19 {
+    background-position: -4px -5px !important
+}
+
+.f-196 {
+    background-position: -32px -5px !important
+}
+
+.f-16 {
+    background-position: -60px -5px !important
+}
+
+.f-21 {
+    background-position: -88px -5px !important
+}
+
+.f-243 {
+    background-position: -116px -5px !important
+}
+
+.f-17 {
+    background-position: -144px -5px !important
+}
+
+.f-23 {
+    background-position: -172px -5px !important
+}
+
+.f-241 {
+    background-position: -200px -5px !important
+}
+
+.f-20 {
+    background-position: -228px -5px !important
+}
+
+.f-22 {
+    background-position: -256px -5px !important
+}
+
+.f-242 {
+    background-position: -284px -5px !important
+}
+
+.f-25 {
+    background-position: -4px -33px !important
+}
+
+.f-24 {
+    background-position: -32px -33px !important
+}
+
+.f-229 {
+    background-position: -60px -33px !important
+}
+
+.f-ax {
+    background-position: -88px -33px !important
+}
+
+.f-26 {
+    background-position: -116px -33px !important
+}
+
+.f-37 {
+    background-position: -144px -33px !important
+}
+
+.f-30 {
+    background-position: -172px -33px !important
+}
+
+.f-29 {
+    background-position: -200px -33px !important
+}
+
+.f-32 {
+    background-position: -228px -33px !important
+}
+
+.f-42 {
+    background-position: -256px -33px !important
+}
+
+.f-41 {
+    background-position: -284px -33px !important
+}
+
+.f-28 {
+    background-position: -4px -61px !important
+}
+
+.f-44 {
+    background-position: -32px -61px !important
+}
+
+.f-34 {
+    background-position: -60px -61px !important
+}
+
+.f-230 {
+    background-position: -88px -61px !important
+}
+
+.f-40 {
+    background-position: -116px -61px !important
+}
+
+.f-36 {
+    background-position: -144px -61px !important
+}
+
+.f-39 {
+    background-position: -172px -61px !important
+}
+
+.f-27 {
+    background-position: -200px -61px !important
+}
+
+.f-35 {
+    background-position: -228px -61px !important
+}
+
+.f-bv {
+    background-position: -256px -61px !important
+}
+
+.f-38 {
+    background-position: -284px -61px !important
+}
+
+.f-31 {
+    background-position: -4px -89px !important
+}
+
+.f-33 {
+    background-position: -32px -89px !important
+}
+
+.f-47 {
+    background-position: -60px -89px !important
+}
+
+.f-cc {
+    background-position: -88px -89px !important
+}
+
+.f-56 {
+    background-position: -116px -89px !important
+}
+
+.f-49 {
+    background-position: -144px -89px !important
+}
+
+.f-55 {
+    background-position: -172px -89px !important
+}
+
+.f-182 {
+    background-position: -200px -89px !important;
+    width: 11px;
+    margin-right: 5px
+}
+
+.f-58 {
+    background-position: -228px -89px !important
+}
+
+.f-244 {
+    background-position: -256px -89px !important
+}
+
+.f-51 {
+    background-position: -284px -89px !important
+}
+
+.f-46 {
+    background-position: -4px -117px !important
+}
+
+.f-52 {
+    background-position: -32px -117px !important
+}
+
+.f-53 {
+    background-position: -60px -117px !important
+}
+
+.f-57 {
+    background-position: -88px -117px !important
+}
+
+.f-cs {
+    background-position: -116px -117px !important
+}
+
+.f-60 {
+    background-position: -144px -117px !important
+}
+
+.f-48 {
+    background-position: -172px -117px !important
+}
+
+.f-cx {
+    background-position: -200px -117px !important
+}
+
+.f-61 {
+    background-position: -228px -117px !important
+}
+
+.f-62 {
+    background-position: -256px -117px !important
+}
+
+.f-81 {
+    background-position: -284px -117px !important
+}
+
+.f-64 {
+    background-position: -4px -145px !important
+}
+
+.f-63 {
+    background-position: -32px -145px !important
+}
+
+.f-65 {
+    background-position: -60px -145px !important
+}
+
+.f-66 {
+    background-position: -88px -145px !important
+}
+
+.f-18 {
+    background-position: -116px -145px !important
+}
+
+.f-68 {
+    background-position: -144px -145px !important
+}
+
+.f-73 {
+    background-position: -172px -145px !important
+}
+
+.f-69 {
+    background-position: -200px -145px !important
+}
+
+.f-eh {
+    background-position: -228px -145px !important
+}
+
+.f-198 {
+    background-position: -256px -145px !important
+}
+
+.f-72 {
+    background-position: -284px -145px !important
+}
+
+.f-176 {
+    background-position: -4px -173px !important
+}
+
+.f-74 {
+    background-position: -32px -173px !important
+}
+
+.f-fa {
+    background-position: -60px -173px !important
+}
+
+.f-76 {
+    background-position: -88px -173px !important
+}
+
+.f-75 {
+    background-position: -116px -173px !important
+}
+
+.f-fk {
+    background-position: -144px -173px !important
+}
+
+.f-129 {
+    background-position: -172px -173px !important
+}
+
+.f-231 {
+    background-position: -200px -173px !important
+}
+
+.f-77,.f-237 {
+    background-position: -228px -173px !important
+}
+
+.f-78 {
+    background-position: -256px -173px !important
+}
+
+.f-197 {
+    background-position: -284px -173px !important
+}
+
+.f-84 {
+    background-position: -4px -201px !important
+}
+
+.f-80 {
+    background-position: -32px -201px !important
+}
+
+.f-82 {
+    background-position: -60px -201px !important
+}
+
+.f-xx {
+    background-position: -88px -201px !important
+}
+
+.f-gl {
+    background-position: -116px -201px !important
+}
+
+.f-79 {
+    background-position: -144px -201px !important
+}
+
+.f-86 {
+    background-position: -172px -201px !important
+}
+
+.f-221 {
+    background-position: -200px -201px !important
+}
+
+.f-71 {
+    background-position: -228px -201px !important
+}
+
+.f-83 {
+    background-position: -256px -201px !important
+}
+
+.f-gs {
+    background-position: -284px -201px !important
+}
+
+.f-85 {
+    background-position: -4px -229px !important
+}
+
+.f-232 {
+    background-position: -32px -229px !important
+}
+
+.f-87 {
+    background-position: -60px -229px !important
+}
+
+.f-88 {
+    background-position: -88px -229px !important
+}
+
+.f-222 {
+    background-position: -116px -229px !important
+}
+
+.f-90 {
+    background-position: -144px -229px !important
+}
+
+.f-59 {
+    background-position: -172px -229px !important
+}
+
+.f-89 {
+    background-position: -200px -229px !important
+}
+
+.f-91 {
+    background-position: -228px -229px !important
+}
+
+.f-228 {
+    background-position: -256px -229px !important
+}
+
+.f-96 {
+    background-position: -284px -229px !important
+}
+
+.f-97 {
+    background-position: -4px -257px !important
+}
+
+.f-93 {
+    background-position: -32px -257px !important
+}
+
+.f-io {
+    background-position: -60px -257px !important
+}
+
+.f-95 {
+    background-position: -88px -257px !important
+}
+
+.f-94 {
+    background-position: -116px -257px !important
+}
+
+.f-92 {
+    background-position: -144px -257px !important
+}
+
+.f-98 {
+    background-position: -172px -257px !important
+}
+
+.f-99 {
+    background-position: -200px -257px !important
+}
+
+.f-101 {
+    background-position: -228px -257px !important
+}
+
+.f-100 {
+    background-position: -256px -257px !important
+}
+
+.f-103 {
+    background-position: -284px -257px !important
+}
+
+.f-108 {
+    background-position: -4px -285px !important
+}
+
+.f-45 {
+    background-position: -32px -285px !important
+}
+
+.f-104 {
+    background-position: -60px -285px !important
+}
+
+.f-km {
+    background-position: -88px -285px !important
+}
+
+.f-160 {
+    background-position: -116px -285px !important
+}
+
+.f-105 {
+    background-position: -144px -285px !important
+}
+
+.f-106 {
+    background-position: -172px -285px !important
+}
+
+.f-107 {
+    background-position: -200px -285px !important
+}
+
+.f-ky {
+    background-position: -228px -285px !important
+}
+
+.f-102 {
+    background-position: -256px -285px !important
+}
+
+.f-109 {
+    background-position: -284px -285px !important
+}
+
+.f-111 {
+    background-position: -4px -313px !important
+}
+
+.f-225 {
+    background-position: -32px -313px !important
+}
+
+.f-115 {
+    background-position: -60px -313px !important
+}
+
+.f-177 {
+    background-position: -88px -313px !important
+}
+
+.f-113 {
+    background-position: -116px -313px !important
+}
+
+.f-112 {
+    background-position: -144px -313px !important
+}
+
+.f-116 {
+    background-position: -172px -313px !important
+}
+
+.f-117 {
+    background-position: -200px -313px !important
+}
+
+.f-110 {
+    background-position: -228px -313px !important
+}
+
+.f-114 {
+    background-position: -256px -313px !important
+}
+
+.f-134 {
+    background-position: -284px -313px !important
+}
+
+.f-131 {
+    background-position: -4px -341px !important
+}
+
+.f-130 {
+    background-position: -32px -341px !important
+}
+
+.f-119 {
+    background-position: -60px -341px !important
+}
+
+.f-125 {
+    background-position: -88px -341px !important
+}
+
+.f-118 {
+    background-position: -116px -341px !important
+}
+
+.f-123 {
+    background-position: -144px -341px !important
+}
+
+.f-mm {
+    background-position: -172px -341px !important
+}
+
+.f-132 {
+    background-position: -200px -341px !important
+}
+
+.f-233 {
+    background-position: -228px -341px !important
+}
+
+.f-235 {
+    background-position: -256px -341px !important
+}
+
+.f-mq {
+    background-position: -284px -341px !important
+}
+
+.f-126 {
+    background-position: -4px -369px !important
+}
+
+.f-234 {
+    background-position: -32px -369px !important
+}
+
+.f-124 {
+    background-position: -60px -369px !important
+}
+
+.f-127 {
+    background-position: -88px -369px !important
+}
+
+.f-122 {
+    background-position: -116px -369px !important
+}
+
+.f-120 {
+    background-position: -144px -369px !important
+}
+
+.f-128 {
+    background-position: -172px -369px !important
+}
+
+.f-121 {
+    background-position: -200px -369px !important
+}
+
+.f-135 {
+    background-position: -228px -369px !important
+}
+
+.f-136 {
+    background-position: -256px -369px !important
+}
+
+.f-245 {
+    background-position: -284px -369px !important
+}
+
+.f-142 {
+    background-position: -4px -397px !important
+}
+
+.f-nf {
+    background-position: -32px -397px !important
+}
+
+.f-143 {
+    background-position: -60px -397px !important
+}
+
+.f-141 {
+    background-position: -88px -397px !important
+}
+
+.f-139 {
+    background-position: -116px -397px !important
+}
+
+.f-145 {
+    background-position: -144px -397px !important
+}
+
+.f-138 {
+    background-position: -172px -397px !important
+}
+
+.f-137 {
+    background-position: -200px -397px !important
+}
+
+.f-nu {
+    background-position: -228px -397px !important
+}
+
+.f-140 {
+    background-position: -256px -397px !important
+}
+
+.f-146 {
+    background-position: -284px -397px !important
+}
+
+.f-149 {
+    background-position: -4px -425px !important
+}
+
+.f-152 {
+    background-position: -32px -425px !important
+}
+
+.f-pf {
+    background-position: -60px -425px !important
+}
+
+.f-150 {
+    background-position: -88px -425px !important
+}
+
+.f-153 {
+    background-position: -116px -425px !important
+}
+
+.f-147 {
+    background-position: -144px -425px !important
+}
+
+.f-154 {
+    background-position: -172px -425px !important
+}
+
+.f-pm {
+    background-position: -200px -425px !important
+}
+
+.f-pn {
+    background-position: -228px -425px !important
+}
+
+.f-236 {
+    background-position: -256px -425px !important
+}
+
+.f-215 {
+    background-position: -284px -425px !important
+}
+
+.f-155 {
+    background-position: -4px -453px !important
+}
+
+.f-148 {
+    background-position: -32px -453px !important
+}
+
+.f-151 {
+    background-position: -60px -453px !important
+}
+
+.f-156 {
+    background-position: -88px -453px !important
+}
+
+.f-157 {
+    background-position: -116px -453px !important
+}
+
+.f-158 {
+    background-position: -144px -453px !important
+}
+
+.f-159 {
+    background-position: -172px -453px !important
+}
+
+.f-165 {
+    background-position: -200px -453px !important
+}
+
+.f-173 {
+    background-position: -228px -453px !important
+}
+
+.f-168 {
+    background-position: -256px -453px !important
+}
+
+.f-199 {
+    background-position: -284px -453px !important
+}
+
+.f-178 {
+    background-position: -4px -481px !important
+}
+
+.f-181 {
+    background-position: -32px -481px !important
+}
+
+.f-170 {
+    background-position: -60px -481px !important
+}
+
+.f-sh {
+    background-position: -88px -481px !important
+}
+
+.f-172 {
+    background-position: -116px -481px !important
+}
+
+.f-171 {
+    background-position: -144px -481px !important
+}
+
+.f-169 {
+    background-position: -172px -481px !important
+}
+
+.f-163 {
+    background-position: -200px -481px !important
+}
+
+.f-166 {
+    background-position: -228px -481px !important
+}
+
+.f-174 {
+    background-position: -256px -481px !important
+}
+
+.f-179 {
+    background-position: -284px -481px !important
+}
+
+.f-164 {
+    background-position: -4px -509px !important
+}
+
+.f-70 {
+    background-position: -32px -509px !important
+}
+
+.f-183 {
+    background-position: -60px -509px !important
+}
+
+.f-180 {
+    background-position: -88px -509px !important
+}
+
+.f-238 {
+    background-position: -116px -509px !important
+}
+
+.f-td {
+    background-position: -144px -509px !important
+}
+
+.f-tf {
+    background-position: -172px -509px !important
+}
+
+.f-187 {
+    background-position: -200px -509px !important
+}
+
+.f-186 {
+    background-position: -228px -509px !important
+}
+
+.f-184 {
+    background-position: -256px -509px !important
+}
+
+.f-tk {
+    background-position: -284px -509px !important
+}
+
+.f-tl {
+    background-position: -4px -537px !important
+}
+
+.f-192 {
+    background-position: -32px -537px !important
+}
+
+.f-190 {
+    background-position: -60px -537px !important
+}
+
+.f-188 {
+    background-position: -88px -537px !important
+}
+
+.f-191 {
+    background-position: -116px -537px !important
+}
+
+.f-189 {
+    background-position: -144px -537px !important
+}
+
+.f-193 {
+    background-position: -172px -537px !important
+}
+
+.f-218 {
+    background-position: -200px -537px !important
+}
+
+.f-185 {
+    background-position: -228px -537px !important
+}
+
+.f-195 {
+    background-position: -256px -537px !important
+}
+
+.f-194 {
+    background-position: -284px -537px !important
+}
+
+.f-um {
+    background-position: -4px -565px !important
+}
+
+.f-200 {
+    background-position: -32px -565px !important
+}
+
+.f-201 {
+    background-position: -60px -565px !important
+}
+
+.f-202 {
+    background-position: -88px -565px !important
+}
+
+.f-va {
+    background-position: -116px -565px !important
+}
+
+.f-161 {
+    background-position: -144px -565px !important
+}
+
+.f-205 {
+    background-position: -172px -565px !important
+}
+
+.f-vg {
+    background-position: -200px -565px !important
+}
+
+.f-240 {
+    background-position: -228px -565px !important
+}
+
+.f-206 {
+    background-position: -256px -565px !important
+}
+
+.f-203 {
+    background-position: -284px -565px !important
+}
+
+.f-207 {
+    background-position: -4px -593px !important
+}
+
+.f-wf {
+    background-position: -32px -593px !important
+}
+
+.f-162 {
+    background-position: -60px -593px !important
+}
+
+.f-208 {
+    background-position: -88px -593px !important
+}
+
+.f-yt {
+    background-position: -116px -593px !important
+}
+
+.f-175 {
+    background-position: -144px -593px !important
+}
+
+.f-209 {
+    background-position: -172px -593px !important
+}
+
+.f-210 {
+    background-position: -200px -593px !important
+}
+
+.f-6 {
+    background-position: -228px -593px !important
+}
+
+.f-popular {
+    background-position: -256px -593px !important
+}
+
+.f-167 {
+    background-position: -284px -593px !important
+}
+
+.f-popular2 {
+    background: url('http://rb.oddsportal.com/x/oddsportal180430131925/img/flags/ico-popular.png') no-repeat
+}
+
+.f-1 {
+    background-position: -88px -621px !important
+}
+
+.f-2 {
+    background-position: -88px -621px !important
+}
+
+.f-3 {
+    background-position: -88px -621px !important
+}
+
+.f-5 {
+    background-position: -88px -621px !important
+}
+
+.f-7 {
+    background-position: -88px -621px !important
+}
+
+.f-8 {
+    background-position: -116px -621px !important
+}
+
+.f-133 {
+    background-position: -32px -621px !important
+}
+
+.f-144 {
+    background-position: -60px -621px !important
+}
+
+.f-todays-matches {
+    background-position: -144px -621px !important
+}
+
+.f-en-lang {
+    background-position: -284px -173px !important;
+    margin-right: 3px
+}
+
+.f-cz-lang {
+    background-position: -256px -117px !important;
+    margin-right: 3px
+}
