@@ -62,7 +62,7 @@ class Search extends React.Component {
 
             let match = item.matches.map(y => {
                 let timess = new Date(y.timestamp*1000);
-                console.log(y.timestamp);
+                // console.log(y.timestamp);
                 var hours = timess.getHours();
                 // correct for number over 24, and negatives
                 if (hours >= 24) { hours -= 24; }

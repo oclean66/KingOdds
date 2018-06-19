@@ -1,24 +1,107 @@
 import React from "react";
-// import firebase from '../fire';
+import { Link } from "react-router-dom";
 
+const p = "10%";
 class Sport extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            data: {},
+
+        }
+    }
+
     componentDidMount() {
-        var addScript = document.createElement('script');
-        addScript.setAttribute('src', 'https://widgets.oddsportal.com/827b0c429231dbd/');
-        addScript.setAttribute('type', "text/javascript");
-        document.getElementById('oddsportal').appendChild(addScript);
-        // document.body.appendChild(addScript);
+        let context = this;
+        fetch('http://localhost/oddsMaster/api/list/model/next').then(results => {
+            return results.json();
+        }).then(data => {
+            context.setState({
+                data: data,
+            })
+        });
     }
     render() {
-        return (
-            <div className="card" style={{ alignItems: "center" }}>
-               
+        let raw = this.state.data;
+        let table = Object.keys(raw).map(i => {
+            let per = raw[i].matches;
+            let matches = Object.keys(per).map(z => {
+                let y = per[z];
+                let min = 1, max = 4.5;
+                let timess = new Date(y.timestamp * 1000);
 
-                <div className="card-body" id="oddsportal">
-                <h5>Next Matches</h5>
-                <div id="wait-please-cd4ff42a781bde9" style={{background: "url(&quot;https://widgets.oddsportal.com/res/x/oddsportal180608110243/img/wait-ico.gif&quot;) 10px 5px no-repeat", margin: "15px 0px 0px 280px", width: "315px", height: "515px", display: "none"}}></div>
-                <iframe title="Oddsportal" id="op-widget-9858cef2cc92189" width="1000" height="2000" src="https://widgets.oddsportal.com/9858cef2cc92189/s/" frameborder="0" onload="a_9858cef2cc92189(this.id);"></iframe>
-                
+                var hours = timess.getHours();
+                // correct for number over 24, and negatives
+                if (hours >= 24) { hours -= 24; }
+                if (hours < 0) { hours += 12; }
+
+                // add leading zero, first convert hours to string
+                hours = hours + "";
+                if (hours.length === 1) { hours = "0" + hours; }
+
+                // minutes are the same on every time zone
+                var minutes = timess.getMinutes();
+
+                // add leading zero, first convert hours to string
+                minutes = minutes + "";
+                if (minutes.length === 1) { minutes = "0" + minutes; }
+
+
+                var months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+                var dd = timess.getDate();
+                dd = dd < 10 ? '0' + dd : dd;
+                var today = months[timess.getMonth()] + " " + dd + ", " + timess.getFullYear();
+                timess = today;
+
+
+                return (
+                    <tr key={y.idmatch}>
+                        <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
+                        <td><Link to={"/match/" + y.idmatch}><b>{y.name}</b></Link></td>
+                        <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{y.results ? y.results[1].value : y.status}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                    </tr>
+                )
+            })
+            return (
+                <table key={i} id={i} className="table table-sm table-bordered bg-light">
+                    <thead className="table-primary">
+                        <tr >
+                            <th colSpan='3' >{raw[i].name}</th>
+                            <th className='text-center'>1</th>
+                            <th className='text-center'>X</th>
+                            <th className='text-center'>2</th>
+                        </tr>
+
+                    </thead>
+                    <tbody>
+                        {matches}
+                    </tbody>
+                </table>
+            )
+        })
+
+
+
+        return (
+            <div className="card">
+                <div className="card-body">
+                    <h5>Next Matches</h5>
+                    {table}
                 </div>
 
             </div>
