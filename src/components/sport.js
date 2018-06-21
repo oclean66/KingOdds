@@ -59,18 +59,31 @@ class Sport extends React.Component {
                         <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
                         <td><Link to={"/match/" + y.idmatch}><b>{y.name}</b></Link></td>
                         <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{y.results ? y.results[1].value : y.status}</td>
-                        <td className="text-center" style={{ width: p }}>
-                            <a id="link-2" href="#" title="bwin" >
+                      
+                      
+                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a id="link-2" href="#" title="Click to go to the bookmaker site" >
                                 <span class={"logos l" + y.bookId}></span>
                             </a>
                             {y.data ? y.data.o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p }}>
-                            <a id="link-2" href="#" title="bwin" >
+                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a id="link-2" href="#" title="Click to go to the bookmaker site" >
                                 <span class={"logos l" + y.bookId}></span>
                             </a>
                             {y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p }}>
-                            <a id="link-2" href="#" title="bwin" >
+                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a id="link-2" href="#" title="Click to go to the bookmaker site" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+
+                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a id="link-2" href="#" title="Click to go to the bookmaker site" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a id="link-2" href="#" title="Click to go to the bookmaker site" >
                                 <span class={"logos l" + y.bookId}></span>
                             </a>
                             {y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
@@ -81,10 +94,13 @@ class Sport extends React.Component {
                 <table key={i} id={i} className="table table-sm table-bordered bg-light">
                     <thead className="table-primary">
                         <tr >
-                            <th colSpan='3' >{raw[i].sportName+" "+raw[i].name}</th>
+                            <th colSpan='3' >{raw[i].sportName + " " + raw[i].name}</th>
                             <th className='text-center'>1</th>
                             <th className='text-center'>X</th>
                             <th className='text-center'>2</th>
+
+                             <th className='text-center'>Under</th>
+                            <th className='text-center'>Over</th>
                         </tr>
 
                     </thead>
