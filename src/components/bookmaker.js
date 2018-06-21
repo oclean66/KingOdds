@@ -44,10 +44,10 @@ const Bookmaker =()=> (
                         <tr className="odd">
                             <td className="tlogos">
                                 <div className="l">
-                                    <Link id ="1" to="/bookmaker"  title="See more details about Pinnacle" >
+                                    <Link id ="1" to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2"  title="See more details about Pinnacle" >
                                         <span className="blogos l18"></span>
                                     </Link>
-                                    <Link to="/bookmaker"  title="See more details about Pinnacle" >Pinnacle</Link>
+                                    <Link to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2"  title="See more details about Pinnacle" >Pinnacle</Link>
                                 </div>
 
 
@@ -71,7 +71,7 @@ const Bookmaker =()=> (
                                     <span className="hidden">4.9</span></span>
                             </td>
                         </tr>
-                        <tr className="even">
+                        <tr className="even hide">
                             <td className="tlogos">
                                 <div className="l">
                                     <Link to="/bookmaker" titler="5dimes/" title="See more details about 5Dimes" >
