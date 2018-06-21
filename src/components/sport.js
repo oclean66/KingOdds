@@ -77,12 +77,12 @@ class Sport extends React.Component {
                             </a>
                             {y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
 
-                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                        <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a id="link-2" href="#" title="Click to go to the bookmaker site" >
                                 <span class={"logos l" + y.bookId}></span>
                             </a>
                             {y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                        <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a id="link-2" href="#" title="Click to go to the bookmaker site" >
                                 <span class={"logos l" + y.bookId}></span>
                             </a>
