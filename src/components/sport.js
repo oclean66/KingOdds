@@ -13,7 +13,7 @@ class Sport extends React.Component {
 
     componentDidMount() {
         let context = this;
-        fetch('http://kingdeportes.com/oddsMaster/api/list/model/next').then(results => {
+        fetch('https://kingdeportes.com/oddsMaster/api/list/model/next').then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -81,7 +81,7 @@ class Sport extends React.Component {
                 <table key={i} id={i} className="table table-sm table-bordered bg-light">
                     <thead className="table-primary">
                         <tr >
-                            <th colSpan='3' >{raw[i].name}</th>
+                            <th colSpan='3' >{raw[i].sportName+" "+raw[i].name}</th>
                             <th className='text-center'>1</th>
                             <th className='text-center'>X</th>
                             <th className='text-center'>2</th>

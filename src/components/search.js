@@ -17,7 +17,7 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://kingdeportes.com/oddsMaster/api/list/model/search/id/' + this.props.match.params.id).then(results => {
+        fetch('https://kingdeportes.com/oddsMaster/api/list/model/search/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -34,7 +34,7 @@ class Search extends React.Component {
         // console.log(props.match.params);
         if (current_state.id !== props.match.params.id) {
 
-            fetch('http://kingdeportes.com/oddsMaster/api/list/model/search/id/' + props.match.params.id).then(results => {
+            fetch('https://kingdeportes.com/oddsMaster/api/list/model/search/id/' + props.match.params.id).then(results => {
                 return results.json();
             }).then(data => {
                 context.setState({
@@ -61,7 +61,7 @@ class Search extends React.Component {
 
 
             let match = item.matches.map(y => {
-                let timess = new Date(y.timestamp*1000);
+                let timess = new Date(y.timestamp * 1000);
                 // console.log(y.timestamp);
                 var hours = timess.getHours();
                 // correct for number over 24, and negatives
@@ -90,9 +90,21 @@ class Search extends React.Component {
                         <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
                         <td><Link to={"/match/" + y.idmatch}><b>{y.name}</b></Link></td>
                         <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{y.results ? y.results[1].value : y.status}</td>
-                        <td className="text-center" style={{ width: p }}>{y.data ? y.data.o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p }}>{y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p }}>{y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                        <td className="text-center" style={{ width: p }}>
+                            <a id="link-2" href="#" title="bwin" >
+                                <span class={"logos l" + y.bookId}></span>
+                            </a>
+                            {y.data ? y.data.o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
                     </tr>
                 )
             })
