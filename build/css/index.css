@@ -11,6 +11,9 @@ body {
   color: #00adee;
     font-weight: bolder;
 }
+.hide{
+  display: none;
+}
 #navbarNavDropdown > ul > li.nav-item.active > a{
   padding: 15px;
   background-color: #007bff;
