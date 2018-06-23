@@ -18,7 +18,7 @@ class Match extends React.Component {
         let context = this;
         if (!id) return;
        
-        fetch('kingdeportes.com/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -26,7 +26,7 @@ class Match extends React.Component {
             })
             console.log(data);
         });
-        fetch('kingdeportes.com/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
