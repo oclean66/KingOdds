@@ -17,7 +17,7 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        fetch('https://kingdeportes.com/oddsMaster/api/list/model/search/id/' + this.props.match.params.id).then(results => {
+        fetch('kingdeportes.com/oddsMaster/api/list/model/search/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -34,7 +34,7 @@ class Search extends React.Component {
         // console.log(props.match.params);
         if (current_state.id !== props.match.params.id) {
 
-            fetch('https://kingdeportes.com/oddsMaster/api/list/model/search/id/' + props.match.params.id).then(results => {
+            fetch('kingdeportes.com/oddsMaster/api/list/model/search/id/' + props.match.params.id).then(results => {
                 return results.json();
             }).then(data => {
                 context.setState({
