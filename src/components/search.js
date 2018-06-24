@@ -24,7 +24,6 @@ class Search extends React.Component {
                 matches: data.leagues,
                 name: data.name,
                 country: data.country,
-
             })
             // console.log(data);
         });

@@ -17,7 +17,7 @@ class Match extends React.Component {
         const { id } = this.props.match.params;
         let context = this;
         if (!id) return;
-       
+
         fetch('http://kingdeportes.com/oddsMaster/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
@@ -26,11 +26,11 @@ class Match extends React.Component {
             })
             console.log(data);
         });
-        fetch('http://kingdeportes.com/oddsMaster/api/view/model/odds/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/list/model/odds/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
-                odds: JSON.stringify(data)
+                odds: data
             })
             console.log(data);
         });
@@ -38,7 +38,8 @@ class Match extends React.Component {
     render() {
 
         let e = this.state.match ? this.state.match : { time: 0, id: 0 };
-        // console.log(e);
+        let f = this.state.odds ? this.state.odds : null;
+        // let f=null;
         let timess = new Date(e.timestamp * 1000);
         // let utcOffset = 0;
         var hours = timess.getHours();
@@ -64,11 +65,11 @@ class Match extends React.Component {
         var today = months[timess.getMonth()] + " " + dd + ", " + timess.getFullYear();
         timess = today;
         // console.log(timess);
-        let list = e.data ? Object.keys(e.data).map(function (key) {
+        let list = f ? Object.keys(f).map(function (key) {
             let i = key.replace(/\s|&/g, "");
             return (
-                <option key={i} value={i}>
-                    {key}
+                <option key={key} value={key}>
+                    {f[key].name}
                 </option>
                 // <li key={i} className="nav-item border-primary" style={{ border: "solid 1px" }}>
                 //     <Link className="nav-link " id={i + "-tab"} data-toggle="tab" to={"#" + i} role="tab" aria-controls={i} aria-selected="true">{key}</Link>
@@ -83,35 +84,36 @@ class Match extends React.Component {
                     </div>;
         } else {
             list = <select id='mySelect' className="form-control">
-                <option data-icon="fa fa-clock" value="0">
-                    Select a market
-            </option>
-                {list}
-            </select>
+                        <option data-icon="fa fa-clock" value="0">
+                            Select a market
+                        </option>
+                        {list}
+                    </select>
         }
 
-        let tabs = e.data ? Object.keys(e.data).map(function (key) {
-            let i = key.replace(/\s|&/g, "");
+        let tabs = f ? Object.keys(f).map(function (key) {
+            let i = key;
             return (
                 <li key={i} className="nav-item border-primary" style={{ border: "solid 1px" }}>
-                    <Link className="nav-link " id={i + "-tab"} data-toggle="tab" to={"#" + i} role="tab" aria-controls={i} aria-selected="true">{key}</Link>
+                    <Link className="nav-link " id={i + "-tab"} data-toggle="tab" to={"#" + i} role="tab" aria-controls={i} aria-selected="true">{f[key].name}</Link>
                 </li>)
 
         }) : <li className="nav-item border-primary" style={{ border: "solid 1px" }}>
                 <Link className="nav-link " data-toggle="tab" to={"#b"} role="tab" aria-selected="true">No data found!</Link>
             </li>;
 
-        let tabsConten = e.data ? Object.keys(e.data).map(function (key) {
-            let i = key.replace(/\s|&/g, "");
-            let table = Object.keys(e.data[key]).map(function (kei) {
-                // console.log(e.data[key][kei].bookId);
-                if (e.data[key][kei].bookId)
+        let tabsConten = f ? Object.keys(f).map(function (key) {
+            let i = key;
+            let data = f[key].data;
+            let table = Object.keys(data).map(function (kei) {
+                console.log(data[kei]);
+                if (data[kei].bookId)
                     return (
                         <tr key={kei}>
-                            <td><span className={"blogos l" + e.data[key][kei].bookId}></span><strong> {e.data[key][kei].name}</strong></td>
-                            <td className="text-center">{e.data[key][kei].o1}</td>
-                            <td className="text-center">{e.data[key][kei].o2}</td>
-                            <td className="text-center">{e.data[key][kei].o3}</td>
+                            <td><span className={"blogos l" + data[kei].bookId}></span><strong> {data[kei].name}</strong></td>
+                            <td className="text-center">{data[kei].o1}</td>
+                            <td className="text-center">{data[kei].o2}</td>
+                            <td className="text-center">{data[kei].o3}</td>
                         </tr>
                     )
                 return null;
@@ -153,7 +155,7 @@ class Match extends React.Component {
         }) : "";
         // document.getElementById("status").innerHTML = e.statusText;
         return (e.idmatch ?
-            <div className="r">               
+            <div className="r">
                 <div key={e.id} className="card">
                     <h5 className="card-title" style={{ padding: "10px 0px 0px 10px" }}>
                         <i className={"ficon-inline f-" + e.countryId}></i>
