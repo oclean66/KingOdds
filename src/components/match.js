@@ -26,7 +26,7 @@ class Match extends React.Component {
             })
             console.log(data);
         });
-        fetch('http://kingdeportes.com/oddsMaster/api/list/model/odds/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/list/model/odds/id/' + this.props.match.params.id,{cache:"no-cache"}).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -34,6 +34,9 @@ class Match extends React.Component {
             })
             console.log(data);
         });
+    }
+    componentWillUnmount(){
+        this.setState({match:{},odds:{}})
     }
     render() {
 
@@ -66,7 +69,7 @@ class Match extends React.Component {
         timess = today;
         // console.log(timess);
         let list = f ? Object.keys(f).map(function (key) {
-            let i = key.replace(/\s|&/g, "");
+            // let i = key.replace(/\s|&/g, "");
             return (
                 <option key={key} value={key}>
                     {f[key].name}

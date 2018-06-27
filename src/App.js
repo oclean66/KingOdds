@@ -11,7 +11,7 @@ import Match from "./components/match";
 import Sport from './components/sport';
 import Bookmaker from './components/bookmaker';
 // import Results from './components/results';
-import Resultslive from './components/resultslive';
+import Resultslive from './components/resultsliveAsia';
 import Search from './components/search';
 
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (

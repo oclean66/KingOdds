@@ -20,7 +20,7 @@ class SideBar extends React.Component {
   }
   componentDidMount() {
     var context = this;
-    fetch('http://kingdeportes.com/oddsMaster/api/list/model/menu/'
+    fetch('http://kingdeportes.com/oddsMaster/api/list/model/menu/',{cache:"no-cache"}
     ).then(results => {
       return results.json();
     }).then(data => {
@@ -28,7 +28,9 @@ class SideBar extends React.Component {
       // console.log(data);
     });
   }
-
+componentWillUnmount(){
+  this.setState({menu:[]});
+}
 
   render() {
     let a, b, c, s;
