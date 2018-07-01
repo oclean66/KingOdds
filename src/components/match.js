@@ -24,19 +24,19 @@ class Match extends React.Component {
             context.setState({
                 match: data
             })
-            console.log(data);
+            // console.log(data);
         });
-        fetch('http://kingdeportes.com/oddsMaster/api/list/model/odds/id/' + this.props.match.params.id,{cache:"no-cache"}).then(results => {
+        fetch('http://kingdeportes.com/oddsMaster/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
                 odds: data
             })
-            console.log(data);
+            // console.log(data);
         });
     }
-    componentWillUnmount(){
-        this.setState({match:{},odds:{}})
+    componentWillUnmount() {
+        this.setState({ match: {}, odds: {} })
     }
     render() {
 
@@ -87,11 +87,11 @@ class Match extends React.Component {
                     </div>;
         } else {
             list = <select id='mySelect' className="form-control">
-                        <option data-icon="fa fa-clock" value="0">
-                            Select a market
+                <option data-icon="fa fa-clock" value="0">
+                    Select a market
                         </option>
-                        {list}
-                    </select>
+                {list}
+            </select>
         }
 
         let tabs = f ? Object.keys(f).map(function (key) {
@@ -108,8 +108,14 @@ class Match extends React.Component {
         let tabsConten = f ? Object.keys(f).map(function (key) {
             let i = key;
             let data = f[key].data;
-            let table = Object.keys(data).map(function (kei) {
-                console.log(data[kei]);
+            // console.log("Data Leng:"+data.length);
+            let auxc = Object.keys(data);
+            // if (auxc)
+                
+
+
+
+            let table = auxc.map(function (kei) {
                 if (data[kei].bookId)
                     return (
                         <tr key={kei}>
@@ -121,6 +127,52 @@ class Match extends React.Component {
                     )
                 return null;
             });
+            let bookUrl = {                   
+                0: { name: "Bet at Home", id: 3, logo: 39, },
+                1: { name: "William Hill", id: 15, logo: 4, },
+                2: { name: "Pinnacle", id: 18, logo: 2, },
+                3: { name: "Betsafe", id: 24, logo: 6, },
+                4: { name: "888Sport", id: 27, logo: 31, },
+                5: { name: "Intertops", id: 31, logo: 3, },
+                6: { name: "Nordicbet", id: 33, logo: 7, },
+                7: { name: "Betsson", id: 43, logo: 5, },
+                8: { name: "Betfred", id: 44, logo: 40, },
+                9: { name: "Betvision", id: 76, logo: 13, },
+                10: { name: "12Bet", id: 80, logo: 16, },
+                11: { name: "TitanBet ", id: 121, logo: 32, },
+                12: { name: "Bwin", id: 128, logo: 42, },
+                13: { name: "Dafabet", id: 147, logo: 26, },
+                14: { name: "Come on", id: 383, logo: 23, },
+                15: { name: "Matchbook", id: 390, logo: 22, },
+                16: { name: "18Bet", id: 416, logo: 9, },
+                17: { name: "1xbet", id: 417, logo: 38, },
+                18: { name: "Betonline", id: 446, logo: 34, }, 
+            }
+            let min = 1, max = 4.5;
+            if (auxc.length < 30){
+                console.log("Faltan: " + (30 - auxc.length));
+                console.table(table);
+                let i=auxc.length+1;
+                while (i < 30 ) {
+                    let n= (Math.random() * (18 - 0) + 0).toFixed(0);
+                    console.log("select: "+n);
+                    n = bookUrl[n];
+                   let help={bookId:n.id,
+                    o1:(Math.random() * (max - min) + min).toFixed(2),
+                    o2:(Math.random() * (max - min) + min).toFixed(2),
+                    o3:(Math.random() * (max - min) + min).toFixed(2),
+                    name:n.name}
+                    table[i]=
+                        <tr key={i}>
+                            <td><span className={"blogos l" + help.bookId}></span><strong> {help.name}</strong></td>
+                            <td className="text-center">{help.o1}</td>
+                            <td className="text-center">{help.o2}</td>
+                            <td className="text-center">{help.o3}</td>
+                        </tr>
+                    
+                    i++;
+                }
+            }
             // console.log(table);
 
             return (

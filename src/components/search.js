@@ -90,8 +90,7 @@ class Search extends React.Component {
                 timess = today;
                 // var generator = new Random(seed);
 
-                let bookUrl = {
-                   
+                let bookUrl = {                   
                     0: { name: "Bet at Home", id: 3, logo: 39, },
                     1: { name: "William Hill", id: 15, logo: 4, },
                     2: { name: "Pinnacle", id: 18, logo: 2, },
@@ -111,7 +110,6 @@ class Search extends React.Component {
                     16: { name: "18Bet", id: 416, logo: 9, },
                     17: { name: "1xbet", id: 417, logo: 38, },
                     18: { name: "Betonline", id: 446, logo: 34, }, 
-
                 }
                 console.log((Math.random() * (18 - 2) + 2).toFixed(0));
                  let olo=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
