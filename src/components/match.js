@@ -148,10 +148,11 @@ class Match extends React.Component {
                 17: { name: "1xbet", id: 417, logo: 38, },
                 18: { name: "Betonline", id: 446, logo: 34, }, 
             }
+            leagues?this.state.select.leagues:null
             let min = 1, max = 4.5;
             if (auxc.length < 30){
                 console.log("Faltan: " + (30 - auxc.length));
-                console.table(table);
+                // console.table(table);
                 let i=auxc.length+1;
                 while (i < 30 ) {
                     let n= (Math.random() * (18 - 0) + 0).toFixed(0);
@@ -173,7 +174,7 @@ class Match extends React.Component {
                     i++;
                 }
             }
-            // console.log(table);
+            console.log(table);
 
             return (
                 <div key={i} className="tab-pane fade" id={i} role="tabpanel" aria-labelledby={i + "-tab"}>
