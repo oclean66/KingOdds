@@ -148,7 +148,7 @@ class Match extends React.Component {
                 17: { name: "1xbet", id: 417, logo: 38, },
                 18: { name: "Betonline", id: 446, logo: 34, }, 
             }
-            leagues?this.state.select.leagues:null
+            
             let min = 1, max = 4.5;
             if (auxc.length < 30){
                 console.log("Faltan: " + (30 - auxc.length));
