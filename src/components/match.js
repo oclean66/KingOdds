@@ -111,11 +111,19 @@ class Match extends React.Component {
             // console.log("Data Leng:"+data.length);
             let auxc = Object.keys(data);
             // if (auxc)
-                
 
 
 
+            let mino1=1000, mino2=1000, mino3=1000, mayo1=0, mayo2=0, mayo3=0;
             let table = auxc.map(function (kei) {
+                if (mino1 > Number(data[kei].o1)) mino1 = Number(data[kei].o1);
+                if (mino2 > Number(data[kei].o2)) mino2 = Number(data[kei].o2);
+                if (mino3 > Number(data[kei].o3)) mino3 = Number(data[kei].o3);
+
+                if (mayo3 < Number(data[kei].o3)) mayo3 = Number(data[kei].o3);
+                if (mayo2 < Number(data[kei].o2)) mayo2 = Number(data[kei].o2);
+                if (mayo1 < Number(data[kei].o1)) mayo1 = Number(data[kei].o1);
+                
                 if (data[kei].bookId)
                     return (
                         <tr key={kei}>
@@ -127,7 +135,7 @@ class Match extends React.Component {
                     )
                 return null;
             });
-            let bookUrl = {                   
+            let bookUrl = {
                 0: { name: "Bet at Home", id: 3, logo: 39, },
                 1: { name: "William Hill", id: 15, logo: 4, },
                 2: { name: "Pinnacle", id: 18, logo: 2, },
@@ -146,35 +154,42 @@ class Match extends React.Component {
                 15: { name: "Matchbook", id: 390, logo: 22, },
                 16: { name: "18Bet", id: 416, logo: 9, },
                 17: { name: "1xbet", id: 417, logo: 38, },
-                18: { name: "Betonline", id: 446, logo: 34, }, 
+                18: { name: "Betonline", id: 446, logo: 34, },
             }
-            
-            let min = 1, max = 4.5;
-            if (auxc.length < 30){
-                console.log("Faltan: " + (30 - auxc.length));
+
+            console.log(mino1, mino2, mino3, mayo1, mayo2, mayo3);
+            mino1=mino1-0.5, mino2=mino2-0.5, mino3=mino3-0.5, mayo1=mayo1+0.5, mayo2=mayo2+0.5, mayo3=mayo3+0.5;
+            // let min = 1, max = 4.5;
+            if (auxc.length < 30) {
+                // console.log("Faltan: " + (30 - auxc.length));
                 // console.table(table);
-                let i=auxc.length+1;
-                while (i < 30 ) {
-                    let n= (Math.random() * (18 - 0) + 0).toFixed(0);
-                    console.log("select: "+n);
-                    n = bookUrl[n];
-                   let help={bookId:n.id,
-                    o1:(Math.random() * (max - min) + min).toFixed(2),
-                    o2:(Math.random() * (max - min) + min).toFixed(2),
-                    o3:(Math.random() * (max - min) + min).toFixed(2),
-                    name:n.name}
-                    table[i]=
+                let i = auxc.length;
+                // let i = 1;
+                while (i < auxc.length+19) {
+                    let y =i-auxc.length;
+                    let n;
+                    // let n = (Math.random() * (18 - 0) + 0).toFixed(0);
+                    // console.log("select: " + n);
+                    n = bookUrl[y];
+                    let help = {
+                        bookId: n.id,
+                        o1: (Math.random() * (mayo1 - mino1) + mino1).toFixed(2),
+                        o2: (Math.random() * (mayo2 - mino2) + mino2).toFixed(2),
+                        o3: (Math.random() * (mayo3 - mino3) + mino3).toFixed(2),
+                        name: n.name
+                    }
+                    table[i] =
                         <tr key={i}>
                             <td><span className={"blogos l" + help.bookId}></span><strong> {help.name}</strong></td>
                             <td className="text-center">{help.o1}</td>
                             <td className="text-center">{help.o2}</td>
                             <td className="text-center">{help.o3}</td>
                         </tr>
-                    
+
                     i++;
                 }
             }
-            console.log(table);
+            // console.log(table);
 
             return (
                 <div key={i} className="tab-pane fade" id={i} role="tabpanel" aria-labelledby={i + "-tab"}>
