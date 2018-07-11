@@ -1,18 +1,46 @@
 import React from "react";
 import { Link } from "react-router-dom";
-
+import LocalizedStrings from 'react-localization';
+var numeral = require('numeral');
 const p = "10%";
+var number;
+let strings = new LocalizedStrings({
+    uk:{
+        format: function(number){
+            return number
+        }
+    },
+    us: {
+        format:"I'd liked {0}"
+    }
+   });
+
+
 class Sport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             data: {},
+            format:""
 
         }
+     
     }
 
+    static getDerivedStateFromProps(props, current_state) {
+
+        // console.log(props.match.params);
+        if (current_state.format !== props.format) {
+            strings.setLanguage(props.format);
+           return({
+               format:props.format
+           })
+        }
+        return null;
+    }
     componentDidMount() {
         let context = this;
+        // this.setState(this.props.strings)
         fetch('http://kingdeportes.com/geek/api/list/model/next',{cache:"no-cache"}).then(results => {
             return results.json();
         }).then(data => {
@@ -20,6 +48,48 @@ class Sport extends React.Component {
                 data: data,
             })
         });
+
+        numeral.register('format', 'uk', {
+            regexps: {
+                format: /(%)/,
+                unformat: /(%)/
+            },
+            format: function(value, format, roundingFunction) {
+                var space = numeral._.includes(format, ' %') ? ' ' : '',
+                    output;
+        
+                value = value * 100;
+        
+                // check for space before %
+                format = format.replace(/\s?\%/, '');
+        
+                output = numeral._.numberToFormat(value, format, roundingFunction);
+        
+                if (numeral._.includes(output, ')')) {
+                    output = output.split('');
+        
+                    output.splice(-1, 0, space + '%');
+        
+                    output = output.join('');
+                } else {
+                    output = output + space + '%';
+                }
+        
+                return output;
+            },
+            unformat: function(string) {
+                return numeral._.stringToNumber(string) * 0.01;
+            }
+        });
+        
+        
+        // switch between locales
+        // numeral.locale('fr');
+
+         number = numeral(20);
+         number.format('0%')
+         console.log(number.format())
+
     }
     render() {
         let raw = this.state.data;
@@ -76,7 +146,7 @@ class Sport extends React.Component {
                     18: { name: "Betonline", id: 446, logo: 34, }, 
 
                 }
-                console.log((Math.random() * (18 - 2) + 2).toFixed(0));
+                // console.log((Math.random() * (18 - 2) + 2).toFixed(0));
                  let olo=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
 
                 return (
@@ -142,6 +212,11 @@ class Sport extends React.Component {
             <div className="card">
                 <div className="card-body">
                     <h5>Next Matches</h5>
+                    <h4>
+                          {
+                        // strings.formatString(strings.format, "-110")
+                        }
+                        </h4>
                     {table}
                 </div>
 

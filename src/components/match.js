@@ -41,7 +41,7 @@ class Match extends React.Component {
     render() {
 
         let e = this.state.match ? this.state.match : { time: 0, id: 0 };
-        let f = this.state.odds ? this.state.odds : null;
+        let f = this.state.odds ? this.state.odds : null; //lista de odds
         // let f=null;
         let timess = new Date(e.timestamp * 1000);
         // let utcOffset = 0;
@@ -104,18 +104,79 @@ class Match extends React.Component {
         }) : <li className="nav-item border-primary" style={{ border: "solid 1px" }}>
                 <Link className="nav-link " data-toggle="tab" to={"#b"} role="tab" aria-selected="true">No data found!</Link>
             </li>;
-
+//f es la lista de odds agrupados por tipo
         let tabsConten = f ? Object.keys(f).map(function (key) {
-            let i = key;
-            let data = f[key].data;
-            // console.log("Data Leng:"+data.length);
-            let auxc = Object.keys(data);
+            // let i = key; //id de tipo de logro
+            let data = f[key].data; //lista de ofertas desordenas
+            let tipoDraw = f[key].type;
+            let tablehandicap;
+            if(tipoDraw==3){
+                let listaOrdenada=[];
+                //analizando ofertas de handicap desordenados
+                Object.keys(data).map(kei=>{
+                    //kei // id de logros
+                    //data[kei]// un logro {{data[kei].o1}}
+                    // listaOrdenada[data[kei].o3][kei]=data[kei];
+                    listaOrdenada[data[kei].o3]=[];
+                    // console.log(kei,data[kei].o3)
+                }); // la lista de ofertas sera analizada
+
+                Object.keys(data).map(kei=>{
+                    listaOrdenada[data[kei].o3][kei]=data[kei]
+                });
+
+                console.log(listaOrdenada)
+                let fuck = Object.keys(listaOrdenada)
+                 tablehandicap = fuck.map(function (kei) {
+                    console.log("key:"+kei); //id offer       
+                    
+                    let men = Object.keys(listaOrdenada[kei]);
+
+                   return  men.map(i=>{
+                        return (
+                                    <tr key={i}>
+                                        <td><span className={"blogos l" + listaOrdenada[kei][i].bookId}></span><strong> {listaOrdenada[kei][i].name}</strong></td>
+                                        <td className="text-center">{listaOrdenada[kei][i].o1}</td>
+                                        <td className="text-center">{listaOrdenada[kei][i].o2}</td>
+                                        <td className="text-center" style={{fontSize:14,fontWeight:"bolder"}}>{listaOrdenada[kei][i].o3}</td>
+                                    </tr>
+                                )
+                    })
+
+                    // return listaOrdenada[kei].map(i=>{
+                    //     // listaOrdenada[kei][i].o1
+
+                    //     return (
+                    //         <tr key={i}>
+                    //             <td><span className={"blogos l" + listaOrdenada[kei][i].bookId}></span><strong> {listaOrdenada[kei][i].name}</strong></td>
+                    //             <td className="text-center">{listaOrdenada[kei][i].o1}</td>
+                    //             <td className="text-center">{listaOrdenada[kei][i].o2}</td>
+                    //             <td className="text-center">{listaOrdenada[kei][i].o3}</td>
+                    //         </tr>
+                    //     )
+
+                    // })
+                    
+                });
+            }
+
+            if(tipoDraw==2){
+
+            }
+          
+            let auxc = Object.keys(data); //recibe lista de ofertas
             // if (auxc)
 
 
 
             let mino1=1000, mino2=1000, mino3=1000, mayo1=0, mayo2=0, mayo3=0;
-            let table = auxc.map(function (kei) {
+
+            //table es salida para pintar una lista de ofertas
+            let table;
+            
+            
+                 table = auxc.map(function (kei) {
+                // console.log("key:"+kei); //id offer
                 if (mino1 > Number(data[kei].o1)) mino1 = Number(data[kei].o1);
                 if (mino2 > Number(data[kei].o2)) mino2 = Number(data[kei].o2);
                 if (mino3 > Number(data[kei].o3)) mino3 = Number(data[kei].o3);
@@ -130,11 +191,17 @@ class Match extends React.Component {
                             <td><span className={"blogos l" + data[kei].bookId}></span><strong> {data[kei].name}</strong></td>
                             <td className="text-center">{data[kei].o1}</td>
                             <td className="text-center">{data[kei].o2}</td>
-                            <td className="text-center">{data[kei].o3}</td>
+                            <td className="text-center">{tipoDraw!=2? data[kei].o3:""}</td>
                         </tr>
                     )
                 return null;
             });
+        
+            if(tipoDraw==3){
+                table = tablehandicap;
+            }
+
+
             let bookUrl = {
                 0: { name: "Bet at Home", id: 3, logo: 39, },
                 1: { name: "William Hill", id: 15, logo: 4, },
@@ -157,10 +224,10 @@ class Match extends React.Component {
                 18: { name: "Betonline", id: 446, logo: 34, },
             }
 
-            console.log(mino1, mino2, mino3, mayo1, mayo2, mayo3);
+            // console.log(mino1, mino2, mino3, mayo1, mayo2, mayo3);
             mino1=mino1-0.5, mino2=mino2-0.5, mino3=mino3-0.5, mayo1=mayo1+0.5, mayo2=mayo2+0.5, mayo3=mayo3+0.5;
             // let min = 1, max = 4.5;
-            if (auxc.length < 30) {
+            if (auxc.length < 30 && tipoDraw!=3) {
                 // console.log("Faltan: " + (30 - auxc.length));
                 // console.table(table);
                 let i = auxc.length;
@@ -183,28 +250,46 @@ class Match extends React.Component {
                             <td><span className={"blogos l" + help.bookId}></span><strong> {help.name}</strong></td>
                             <td className="text-center">{help.o1}</td>
                             <td className="text-center">{help.o2}</td>
-                            <td className="text-center">{help.o3}</td>
+                            <td className="text-center">{tipoDraw!=2?help.o3:""}</td>
                         </tr>
 
                     i++;
                 }
             }
             // console.log(table);
+            let headersT;
+            if(tipoDraw==3){
+                headersT=  <tr className="table-primary">
+                <td> <strong>Bookmakers</strong></td>
+                <td className="text-center"> <strong></strong> </td>
+                <td className="text-center"> <strong></strong> </td>
+                <td className="text-center"> <strong>Handicap</strong> </td>
+
+            </tr>
+            }else if(tipoDraw==2){
+                headersT=  <tr className="table-primary">
+                <td> <strong>Bookmakers</strong></td>
+                <td className="text-center"> <strong>1</strong> </td>
+                <td className="text-center"> <strong>2</strong> </td>
+                </tr>
+            }else{
+                headersT=  <tr className="table-primary">
+                <td> <strong>Bookmakers</strong></td>
+                <td className="text-center"> <strong>1</strong> </td>
+                <td className="text-center"> <strong>X</strong> </td>
+                <td className="text-center"> <strong>2</strong> </td>
+
+            </tr>
+            }
 
             return (
-                <div key={i} className="tab-pane fade" id={i} role="tabpanel" aria-labelledby={i + "-tab"}>
+                <div key={key} className="tab-pane fade" id={key} role="tabpanel" aria-labelledby={key + "-tab"}>
                     <div className="card">
                         <div className="card-body">
                             {/* <h5>{key}</h5> */}
                             <table className="table table-sm table-bordered bg-light">
                                 <thead>
-                                    <tr className="table-primary">
-                                        <td> <strong>Bookmakers</strong></td>
-                                        <td className="text-center"> <strong>1</strong> </td>
-                                        <td className="text-center"> <strong>X</strong> </td>
-                                        <td className="text-center"> <strong>2</strong> </td>
-
-                                    </tr>
+                                   {headersT}
                                 </thead>
                                 <tbody>
                                     {/* <tr><td>{e.hteamName}</td> */}

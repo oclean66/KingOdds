@@ -314,7 +314,7 @@
     content: "\40";
 }
 
-.sicon-snooker:before {
+.sicon-sport-10:before {
     content: "\5e";
 }
 
@@ -334,7 +334,7 @@
     content: "\28";
 }
 
-.sicon-ufc-mma:before {
+.sicon-sport-36:before {
     content: "\29";
 }
 
@@ -607,6 +607,9 @@ form .datepicker.dropdown-menu .glyphicon.glyphsicon-chevron-right:before {
 }
 
 .sicon-play-game:before {
+    content: "\d9";
+}
+.sicon-sport-9:before {
     content: "\d9";
 }
 

@@ -14,6 +14,11 @@ import Bookmaker from './components/bookmaker';
 import Resultslive from './components/resultsliveAsia';
 import Search from './components/search';
 
+
+
+
+
+
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 
     <Route
@@ -35,12 +40,19 @@ class App extends React.Component {
             hours: 0,
             minutes: 0,
             seconds: 0,
-            date: 0
+            date: 0,
+            format: "uk"
         }
+        this.changeFormat = this.changeFormat.bind(this);
     }
 
     componentDidMount() {
 
+    }
+    changeFormat(event) {
+        console.log(event)
+        // strings.setLanguage('it');
+        this.setState({ format: "us" });
     }
     render() {
         return (
@@ -84,11 +96,15 @@ class App extends React.Component {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                                     <ul className="navbar-nav mr-auto">
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />                                        
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/sports" label="Odds Comparison" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/resultslive" label="Live Scores" />
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />                                        
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />
                                     </ul>
+                                    <select className="custom-select custom-select-sm" style={{marginBottom:0, width:80}} value={this.state.format} onChange={this.changeFormat}>
+                                        <option value="uk">UK</option>
+                                        <option value="us">USA</option>                                        
+                                    </select>
                                     <button id="cdate" className="btn btn-primary"> 0 </button>
                                 </div>
                             </nav>
@@ -99,7 +115,7 @@ class App extends React.Component {
                                 {/* <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} /> */}
                                 <Route path="/match/:id" component={Match} />
                                 {/* <Route path="/match/:sport/:group/:league/:id" component={Match} /> */}
-                                <Route path="/sports" component={Sport} />
+                                <Route path="/sports" render={(props) => <Sport {...props} format={this.state.format} />} />
                                 <Route path="/bookmaker" component={Bookmaker} />
                                 <Route path="/search/:id" component={Search} />
                                 {/* <Route path="/results/:id?" component={Results} /> */}
