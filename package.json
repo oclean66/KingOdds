@@ -8,6 +8,7 @@
   "license": "ISC",
   "homepage": "http://www.rockstarsportsnetwork.asia",
   "dependencies": {
+    "firebase": "^5.2.0",
     "glob": "^7.1.2",
     "jquery": "^3.3.1",
     "md5": "^2.2.1",

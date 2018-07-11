@@ -147,7 +147,11 @@ class Sport extends React.Component {
 
                 }
                 // console.log((Math.random() * (18 - 2) + 2).toFixed(0));
-                 let olo=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                 let olo1=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                 let olo2=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                 let olo3=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                 let olo4=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                 let olo5=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
 
                 return (
                     <tr key={y.idmatch}>
@@ -157,31 +161,36 @@ class Sport extends React.Component {
                       
                       
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo.id} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" + olo.id}></span>
+                            <a target="_blank"  id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo1.logo} title={"Click to go to the bookmaker site "+ olo1.name} >
+                                <span className={"logos l" + olo1.id}></span>
+                            {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
-                            {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a id="link-2"href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo.id} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" + olo.id}></span>
+                            <a target="_blank"  id="link-2"href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo2.logo} title={"Click to go to the bookmaker site "+ olo2.name} >
+                                <span className={"logos l" + olo2.id}></span>
+                            {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
-                            {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo.id} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" + olo.id}></span>
+                            <a target="_blank"  id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo3.logo} title={"Click to go to the bookmaker site "+ olo3.name} >
+                                <span className={"logos l" + olo3.id}></span>
+                            {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
-                            {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            </td>
 
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
-                            <a id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo.id} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +olo.id}></span>
+                            <a target="_blank"  id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo4.logo} title={"Click to go to the bookmaker site "+ olo4.name} >
+                                <span className={"logos l" +olo4.id}></span>
+                            {y.data[29992] ? y.data[29992].o1+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
-                            {y.data[29992] ? y.data[29992].o1+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
-                            <a id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo.id} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" + olo.id}></span>
+                            <a target="_blank"  id="link-2" href={"http://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_"+olo5.logo} title={"Click to go to the bookmaker site "+ olo5.name} >
+                                <span className={"logos l" + olo5.id}></span>
+                            {y.data[29992] ? y.data[29992].o2+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
-                            {y.data[29992] ? y.data[29992].o2+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            </td>
                     </tr>
                 )
             })
