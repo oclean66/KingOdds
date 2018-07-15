@@ -17,7 +17,7 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://kingdeportes.com/geek/api/list/model/search/id/' + this.props.match.params.id,{cache:"no-cache"}).then(results => {
+        fetch('http://kingdeportes.com/geek/api/list/model/search/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -28,7 +28,7 @@ class Search extends React.Component {
             // console.log(data);
         });
     }
-    componentWillUnmount(){
+    componentWillUnmount() {
         this.setState({
             matches: {},
             name: "",
@@ -53,6 +53,9 @@ class Search extends React.Component {
             });
         }
         return null;
+    }
+    please(){
+        alert("This event is already started or finished, no odds for pre match available");
     }
     render() {
 
@@ -90,7 +93,7 @@ class Search extends React.Component {
                 timess = today;
                 // var generator = new Random(seed);
 
-                let bookUrl = {                   
+                let bookUrl = {
                     0: { name: "Bet at Home", id: 3, logo: 39, },
                     1: { name: "William Hill", id: 15, logo: 4, },
                     2: { name: "Pinnacle", id: 18, logo: 2, },
@@ -109,45 +112,64 @@ class Search extends React.Component {
                     15: { name: "Matchbook", id: 390, logo: 22, },
                     16: { name: "18Bet", id: 416, logo: 9, },
                     17: { name: "1xbet", id: 417, logo: 38, },
-                    18: { name: "Betonline", id: 446, logo: 34, }, 
+                    18: { name: "Betonline", id: 446, logo: 34, },
                 }
-                console.log((Math.random() * (18 - 2) + 2).toFixed(0));
-                 let olo=bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+                // console.log((Math.random() * (18 - 2) + 2).toFixed(0));
+                let olo = bookUrl[(Math.random() * (18 - 2) + 2).toFixed(0)];
+
+                let olo1 = bookUrl[(Math.random() * (17 - 1) + 1).toFixed(0)];
+                let olo2 = bookUrl[(Math.random() * (17 - 1) + 1).toFixed(0)];
+                let olo3 = bookUrl[(Math.random() * (17 - 1) + 1).toFixed(0)];
+                let olo4 = bookUrl[(Math.random() * (17 - 1) + 1).toFixed(0)];
+                let olo5 = bookUrl[(Math.random() * (17 - 1) + 1).toFixed(0)];
+
+                // y.data[19992]?
+
                 return (
                     <tr key={y.idmatch}>
-                        <th className="text-center" style={{ width: p, fontWeight: "bolder" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
-                        <td><Link to={"/match/" + y.idmatch}><b>{y.name}</b></Link></td>
+                        <th className="text-center" style={{ width: p, fontWeight: "bolder",backgroundColor:y.status=="In Play"?"#ffd559":(y.status=="Fin"?"red":"#d3d3d34f"), color:y.status=="Fin"?"white":"black" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
+                        <td><Link to={(y.status=="Fin" || y.status=="In Play")?"#":"/match/" + y.idmatch} onClick={(y.status=="Fin" || y.status=="In Play")?this.please.bind(this,'No'):void(0)} ><b>{y.name}</b></Link></td>
                         <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{y.results ? y.results[1].value : y.status}</td>
 
 
-                        <td className="text-center" style={{ width: p, backgroundColor: '#007bffa8', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +  olo.id}></span>
+                        <td className="text-center" style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site " + olo.name} >
+                                <span className={"logos l" + olo1.id}></span>
                             </a>
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
                         </td>
 
-                        <td className="text-center" style={{ width: p, backgroundColor: '#007bffa8', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +  olo.id}></span> 
+                        <td className={item.sportName=="Baseball"?"hide":"text-center"} style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site " + olo.name} >
+                                <span className={"logos l" + olo2.id}></span>
                             </a>
-                            {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}</td>
-                        <td className="text-center" style={{ width: p, backgroundColor: '#007bffa8', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +  olo.id}></span>
-                            </a>
-                            {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}</td>
+                            {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
+                        </td>
 
-                        <td className="text-center" style={{ width: p, backgroundColor: '#21a700a8', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +  olo.id}></span>
+                        <td className="text-center" style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site " + olo.name} >
+                                <span className={"logos l" + olo3.id}></span>
                             </a>
-                            {y.data[29992] ? y.data[29992].o1+"(> "+y.data[29992].o3+")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}</td>
-                        <td className="text-center" style={{ width: p, backgroundColor: '#21a700a8', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site "+ olo.name} >
-                                <span className={"logos l" +  olo.id}></span>
+                            {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}
+                        </td>
+
+
+
+
+                        <td className="text-center" style={{ width: p, backgroundColor: '#AED581', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site " + olo.name} >
+                                <span className={"logos l" + olo4.id}></span>
                             </a>
-                            {y.data[29992] ? y.data[29992].o2+"(< "+y.data[29992].o3+")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}</td>
+                            {y.data[29992] ? y.data[29992].o1 + "(> " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
+                        </td>
+
+                        <td className="text-center" style={{ width: p, backgroundColor: '#AED581', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={"https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_" + olo.logo} title={"Click to go to the bookmaker site " + olo.name} >
+                                <span className={"logos l" + olo5.id}></span>
+                            </a>
+                            {y.data[29992] ? y.data[29992].o2 + "(< " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
+                        </td>
+
                     </tr>
                 )
             })
@@ -157,7 +179,7 @@ class Search extends React.Component {
                         <tr >
                             <th colSpan='3' >{item.name}</th>
                             <th className='text-center'>1</th>
-                            <th className='text-center'>X</th>
+                            <th className={item.sportName=="Baseball"?"hide":'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                             <th className='text-center'>Under</th>

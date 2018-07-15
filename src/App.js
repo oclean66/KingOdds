@@ -77,7 +77,7 @@ class App extends React.Component {
                         <Sidebar />
                         <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
-                            <nav className="navbar navbar-expand-lg navbar-dark" style={{ padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",/* marginRight: 12*/ }}>
+                            <nav className="navbar navbar-expand-lg navbar-dark" style={{ marginBottom:5,padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",boxShadow:"-1px -3px 4px 3px rgba(0, 0, 0, 0.1)"/* marginRight: 12*/ }}>
 
                                 {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
                                 <button
@@ -101,10 +101,10 @@ class App extends React.Component {
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/resultslive" label="Live Scores" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />
                                     </ul>
-                                    <select className="custom-select custom-select-sm" style={{marginBottom:0, width:80}} value={this.state.format} onChange={this.changeFormat}>
+                                    {/* <select className="custom-select custom-select-sm" style={{marginBottom:0, width:80}} value={this.state.format} onChange={this.changeFormat}>
                                         <option value="uk">UK</option>
                                         <option value="us">USA</option>                                        
-                                    </select>
+                                    </select> */}
                                     <button id="cdate" className="btn btn-primary"> 0 </button>
                                 </div>
                             </nav>
