@@ -1,13 +1,35 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-const Bookmaker =()=> (
+
+let bookUrl = {
+    0: { name: "Bet at Home", id: 3, logo: 39, url: "http://wlbetathome.adsrv.eacdn.com/C.ashx?btag=a_88802b_35088c_&affid=61021&siteid=88802&adid=35088&c=" },
+    1: { name: "William Hill", id: 15, logo: 4, url: "http://ads2.williamhill.com/redirect.aspx?pid=191753702&bid=1487416574&redirectURL=http://www.williamhill.com/" },
+    2: { name: "Pinnacle", id: 18, logo: 2, url: "https://wlpinnacle.adsrv.eacdn.com/C.ashx?btag=a_17880b_15013c_&affid=17286&siteid=17880&adid=15013&c=" },
+    3: { name: "Betsafe", id: 24, logo: 6, url: "http://record.betsafe.com/_iiM15Bc8GRB25MXmw6oCLUvHVvw20nG1/1/&media=177874&campaign=1" },
+    4: { name: "888Sport", id: 27, logo: 31, url: "https://mmwebhandler.aff-online.com/C/35461?sr=1463893&anid=" },
+    5: { name: "Intertops", id: 31, logo: 3, url: "http://link.intertops.eu/c/392472" },
+    6: { name: "Nordicbet", id: 33, logo: 7, url: "http://record.nordicbet.com/_iiM15Bc8GRBg8Gn8XZ9_Tq1VAQ_WgLOB/1/&media=169385&campaign=1" },
+    7: { name: "Betsson", id: 43, logo: 5, url: "http://record.betsson.com/_iiM15Bc8GRC7YwhTnKSg_nHybP8PsLu9/1/&media=178107&campaign=1" },
+    8: { name: "Betfred", id: 21, logo: 40, url: "https://activewin.adsrv.eacdn.com/C.ashx?btag=a_49341b_15307c_&affid=34127&siteid=49341&adid=15307&c=" },
+    9: { name: "Betvision", id: 76, logo: 13, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_876&aid=" },
+    10: { name: "12Bet", id: 80, logo: 16, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_1400&aid=" },
+    11: { name: "TitanBet ", id: 121, logo: 32, url: "https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962043&lp=13768449" },
+    12: { name: "Bwin", id: 2, logo: 42, url: "https://promo.bwin.com/en/promo/8040_2017_live_the_action?sb=1&bsbd=1&wm=4589693&zoneId=1824371" },
+    13: { name: "Dafabet", id: 147, logo: 26, url: "https://banners.dfbanners.com/redirect.aspx?pid=43578&bid=3825&redirectURL=http://www.dafabet.com/" },
+    14: { name: "Come on", id: 383, logo: 23, url: "https://www.comeon.com/?btag=662885_90365_25527_D336E05AA025440FB3A4609E1FDA05E6" },
+    15: { name: "Matchbook", id: 390, logo: 22, url: "http://wlmatchbook.adsrv.eacdn.com/C.ashx?btag=a_3207b_2916c_&affid=2084&siteid=3207&adid=2916&c=" },
+    16: { name: "18Bet", id: 416, logo: 9, url: "http://wl18bet.adsrv.eacdn.com/wl/clk/?btag=a_1971b_4" },
+    17: { name: "1xbet", id: 417, logo: 38, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
+}
+
+const Bookmaker = () => (
     <div id="col-content">
-    
-    
+
+
         <h1>Bookmakers Comparison - Where to Bet?</h1>
 
-        <div className="cms">
-            <p>This is the list of all internet bookmakers we cover on RockstartSportBook, sorted by overall ratings which take into
+        <div className="cms" style={{ color: "darkgrey" }}>
+            <p>This is the list of all internet bookmakers we cover on Rockstar Sports Netwoek, sorted by overall ratings which take into
                 account odds quality (payout), BMR rating and user rating.</p>
         </div>
         <div>
@@ -40,14 +62,14 @@ const Bookmaker =()=> (
                             </th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>                         
                         <tr className="odd">
                             <td className="tlogos">
                                 <div className="l">
-                                    <Link id ="1" to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2"  title="See more details about Pinnacle" >
+                                    <Link id="1" to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2" title="See more details about Pinnacle" >
                                         <span className="blogos l18"></span>
                                     </Link>
-                                    <Link to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2"  title="See more details about Pinnacle" >Pinnacle</Link>
+                                    <Link to="https://www.rockstarsportsaffiliates.com/idevaffiliate.php?id=105_2" title="See more details about Pinnacle" >Pinnacle</Link>
                                 </div>
 
 

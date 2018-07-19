@@ -38,7 +38,9 @@ class Match extends React.Component {
     componentWillUnmount() {
         this.setState({ match: {}, odds: {} })
     }
+
     render() {
+
 
         let e = this.state.match ? this.state.match : { time: 0, id: 0 };
         let f = this.state.odds ? this.state.odds : null; //lista de odds
@@ -110,6 +112,30 @@ class Match extends React.Component {
             let data = f[key].data; //lista de ofertas desordenas
             let tipoDraw = f[key].type;
             let tablehandicap;
+
+            let bookUrls = {
+                0: { name: "Bet at Home", id: 3, url: "http://wlbetathome.adsrv.eacdn.com/C.ashx?btag=a_88802b_35088c_&affid=61021&siteid=88802&adid=35088&c=" },
+                1: { name: "William Hill", id: 15, url: "http://ads2.williamhill.com/redirect.aspx?pid=191753702&bid=1487416574&redirectURL=http://www.williamhill.com/" },
+                2: { name: "Pinnacle", id: 18, url: "https://wlpinnacle.adsrv.eacdn.com/C.ashx?btag=a_17880b_15013c_&affid=17286&siteid=17880&adid=15013&c=" },
+                3: { name: "Betsafe", id: 24, url: "http://record.betsafe.com/_iiM15Bc8GRB25MXmw6oCLUvHVvw20nG1/1/&media=177874&campaign=1" },
+                4: { name: "888Sport", id: 27, url: "https://mmwebhandler.aff-online.com/C/35461?sr=1463893&anid=" },
+                5: { name: "Intertops", id: 31, url: "http://link.intertops.eu/c/392472" },
+                6: { name: "Nordicbet", id: 33, url: "http://record.nordicbet.com/_iiM15Bc8GRBg8Gn8XZ9_Tq1VAQ_WgLOB/1/&media=169385&campaign=1" },
+                7: { name: "Betsson", id: 43, url: "http://record.betsson.com/_iiM15Bc8GRC7YwhTnKSg_nHybP8PsLu9/1/&media=178107&campaign=1" },
+                8: { name: "Betfred", id: 21, url: "https://activewin.adsrv.eacdn.com/C.ashx?btag=a_49341b_15307c_&affid=34127&siteid=49341&adid=15307&c=" },
+                9: { name: "Betvision", id: 76, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_876&aid=" },
+                10: { name: "12Bet", id: 80, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_1400&aid=" },
+                11: { name: "TitanBet ", id: 121, url: "https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962043&lp=13768449" },
+                12: { name: "Bwin", id: 2, url: "https://promo.bwin.com/en/promo/8040_2017_live_the_action?sb=1&bsbd=1&wm=4589693&zoneId=1824371" },
+                13: { name: "Dafabet", id: 147, url: "https://banners.dfbanners.com/redirect.aspx?pid=43578&bid=3825&redirectURL=http://www.dafabet.com/" },
+                14: { name: "Come on", id: 383, url: "https://www.comeon.com/?btag=662885_90365_25527_D336E05AA025440FB3A4609E1FDA05E6" },
+                15: { name: "Matchbook", id: 390, url: "http://wlmatchbook.adsrv.eacdn.com/C.ashx?btag=a_3207b_2916c_&affid=2084&siteid=3207&adid=2916&c=" },
+                16: { name: "18Bet", id: 416, url: "http://wl18bet.adsrv.eacdn.com/wl/clk/?btag=a_1971b_4" },
+                17: { name: "1xbet", id: 417, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
+
+            }
+
+
             if (tipoDraw === "3" || tipoDraw === "4") {
                 let listaOrdenada = [];
                 //analizando ofertas de handicap desordenados
@@ -143,12 +169,29 @@ class Match extends React.Component {
                     // console.log(
                     let tr = Object.keys(kei[1])
                     // )
-                    // console.log(d)
+                    
+
                     let ref = tr.map((i, g) => {
                         // console.log(kei[1][i])
+                        let bool = false;
+                        let temp="#";
+                        let list = Object.keys(bookUrls);
+                        list.map(y => {
+                            var x = 0;
+                            if (bookUrls[y].id == kei[1][i].bookId) {
+                                console.log(bookUrls[y], kei[1][i].bookId);                            
+                                temp = bookUrls[y].url;
+                                bool = true;
+                            }
+    
+                        })
                         let rows =
                             <tr key={i}>
-                                <td><span className={"blogos l" + kei[1][i].bookId}></span><strong> {kei[1][i].name}</strong></td>
+                                <td>
+                                    <Link to={temp}>
+                                        <span className={"blogos l" + kei[1][i].bookId}></span><strong> {kei[1][i].name}</strong>
+                                    </Link>
+                                </td>
                                 <td className="text-center">{kei[1][i].o1}</td>
                                 <td className="text-center">{kei[1][i].o2}</td>
                                 <td className="text-center" style={{ fontSize: 14, fontWeight: "bolder" }}>{kei[1][i].o3}</td>
@@ -172,27 +215,7 @@ class Match extends React.Component {
 
             //table es salida para pintar una lista de ofertas
             let table;
-            let bookUrls = {
-                0: { name: "Bet at Home", id: 3, url: "http://wlbetathome.adsrv.eacdn.com/C.ashx?btag=a_88802b_35088c_&affid=61021&siteid=88802&adid=35088&c=" },
-                1: { name: "William Hill", id: 15, url: "http://ads2.williamhill.com/redirect.aspx?pid=191753702&bid=1487416574&redirectURL=http://www.williamhill.com/" },
-                2: { name: "Pinnacle", id: 18, url: "https://wlpinnacle.adsrv.eacdn.com/C.ashx?btag=a_17880b_15013c_&affid=17286&siteid=17880&adid=15013&c=" },
-                3: { name: "Betsafe", id: 24, url: "http://record.betsafe.com/_iiM15Bc8GRB25MXmw6oCLUvHVvw20nG1/1/&media=177874&campaign=1" },
-                4: { name: "888Sport", id: 27, url: "https://mmwebhandler.aff-online.com/C/35461?sr=1463893&anid=" },
-                5: { name: "Intertops", id: 31, url: "http://link.intertops.eu/c/392472" },
-                6: { name: "Nordicbet", id: 33, url: "http://record.nordicbet.com/_iiM15Bc8GRBg8Gn8XZ9_Tq1VAQ_WgLOB/1/&media=169385&campaign=1" },
-                7: { name: "Betsson", id: 43, url: "http://record.betsson.com/_iiM15Bc8GRC7YwhTnKSg_nHybP8PsLu9/1/&media=178107&campaign=1" },
-                8: { name: "Betfred", id: 21, url: "https://activewin.adsrv.eacdn.com/C.ashx?btag=a_49341b_15307c_&affid=34127&siteid=49341&adid=15307&c=" },
-                9: { name: "Betvision", id: 76, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_876&aid=" },
-                10: { name: "12Bet", id: 80, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_1400&aid=" },
-                11: { name: "TitanBet ", id: 121, url: "https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962342&lp=13524050" },
-                12: { name: "Bwin", id: 2, url: "https://promo.bwin.com/en/promo/8040_2017_live_the_action?sb=1&bsbd=1&wm=4589693&zoneId=1824371" },
-                13: { name: "Dafabet", id: 147, url: "https://banners.dfbanners.com/redirect.aspx?pid=43578&bid=3825&redirectURL=http://www.dafabet.com/" },
-                14: { name: "Come on", id: 383, url: "https://www.comeon.com/?btag=662885_90365_25527_D336E05AA025440FB3A4609E1FDA05E6" },
-                15: { name: "Matchbook", id: 390, url: "http://wlmatchbook.adsrv.eacdn.com/C.ashx?btag=a_3207b_2916c_&affid=2084&siteid=3207&adid=2916&c=" },
-                16: { name: "18Bet", id: 416, url: "http://wl18bet.adsrv.eacdn.com/wl/clk/?btag=a_1971b_4" },
-                17: { name: "1xbet", id: 417, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
 
-            }
 
 
             if (tipoDraw === "3" || tipoDraw === "4") {
@@ -201,28 +224,20 @@ class Match extends React.Component {
 
 
                 table = auxc.map(function (kei) {
-                    let temp = [];
+                    let temp = "#";
                     let list = Object.keys(bookUrls);
+                    let bool = false;
                     list.map(i => {
                         var x = 0;
                         if (bookUrls[i].id == data[kei].bookId) {
-                            console.log(bookUrls[i].id, data[kei].bookId, i, list.length);
-                            let p = i;
-                            for (let index = i; index < list.length; index++) {
-                                console.log("en ", parseInt(index), ' va ', (parseInt(index) + 1))
-                                // bookUrls[parseInt(index)] = bookUrls[(parseInt(index)+1)];                                
-                            }
-                            // console.log(bookUrls)
-                            // delete bookUrls[bookUrls.length]
-
-                        } else {
-                            temp.push(bookUrls[i]);
-                            x = x + 1;
+                            console.log(bookUrls[i], data[kei].bookId);                            
+                            temp = bookUrls[i].url;
+                            bool = true;
                         }
 
                     })
-                    bookUrls = temp;
-                    console.log(temp);
+                    // bookUrls = temp;
+                    // console.log(temp);
                     // console.log("key:"+kei); //id offer
                     if (mino1 > Number(data[kei].o1)) mino1 = Number(data[kei].o1);
                     if (mino2 > Number(data[kei].o2)) mino2 = Number(data[kei].o2);
@@ -233,10 +248,38 @@ class Match extends React.Component {
                     if (mayo1 < Number(data[kei].o1)) mayo1 = Number(data[kei].o1);
                     // (data[kei].bookId in bookUrls)
                     // delete bookUrls[data[kei].bookId];
+
+                    // for
+                    // function search(w){
+                    //     return w.id==data[kei].bookId;
+                    // }
+                    // let help=temp;
+                    let interUrl = "#";
+                    // help.id=data[kei].bookId
+                    // let helpr =[];// bookUrls.filter(search=>search.id==data[kei].bookId);
+
+                    // for (let i = 0; i<bookUrls.length; i++) {
+                    //     var currentNumber = bookUrls[i];
+                    //     console.log(parseInt(currentNumber.id), parseInt(data[kei].bookId))
+                    //     if (parseInt(currentNumber.id) == parseInt(data[kei].bookId) ) {
+                    //         helpr.push(currentNumber)
+                    //     }
+                    //   }
+                    // console.log(helpr,data[kei].bookId)
+                    if (!bool) {
+                        interUrl = "#"
+                    } else {
+                        interUrl = temp;
+                    }
                     if (data[kei].bookId)
                         return (
                             <tr key={kei}>
-                                <td><span className={"blogos l" + data[kei].bookId}></span><strong> {data[kei].name}</strong></td>
+                                <td>
+                                    <Link to={interUrl}>
+                                        <span className={"blogos l" + data[kei].bookId}></span>
+                                        <strong> {data[kei].name}</strong>
+                                    </Link>
+                                </td>
                                 <td className="text-center">{data[kei].o1}</td>
                                 <td className="text-center">{data[kei].o2}</td>
                                 <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? data[kei].o3 : ""}</td>
@@ -246,37 +289,22 @@ class Match extends React.Component {
                 });
             }
 
+            // let auxTable=[];
+            // auxTable = table;
+            // table=[];
 
-            let bookUrl = {
-                0: { name: "Bet at Home", id: 3, logo: 39, url: "http://wlbetathome.adsrv.eacdn.com/C.ashx?btag=a_88802b_35088c_&affid=61021&siteid=88802&adid=35088&c=" },
-                1: { name: "William Hill", id: 15, logo: 4, url: "http://ads2.williamhill.com/redirect.aspx?pid=191753702&bid=1487416574&redirectURL=http://www.williamhill.com/" },
-                2: { name: "Pinnacle", id: 18, logo: 2, url: "https://wlpinnacle.adsrv.eacdn.com/C.ashx?btag=a_17880b_15013c_&affid=17286&siteid=17880&adid=15013&c=" },
-                3: { name: "Betsafe", id: 24, logo: 6, url: "http://record.betsafe.com/_iiM15Bc8GRB25MXmw6oCLUvHVvw20nG1/1/&media=177874&campaign=1" },
-                4: { name: "888Sport", id: 27, logo: 31, url: "https://mmwebhandler.aff-online.com/C/35461?sr=1463893&anid=" },
-                5: { name: "Intertops", id: 31, logo: 3, url: "http://link.intertops.eu/c/392472" },
-                6: { name: "Nordicbet", id: 33, logo: 7, url: "http://record.nordicbet.com/_iiM15Bc8GRBg8Gn8XZ9_Tq1VAQ_WgLOB/1/&media=169385&campaign=1" },
-                7: { name: "Betsson", id: 43, logo: 5, url: "http://record.betsson.com/_iiM15Bc8GRC7YwhTnKSg_nHybP8PsLu9/1/&media=178107&campaign=1" },
-                8: { name: "Betfred", id: 21, logo: 40, url: "https://activewin.adsrv.eacdn.com/C.ashx?btag=a_49341b_15307c_&affid=34127&siteid=49341&adid=15307&c=" },
-                9: { name: "Betvision", id: 76, logo: 13, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_876&aid=" },
-                10: { name: "12Bet", id: 80, logo: 16, url: "http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_1400&aid=" },
-                11: { name: "TitanBet ", id: 121, logo: 32, url: "https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962342&lp=13524050" },
-                12: { name: "Bwin", id: 2, logo: 42, url: "https://promo.bwin.com/en/promo/8040_2017_live_the_action?sb=1&bsbd=1&wm=4589693&zoneId=1824371" },
-                13: { name: "Dafabet", id: 147, logo: 26, url: "https://banners.dfbanners.com/redirect.aspx?pid=43578&bid=3825&redirectURL=http://www.dafabet.com/" },
-                14: { name: "Come on", id: 383, logo: 23, url: "https://www.comeon.com/?btag=662885_90365_25527_D336E05AA025440FB3A4609E1FDA05E6" },
-                15: { name: "Matchbook", id: 390, logo: 22, url: "http://wlmatchbook.adsrv.eacdn.com/C.ashx?btag=a_3207b_2916c_&affid=2084&siteid=3207&adid=2916&c=" },
-                16: { name: "18Bet", id: 416, logo: 9, url: "http://wl18bet.adsrv.eacdn.com/wl/clk/?btag=a_1971b_4" },
-                17: { name: "1xbet", id: 417, logo: 38, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
-            }
+
+
 
 
 
             // console.log(mino1, mino2, mino3, mayo1, mayo2, mayo3);
-            mino1 = mino1 - 0.10;
-            mino2 = mino2 - 0.10;
-            mino3 = mino3 - 0.10;
-            mayo1 = mayo1 + 0.10;
-            mayo2 = mayo2 + 0.10;            
-            mayo3 = mayo3 + 0.10;
+            mino1 = mino1 - 0.07;
+            mino2 = mino2 - 0.07;
+            mino3 = mino3 - 0.07;
+            mayo1 = mayo1 + 0.07;
+            mayo2 = mayo2 + 0.07;
+            mayo3 = mayo3 + 0.07;
 
             // let min = 1, max = 4.5;
             if (auxc.length < 30 && tipoDraw !== "3") {
@@ -295,11 +323,12 @@ class Match extends React.Component {
                         o1: (Math.random() * (mayo1 - mino1) + mino1).toFixed(2),
                         o2: (Math.random() * (mayo2 - mino2) + mino2).toFixed(2),
                         o3: (Math.random() * (mayo3 - mino3) + mino3).toFixed(2),
-                        name: n.name
+                        name: n.name,
+                        url: n.url
                     }
                     table[i] =
                         <tr key={i}>
-                            <td><span className={"blogos l" + help.bookId}></span><strong> {help.name}.</strong></td>
+                            <td><Link to={help.url}><span className={"blogos l" + help.bookId}></span><strong> {help.name}.</strong></Link></td>
                             <td className="text-center">{help.o1}</td>
                             <td className="text-center">{help.o2}</td>
                             <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? help.o3 : ""}</td>
@@ -307,6 +336,12 @@ class Match extends React.Component {
 
                     i++;
                 }
+                // for (let index = i+1; index < auxTable.length; index++) {
+                //     table[index] = auxTable[index];
+
+                // }
+
+                // table.concat(auxTable)
             }
             // console.log(table);
             let headersT;
@@ -367,7 +402,7 @@ class Match extends React.Component {
 
 
                 <div className="card text-center" style={{ boxShadow: "-1px -3px 4px 3px rgba(0, 0, 0, 0.1)" }}>
-                <a href="#" onClick={this.props.history.goBack?this.props.history.goBack.bind():void(0)} className="btn btn-primary" style={{position:"absolute", top:10, left:10}}>  <i class="fas fa-arrow-circle-left"></i> Back</a>
+                    <a href="#" onClick={this.props.history.goBack ? this.props.history.goBack.bind() : void (0)} className="btn btn-primary" style={{ position: "absolute", top: 10, left: 10 }}>  <i className="fas fa-arrow-circle-left"></i> Back</a>
                     <div className="card-header">
                         <h5>
                             <i className={"ficon-inline f-" + e.countryId}></i>
@@ -379,7 +414,7 @@ class Match extends React.Component {
                         <div className="row">
 
                             <div className="col-sm-4">
-                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/"+e.hteamId+".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
+                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/" + e.hteamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
                             </div>
                             <div className="col-sm-4">
 
@@ -387,12 +422,12 @@ class Match extends React.Component {
                                 <h6>  {timess} </h6>
                                 <a href="#" className={e.status == "Pro" ? "btn btn-success " : (e.status == "Fin" ? "btn btn-danger " : "btn btn-warning ")} style={{ marginLeft: 10 }}>
                                     <i className="far fa-clock"></i>
-                                    {" " + hours + ":" + minutes }
+                                    {" " + hours + ":" + minutes}
                                 </a>
 
                             </div>
                             <div className="col-sm-4">
-                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/"+e.ateamId+".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
+                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/" + e.ateamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
                             </div>
                         </div>
 

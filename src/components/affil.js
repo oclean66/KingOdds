@@ -36,7 +36,7 @@ class Affil extends Component {
                         <div className="card card-full-color border border-dark" >
                             <div className="card-body">
                                 {/* {a[trait].text} */}
-                                <Link to={a[trait].url}>
+                                <Link to={a[trait].url} target="_blank">
                                     <img src={a[trait].img} alt="" style={{ width: "100%" }} />
                                     {/* <div className="card-caption"> Clementine Thson </div> */}
                                 </Link>
@@ -158,7 +158,7 @@ class Affil extends Component {
                 </div>
                 <div className="line" />
                 <div className="row">
-                    <div className="col-lg-12" style={{ textAlign: "-webkit-center", padding: 20 }}>
+                    <div className="col-lg-12 clearfix" style={{ textAlign: "-webkit-center", padding: 20 }}>
                         <a href="http://www.livescore.in/" title="Livescore" target="_blank" rel="noopener noreferrer">
                             <div className="card card-full-color border border-dark" style={{ background: "url('https://www.livescore.in/res/image/content/livescore_in_345x70.gif'),black", backgroundSize: "345px 70px", backgroundRepeat: "no-repeat", width: 345,height:70 }} >
                                 <div className="card-body center">

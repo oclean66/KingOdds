@@ -77,7 +77,7 @@ class App extends React.Component {
                         <Sidebar />
                         <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
-                            <nav className="navbar navbar-expand-lg navbar-dark" style={{ marginBottom:5,padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)",boxShadow:"-1px -3px 4px 3px rgba(0, 0, 0, 0.1)"/* marginRight: 12*/ }}>
+                            <nav className="navbar navbar-expand-lg navbar-dark" style={{ marginBottom: 5, padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)", boxShadow: "-1px -3px 4px 3px rgba(0, 0, 0, 0.1)"/* marginRight: 12*/ }}>
 
                                 {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
                                 <button
@@ -128,17 +128,29 @@ class App extends React.Component {
                     </div>
                     <div id="myFooter" className="white-text" style={{ backgroundColor: "black" }}>
                         <div className="row" style={{ margin: 0, padding: 0, paddingTop: 15 }} >
-                            <div className="col-sm-4 "></div>
+                            <div className="col-sm-4 " style={{ color: "white" }}>
+                                Other websites
+                                <ul className="list-group list-group-flush" style={{ backgroundColor: "transparent" }}>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="http://www.rockstarcricketlive.com/">Rockstar Cricket Live</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://rockstarbetting.com">Rockstar Betting – The Blog</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://www.rockstarsportsnews.com/">Rockstar Sports News</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://rockstarlivescores.com/">Rockstar Live Scores </a></li>
+                                </ul>
+                               
+                            </div>
 
                             <div className="col-sm-4 text-center" >
                                 <Link to="https://www.facebook.com/RockstarSports2/" className="btn btn-primary" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-facebook-square"></i> </Link>
                                 <Link to="https://twitter.com/RockstarSports2" className="btn btn-info" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-twitter"></i></Link>
-                                <a href="mailto:contact@rockstarsportsbook.com" className="btn btn-danger" style={{ marginRight: 5, fontSize: 30 }}><i className="fas fa-envelope"></i></a>
+                                <a href="mailto:contact@rockstarsportsnetwork.com" className="btn btn-danger" style={{ marginRight: 5, fontSize: 30 }}><i className="fas fa-envelope"></i></a>
+
+                                <Link to="https://www.linkedin.com/company/rockstar-sports-network/" className="btn btn-primary" style={{ marginRight: 5, fontSize: 30 }}><i className="fab fa-linkedin"></i> </Link>
+                                <Link to="https://www.youtube.com/RockstarSports2/" className="btn" style={{ marginRight: 5, fontSize: 30, backgroundColor: "red", color: "white" }}><i className="fab fa-youtube"></i> </Link>
                                 {/* <a href="http://www.livescore.in/" rel="noopener noreferrer" className="btn" title="Livescore.in" target="_blank" style={{width:250,height: 34, background: "url(http://www.livescore.in/res/_in/image/logo.gif) no-repeat"}}></a> */}
                             </div>
-                            <div className="col-sm-4 "></div>
-                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportstats.com - Part of the Rockstart Sports Network Limited</div>
-                            <div className="col-sm-4 "></div>
+                            <div className="col-sm-4 right" ></div>
+                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com.com - Part of the Rockstart Sports Network Limited</div>
+                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px"/>Website design by oclean66 </Link></div>
                             <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
                             <div className="col-sm-4 "></div>
                         </div>

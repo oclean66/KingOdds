@@ -138,7 +138,7 @@ class Sport extends React.Component {
                     8: { name: "Betfred", id: 44, logo: 40,url:"https://activewin.adsrv.eacdn.com/C.ashx?btag=a_49341b_15307c_&affid=34127&siteid=49341&adid=15307&c=" },
                     9: { name: "Betvision", id: 76, logo: 13,url:"http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_876&aid=" },
                     10: { name: "12Bet", id: 80, logo: 16, url:"http://wlaceworldgaming.adsrv.eacdn.com/wl/clk/?btag=a_4251b_1400&aid="},
-                    11: { name: "TitanBet ", id: 121, logo: 32,url:"https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962342&lp=13524050" },
+                    11: { name: "TitanBet ", id: 121, logo: 32,url:"https://online.europartners.com/page?member=rsg0106&campaign=DEFAULT&channel=DEFAULT&zone=13962043&lp=13768449" },
                     12: { name: "Bwin", id: 128, logo: 42, url:"https://promo.bwin.com/en/promo/8040_2017_live_the_action?sb=1&bsbd=1&wm=4589693&zoneId=1824371"},
                     13: { name: "Dafabet", id: 147, logo: 26, url:"https://banners.dfbanners.com/redirect.aspx?pid=43578&bid=3825&redirectURL=http://www.dafabet.com/"},
                     14: { name: "Come on", id: 383, logo: 23, url:"https://www.comeon.com/?btag=662885_90365_25527_D336E05AA025440FB3A4609E1FDA05E6"},
