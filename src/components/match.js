@@ -18,7 +18,7 @@ class Match extends React.Component {
         let context = this;
         if (!id) return;
 
-        fetch('http://kingdeportes.com/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
+        fetch('http://91.121.116.131/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -26,7 +26,7 @@ class Match extends React.Component {
             })
             // console.log(data);
         });
-        fetch('http://kingdeportes.com/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
+        fetch('http://91.121.116.131/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -132,9 +132,8 @@ class Match extends React.Component {
                 15: { name: "Matchbook", id: 390, url: "http://wlmatchbook.adsrv.eacdn.com/C.ashx?btag=a_3207b_2916c_&affid=2084&siteid=3207&adid=2916&c=" },
                 16: { name: "18Bet", id: 416, url: "http://wl18bet.adsrv.eacdn.com/wl/clk/?btag=a_1971b_4" },
                 17: { name: "1xbet", id: 417, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
-
+                18: { name: "Bovada", id: 900, url: "http://refpatog.host/L?tag=d_70919m_1599c_&site=70919&ad=1599" },
             }
-
 
             if (tipoDraw === "3" || tipoDraw === "4") {
                 let listaOrdenada = [];
@@ -179,7 +178,7 @@ class Match extends React.Component {
                         list.map(y => {
                             var x = 0;
                             if (bookUrls[y].id == kei[1][i].bookId) {
-                                console.log(bookUrls[y], kei[1][i].bookId);                            
+                                // console.log(bookUrls[y], kei[1][i].bookId);                            
                                 temp = bookUrls[y].url;
                                 bool = true;
                             }
@@ -222,23 +221,19 @@ class Match extends React.Component {
                 table = tablehandicap;
             } else {
 
-
                 table = auxc.map(function (kei) {
                     let temp = "#";
                     let list = Object.keys(bookUrls);
                     let bool = false;
                     list.map(i => {
                         var x = 0;
-                        if (bookUrls[i].id == data[kei].bookId) {
-                            console.log(bookUrls[i], data[kei].bookId);                            
+                        if (bookUrls[i].id == data[kei].bookId) {                                                       
                             temp = bookUrls[i].url;
                             bool = true;
                         }
 
                     })
-                    // bookUrls = temp;
-                    // console.log(temp);
-                    // console.log("key:"+kei); //id offer
+                    
                     if (mino1 > Number(data[kei].o1)) mino1 = Number(data[kei].o1);
                     if (mino2 > Number(data[kei].o2)) mino2 = Number(data[kei].o2);
                     if (mino3 > Number(data[kei].o3)) mino3 = Number(data[kei].o3);
@@ -246,26 +241,9 @@ class Match extends React.Component {
                     if (mayo3 < Number(data[kei].o3)) mayo3 = Number(data[kei].o3);
                     if (mayo2 < Number(data[kei].o2)) mayo2 = Number(data[kei].o2);
                     if (mayo1 < Number(data[kei].o1)) mayo1 = Number(data[kei].o1);
-                    // (data[kei].bookId in bookUrls)
-                    // delete bookUrls[data[kei].bookId];
-
-                    // for
-                    // function search(w){
-                    //     return w.id==data[kei].bookId;
-                    // }
-                    // let help=temp;
+                    
                     let interUrl = "#";
-                    // help.id=data[kei].bookId
-                    // let helpr =[];// bookUrls.filter(search=>search.id==data[kei].bookId);
-
-                    // for (let i = 0; i<bookUrls.length; i++) {
-                    //     var currentNumber = bookUrls[i];
-                    //     console.log(parseInt(currentNumber.id), parseInt(data[kei].bookId))
-                    //     if (parseInt(currentNumber.id) == parseInt(data[kei].bookId) ) {
-                    //         helpr.push(currentNumber)
-                    //     }
-                    //   }
-                    // console.log(helpr,data[kei].bookId)
+                   
                     if (!bool) {
                         interUrl = "#"
                     } else {
@@ -289,16 +267,7 @@ class Match extends React.Component {
                 });
             }
 
-            // let auxTable=[];
-            // auxTable = table;
-            // table=[];
-
-
-
-
-
-
-            // console.log(mino1, mino2, mino3, mayo1, mayo2, mayo3);
+           
             mino1 = mino1 - 0.07;
             mino2 = mino2 - 0.07;
             mino3 = mino3 - 0.07;
@@ -307,16 +276,17 @@ class Match extends React.Component {
             mayo3 = mayo3 + 0.07;
 
             // let min = 1, max = 4.5;
-            if (auxc.length < 30 && tipoDraw !== "3") {
-                // console.log("Faltan: " + (30 - auxc.length));
+            if (auxc.length < 30 && tipoDraw !== "3" && tipoDraw !== "4") {
+                console.log(f[key].id+" - Faltan: " + (30 - auxc.length)+' queda '+(auxc.length + Object.keys(bookUrls).length));
                 // console.table(table);
                 let i = auxc.length;
                 // let i = 1;
-                while (i < auxc.length + bookUrls.length) {
+
+                while (i < auxc.length + Object.keys(bookUrls).length) {
                     let y = i - auxc.length;
                     let n;
                     // let n = (Math.random() * (18 - 0) + 0).toFixed(0);
-                    // console.log("select: " + n);
+                    console.log("select: " + n);
                     n = bookUrls[y];
                     let help = {
                         bookId: n.id,
@@ -328,7 +298,11 @@ class Match extends React.Component {
                     }
                     table[i] =
                         <tr key={i}>
-                            <td><Link to={help.url}><span className={"blogos l" + help.bookId}></span><strong> {help.name}.</strong></Link></td>
+                            <td><Link to={help.url}>
+                            <span className={"blogos l" + help.bookId}></span>
+                            {/* <span className={"ld ld"+help.bookId+" logo-link"}></span> */}
+                            <strong> {help.name}.</strong>
+                            </Link></td>
                             <td className="text-center">{help.o1}</td>
                             <td className="text-center">{help.o2}</td>
                             <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? help.o3 : ""}</td>
@@ -342,10 +316,12 @@ class Match extends React.Component {
                 // }
 
                 // table.concat(auxTable)
+            }else{
+                console.log(f[key].id+' - ignored!')
             }
             // console.log(table);
             let headersT;
-            if (tipoDraw === "3") {
+            if (tipoDraw === "3" || tipoDraw === "4") {
                 headersT = <tr className="table-primary">
                     <td> <strong>Bookmakers</strong></td>
                     <td className="text-center"> <strong></strong> </td>
@@ -374,7 +350,7 @@ class Match extends React.Component {
                     <div className="card">
                         <div className="card-body">
                             {/* <h5>{key}</h5> */}
-                            <table className="table table-sm table-bordered bg-light">
+                            <table className="table table-sm table-bordered bg-light" style={{borderRadius:5}}>
                                 <thead>
                                     {headersT}
                                 </thead>

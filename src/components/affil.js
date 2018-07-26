@@ -50,7 +50,7 @@ class Affil extends Component {
         return (
             <div>
                 <div className="page-head" style={{ padding: 0 }}>
-                    <div className="bd-example">
+                    <div className="bd-example" style={{backgroundColor:'#CCCCCC'}}>
                         <div
                             id="carouselExampleCaptions"
                             className="carousel slide"
@@ -76,7 +76,7 @@ class Affil extends Component {
                             <div className="carousel-inner" style={{ height: 200 }}>
                                 <div className="carousel-item active" style={{ height: 200 }}>
                                     <img
-                                        className="d-block w-100"
+                                        className="img-fluid w-100 h-100"
                                         data-src="holder.js/150x400?auto=yes&amp;bg=777&amp;fg=555&amp;text=First slide"
                                         alt="First slide [800x400]"
                                         src="img/img2.jpg"
@@ -94,7 +94,7 @@ class Affil extends Component {
                                 </div>
                                 <div className="carousel-item" style={{ height: 200 }}>
                                     <img
-                                        className="d-block w-100"
+                                        className="d-block w-100 h-100"
                                         data-src="holder.js/800x400?auto=yes&amp;bg=666&amp;fg=444&amp;text=Second slide"
                                         alt="Second slide [800x400]"
                                         src="img/img3.jpg"
@@ -112,7 +112,7 @@ class Affil extends Component {
                                 </div>
                                 <div className="carousel-item" style={{ height: 200 }}>
                                     <img
-                                        className="d-block w-100"
+                                        className="img-fluid  h-100 w-100"
                                         data-src="holder.js/800x400?auto=yes&amp;bg=555&amp;fg=333&amp;text=Third slide"
                                         alt="Third slide [800x400]"
                                         src="img/img1.jpg"
@@ -156,7 +156,7 @@ class Affil extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="line" />
+                {/* <div className="line" /> */}
                 <div className="row">
                     <div className="col-lg-12 clearfix" style={{ textAlign: "-webkit-center", padding: 20 }}>
                         <a href="http://www.livescore.in/" title="Livescore" target="_blank" rel="noopener noreferrer">

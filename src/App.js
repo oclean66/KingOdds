@@ -15,10 +15,6 @@ import Resultslive from './components/resultsliveAsia';
 import Search from './components/search';
 
 
-
-
-
-
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 
     <Route
@@ -31,7 +27,7 @@ const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
         )}
     />
 );
-// var currentdate = new Date();
+
 
 class App extends React.Component {
     constructor(props) {
@@ -149,7 +145,7 @@ class App extends React.Component {
                                 {/* <a href="http://www.livescore.in/" rel="noopener noreferrer" className="btn" title="Livescore.in" target="_blank" style={{width:250,height: 34, background: "url(http://www.livescore.in/res/_in/image/logo.gif) no-repeat"}}></a> */}
                             </div>
                             <div className="col-sm-4 right" ></div>
-                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com.com - Part of the Rockstart Sports Network Limited</div>
+                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com - Part of the Rockstar Sports Network Limited</div>
                             <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px"/>Website design by oclean66 </Link></div>
                             <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
                             <div className="col-sm-4 "></div>
