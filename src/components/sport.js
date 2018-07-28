@@ -85,9 +85,9 @@ class Sport extends React.Component {
         // switch between locales
         // numeral.locale('fr');
 
-         number = numeral(20);
-         number.format('0%')
-         console.log(number.format())
+        //  number = numeral(20);
+        //  number.format('0%')
+        //  console.log(number.format())
 
     }
     please(){
@@ -156,8 +156,8 @@ class Sport extends React.Component {
 
                 return (
                     <tr key={y.idmatch}>
-                        <th className="text-center" style={{ width: p, fontWeight: "bolder",backgroundColor:y.status=="In Play"?"#ffd559":(y.status=="Fin"?"red":"#d3d3d34f"), color:y.status=="Fin"?"white":"black" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
-                        <td><Link to={(y.status=="Fin" || y.status=="In Play")?"#":"/match/" + y.idmatch+"/#cdate"} onClick={(y.status=="Fin" || y.status=="In Play")?this.please.bind(this,'No'):void(0)}><b>{y.name}</b></Link></td>
+                        <th className="text-center" style={{ width: p, fontWeight: "bolder",backgroundColor:y.status==="In Play"?"#ffd559":(y.status==="Fin"?"red":"#d3d3d34f"), color:y.status==="Fin"?"white":"black" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
+                        <td><Link to={(y.status==="Fin" || y.status==="In Play")?"#":"/match/" + y.idmatch+"/#cdate"} onClick={(y.status==="Fin" || y.status==="In Play")?this.please.bind(this,'No'):void(0)}><b>{y.name}</b></Link></td>
                         <td className="text-center" style={{ width: '7%', fontWeight: "bolder" }}>{y.results ? y.results[1].value : y.status}</td>
                       
                       
@@ -167,7 +167,7 @@ class Sport extends React.Component {
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
-                        <td className={raw[i].sportName=="Baseball"?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                        <td className={raw[i].sportName==="Baseball"?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2"href={olo2.url} title={"Click to go to the bookmaker site "+ olo2.name} >
                                 <span className={"logos l" + olo2.id}></span>
                             {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
@@ -201,7 +201,7 @@ class Sport extends React.Component {
                         <tr >
                             <th colSpan='3' >{raw[i].sportName + " " + raw[i].name}</th>
                             <th className='text-center'>1</th>
-                            <th className={raw[i].sportName=="Baseball"?'hide':'text-center'}>X</th>
+                            <th className={raw[i].sportName==="Baseball"?'hide':'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                              <th className='text-center'>Under</th>

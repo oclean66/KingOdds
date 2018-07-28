@@ -1,5 +1,5 @@
 {
-  "name": "reactfirebase",
+  "name": "react-api",
   "description": "Using react to connect to firebase realtime database",
   "version": "0.1.7",
   "private": true,

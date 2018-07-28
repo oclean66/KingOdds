@@ -127,10 +127,10 @@ class App extends React.Component {
                             <div className="col-sm-4 " style={{ color: "white" }}>
                                 Other websites
                                 <ul className="list-group list-group-flush" style={{ backgroundColor: "transparent" }}>
-                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="http://www.rockstarcricketlive.com/">Rockstar Cricket Live</a></li>
-                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://rockstarbetting.com">Rockstar Betting – The Blog</a></li>
-                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://www.rockstarsportsnews.com/">Rockstar Sports News</a></li>
-                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" href="https://rockstarlivescores.com/">Rockstar Live Scores </a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="http://www.rockstarcricketlive.com/">Rockstar Cricket Live</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="https://rockstarbetting.com">Rockstar Betting – The Blog</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="https://www.rockstarsportsnews.com/">Rockstar Sports News</a></li>
+                                    <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="https://rockstarlivescores.com/">Rockstar Live Scores </a></li>
                                 </ul>
                                
                             </div>
@@ -146,7 +146,7 @@ class App extends React.Component {
                             </div>
                             <div className="col-sm-4 right" ></div>
                             <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com - Part of the Rockstar Sports Network Limited</div>
-                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px"/>Website design by oclean66 </Link></div>
+                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img alt="Logo" src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px"/>Website design by oclean66 </Link></div>
                             <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
                             <div className="col-sm-4 "></div>
                         </div>
