@@ -1,8 +1,6 @@
 import React from "react";
 import { Link } from 'react-router-dom';
-// import { browserHistory } from 'react-router'
-// let match;
-// let odds;
+
 let bookUrls={};
 const data = require('../data.json');
 class Match extends React.Component {
@@ -156,6 +154,7 @@ class Match extends React.Component {
                         let bool = false;
                         let temp = "#";
                         let list = Object.keys(bookUrls);
+                        list.sort();
                         list.map(y => {
                             // var x = 0;
                             if (bookUrls[y].idLogo === kei[1][i].bookId) {
@@ -205,6 +204,7 @@ class Match extends React.Component {
                 table = auxc.map(function (kei) {
                     let temp = "#";
                     let list = Object.keys(bookUrls);
+                    list.sort();
                     let bool = false;
                     list.map(i => {
                         // var x = 0;
@@ -263,6 +263,7 @@ class Match extends React.Component {
                 let i = auxc.length;
                 // let i = 1;
                 let books = Object.keys(bookUrls);
+                books.sort();
                 while (i < auxc.length + books.length) {
                     let y = i - auxc.length;
                     let n;
