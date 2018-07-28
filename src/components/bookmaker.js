@@ -5,7 +5,7 @@ const array = require('../data.json');
 let Bookmaker=()=>{
     let bookUrl={};
     bookUrl=array;
- 
+
     let outy = Object.keys(bookUrl);
     outy.sort();
 
