@@ -1,12 +1,16 @@
 import React from "react";
+// import RDT from 'react-datatable';
 const array = require('../data.json');
 
 let Bookmaker=()=>{
     let bookUrl={};
     bookUrl=array;
-    console.log(bookUrl); 
+ 
     let outy = Object.keys(bookUrl);
     outy.sort();
+
+
+    
     return(
         <div>
            <h1>Bookmakers Comparison - Where to Bet?</h1> 
@@ -16,7 +20,7 @@ let Bookmaker=()=>{
                 account odds quality (payout), BMR rating and user rating.
                 </p>
             </div>
-            <div>
+            <div>               
                 <div className="table-responsive">
                 <table id="view-all-bookmaker" className="table table-sm table-bordered bg-light">
                     <colgroup>
