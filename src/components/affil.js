@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import firebase from '../fire';
 import { Link } from 'react-router-dom';
 
-const affils = firebase.database().ref().child('affil');
+const affils = firebase.database().ref().child('affill');
 class Affil extends Component {
 
     constructor() {

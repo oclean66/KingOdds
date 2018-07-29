@@ -3,8 +3,11 @@ import { Link } from "react-router-dom";
 import LocalizedStrings from 'react-localization';
 // var numeral = require('numeral');
 const p = "10%";
+var convert = require('convert-units')
 // var number;
 const bookUrl = require('../data.json');
+
+
 let strings = new LocalizedStrings({
     uk:{
         format: function(number){
@@ -107,6 +110,7 @@ class Sport extends React.Component {
                             <a target="_blank"  id="link-2" href={olo1.url} title={"Click to go to the bookmaker site "+ olo1.name} >
                                 <span className={"logos l" + olo1.idLogo}></span>
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
+                            {convert(1).from('l').to('ml')}
                             </a>
                             </td>
                         <td className={raw[i].sportName==="Baseball"?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
