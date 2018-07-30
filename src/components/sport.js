@@ -107,10 +107,10 @@ class Sport extends React.Component {
                       
                       
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={olo1.url} title={"Click to go to the bookmaker site "+ olo1.name} >
+                            <a target="_blank"  id="link-2" href={olo1.url} title={"Click to go to the bookmaker site "+ olo1.name+ " "+convert(1).from('l').to('ml')} >
                                 <span className={"logos l" + olo1.idLogo}></span>
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
-                            {convert(1).from('l').to('ml')}
+                            
                             </a>
                             </td>
                         <td className={raw[i].sportName==="Baseball"?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>

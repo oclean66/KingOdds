@@ -7,9 +7,13 @@ let Bookmaker=()=>{
     bookUrl=array;
 
     let outy = Object.keys(bookUrl);
+    // let newOrder={};
+    
+    // outy.map((i)=>{
+        
+    // // newOrder[bookUrl[i].quality]=item;
+    // })
     outy.sort();
-
-
     
     return(
         <div>

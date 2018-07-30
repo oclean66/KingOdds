@@ -167,7 +167,7 @@ class Match extends React.Component {
                         let rows =
                             <tr key={i}>
                                 <td>
-                                    <Link to={temp}>
+                                    <Link to={temp} target="_blank">
                                         <span className={"blogos l" + kei[1][i].bookId}></span><strong> {kei[1][i].name}</strong>
                                     </Link>
                                 </td>
@@ -234,7 +234,7 @@ class Match extends React.Component {
                         return (
                             <tr key={kei}>
                                 <td>
-                                    <Link to={interUrl}>
+                                    <Link to={interUrl} target="_blank" >
                                         <span className={"blogos l" + data[kei].bookId}></span>
                                         <strong> {data[kei].name}</strong>
                                     </Link>
@@ -280,7 +280,7 @@ class Match extends React.Component {
                     }
                     table[i] =
                         <tr key={i}>
-                            <td><Link to={help.url}>
+                            <td><Link to={help.url} target="_blank">
                                 <span className={"blogos l" + help.bookId}></span>
                                 {/* <span className={"ld ld"+help.bookId+" logo-link"}></span> */}
                                 <strong> {help.name}.</strong>
