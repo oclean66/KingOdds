@@ -50,7 +50,7 @@ let Bookmaker=()=>{
                             return  <tr key={i}>
                                          <td >
                                             <div>
-                                                <a href={bookUrl[i].url} title={"Show more about "+bookUrl[i].name}>
+                                                <a target="_blank"  href={bookUrl[i].url} title={"Show more about "+bookUrl[i].name}>
                                                     <span className={"blogos l"+bookUrl[i].idLogo}></span>
                                                 </a> 
                                                 <a href={bookUrl[i].url} title={"Show more about "+bookUrl[i].name}>{bookUrl[i].name}</a>  

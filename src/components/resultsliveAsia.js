@@ -47,7 +47,7 @@ const Resultslive = ({ name }) => (
                 </div>
                 <div id="Soccer" className="tab-pane fade">
                     <div className="table-responsive-lg">
-                        <iframe title="livescore01" id="inscore-xdc-336722" src="http://www.livescore.in/free/336722/" width="624" height="500" frameborder="0" scrolling="no"></iframe>
+                    <iframe id="inscore-xdc-541391" src="http://www.livescore.in/free/541391/" width="624" height="500" frameborder="0" scrolling="no"></iframe>                    
                     </div>
                 </div>
                 <div id="Tennis" className="tab-pane fade">
