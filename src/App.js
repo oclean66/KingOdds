@@ -10,8 +10,8 @@ import Affil from "./components/affil";
 import Match from "./components/match";
 import Sport from './components/sport';
 import Bookmaker from './components/bookmaker';
-// import Results from './components/results';
-import Resultslive from './components/resultsliveAsia';
+import Resultslive from './components/resultslive_asia';
+// import Resultslive from './components/resultslive';
 import Search from './components/search';
 
 

@@ -1,12 +1,12 @@
 {
-  "name": "react-api",
-  "description": "Using react to connect to firebase realtime database",
+  "name": "rockstarsportsnetwork",
+  "description": "Using react to connect to rockstar sports network",
   "version": "0.1.7",
   "private": true,
-  "keywords": [],
+  "keywords": ["react", "react-dom", "rockstarsportsnetwork","mysql","API REST","JSON","firebase"],
   "author": "oclean66",
   "license": "ISC",
-  "homepage": "http://www.rockstarsportsnetwork.asia",
+  "homepage": "http://rockstarsportsnetwork.com/",
   "dependencies": {
     "convert-units": "^2.3.4",
     "firebase": "^5.2.0",
