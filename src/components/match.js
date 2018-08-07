@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 let bookUrls={};
 const data = require('../data.json');
+let context;
 class Match extends React.Component {
     constructor(props) {
         super(props);
@@ -15,7 +16,7 @@ class Match extends React.Component {
 
     componentDidMount() {
         const { id } = this.props.match.params;
-        let context = this;
+         context = this;
         if (!id) return;
 
         fetch('http://91.121.116.131/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
@@ -108,6 +109,7 @@ class Match extends React.Component {
                 <Link className="nav-link " data-toggle="tab" to={"#b"} role="tab" aria-selected="true">No data found!</Link>
             </li>;
         //f es la lista de odds agrupados por tipo
+        
         let tabsConten = f ? Object.keys(f).map(function (key) {
             // let i = key; //id de tipo de logro
             let data = f[key].data; //lista de ofertas desordenas
@@ -171,16 +173,14 @@ class Match extends React.Component {
                                         <span className={"blogos l" + kei[1][i].bookId}></span><strong> {kei[1][i].name}</strong>
                                     </Link>
                                 </td>
-                                <td className="text-center">{kei[1][i].o1}</td>
-                                <td className="text-center">{kei[1][i].o2}</td>
+                                <td className="text-center">{context.props.format(kei[1][i].o1)}</td>
+                                <td className="text-center">{context.props.format(kei[1][i].o2)}</td>
                                 <td className="text-center" style={{ fontSize: 14, fontWeight: "bolder" }}>{kei[1][i].o3}</td>
                             </tr>
 
                         return rows
                     })
-                    // ref[ref.length]=<tr key={d} colSpan="3"></tr>
-
-                    // console.log(ref)
+                   
                     return ref;
 
                 })
@@ -239,9 +239,9 @@ class Match extends React.Component {
                                         <strong> {data[kei].name}</strong>
                                     </Link>
                                 </td>
-                                <td className="text-center">{data[kei].o1}</td>
-                                <td className="text-center">{data[kei].o2}</td>
-                                <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? data[kei].o3 : ""}</td>
+                                <td className="text-center">{context.props.format(data[kei].o1)}</td>
+                                <td className="text-center">{context.props.format(data[kei].o2)}</td>
+                                <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? context.props.format(data[kei].o3) : ""}</td>
                             </tr>
                         )
                     return null;
@@ -286,23 +286,15 @@ class Match extends React.Component {
                                 {/* <span className={"ld ld"+help.bookId+" logo-link"}></span> */}
                                 <strong> {help.name}.</strong>
                             </Link></td>
-                            <td className="text-center">{help.o1}</td>
-                            <td className="text-center">{help.o2}</td>
-                            <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? help.o3 : ""}</td>
+                            <td className="text-center">{context.props.format(help.o1)}</td>
+                            <td className="text-center">{context.props.format(help.o2)}</td>
+                            <td className={tipoDraw !== "2" ? "text-center" : "hide"}>{tipoDraw !== "2" ? context.props.format(help.o3) : ""}</td>
                         </tr>
 
                     i++;
                 }
-                // for (let index = i+1; index < auxTable.length; index++) {
-                //     table[index] = auxTable[index];
-
-                // }
-
-                // table.concat(auxTable)
-            } else {
-                // console.log(f[key].id + ' - ignored!')
-            }
-            // console.log(table);
+                
+            } 
             let headersT;
             if (tipoDraw === "3" || tipoDraw === "4") {
                 headersT = <tr className="table-primary">
@@ -338,28 +330,19 @@ class Match extends React.Component {
                                     {headersT}
                                 </thead>
                                 <tbody>
-                                    {/* <tr><td>{e.hteamName}</td> */}
                                     {table.map((e, i) => {
                                         return e;
                                     })}
-
-                                    {/* </tr> */}
-
                                 </tbody>
                             </table>
-
-
                         </div>
                     </div>
                 </div>
             )
 
         }) : "";
-        // document.getElementById("status").innerHTML = e.statusText;
         return (e.idmatch ?
             <div className="r">
-
-
                 <div className="card text-center" style={{ boxShadow: "-1px -3px 4px 3px rgba(0, 0, 0, 0.1)" }}>
                     <button  onClick={this.props.history.goBack ? this.props.history.goBack.bind() : void (0)} className="btn btn-primary" style={{ position: "absolute", top: 10, left: 10 }}>  <i className="fas fa-arrow-circle-left"></i> Back</button>
                     <div className="card-header">
@@ -389,8 +372,6 @@ class Match extends React.Component {
                                 <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/" + e.ateamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
                             </div>
                         </div>
-
-
                     </div>
                     <div className="card-footer  text-left">
                         <div className="row">

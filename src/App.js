@@ -37,18 +37,46 @@ class App extends React.Component {
             minutes: 0,
             seconds: 0,
             date: 0,
-            format: "uk"
+            format: "UK"
         }
         this.changeFormat = this.changeFormat.bind(this);
+        this.format = this.format.bind(this);
     }
 
     componentDidMount() {
+        let val = localStorage.getItem("format")?localStorage.getItem("format"):"UK";
+        this.setState({
+            format:val
+        })
+    }
+    changeFormat() {
+
+        if (this.state.format == "UK"){
+            this.setState({ format: "US" });
+            localStorage.setItem("format","US")
+        }
+
+        if (this.state.format == "US"){
+            this.setState({ format: "UK" });
+            localStorage.setItem("format","UK")
+        }
 
     }
-    changeFormat(event) {
-        console.log(event)
-        // strings.setLanguage('it');
-        this.setState({ format: "us" });
+    format(value) {
+        let into = parseFloat(value);
+        let outo = 0;
+
+        if (this.state.format == "US") {
+            if (into >= 2) {
+                outo = parseInt((into - 1) * 100);
+            }else if(into < 2){
+                outo = parseInt((-100)/(into-1));
+            }            
+        }
+        else if (this.state.format == "UK"){
+            outo=value;
+        }
+            return outo;
     }
     render() {
         return (
@@ -75,7 +103,6 @@ class App extends React.Component {
 
                             <nav className="navbar navbar-expand-lg navbar-dark" style={{ marginBottom: 5, padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)", boxShadow: "-1px -3px 4px 3px rgba(0, 0, 0, 0.1)"/* marginRight: 12*/ }}>
 
-                                {/* <Link to="#" class="btn btn-light btn-sm active">Primary link</Link> */}
                                 <button
                                     type="button"
                                     id="sidebarCollapse"
@@ -102,21 +129,17 @@ class App extends React.Component {
                                         <option value="us">USA</option>                                        
                                     </select> */}
                                     <button id="cdate" className="btn btn-primary"> 0 </button>
+                                    <button id="format" onClick={this.changeFormat} className="btn btn-dark">{this.state.format}</button>
                                 </div>
                             </nav>
 
                             <Switch>
                                 <Route exact path="/" component={Affil} />
-                                {/* <Route path="/odds" component={Odds} something="foo" /> */}
-                                {/* <Route path="/odds/:sport/:group/:league" render={(props) => <Odds {...props} date={this.state.dateUTC} />} /> */}
-                                <Route path="/match/:id" component={Match} />
-                                {/* <Route path="/match/:sport/:group/:league/:id" component={Match} /> */}
-                                <Route path="/sports" render={(props) => <Sport {...props} format={this.state.format} />} />
+                                <Route path="/match/:id" render={(props) => <Match {...props} format={this.format} />} />
+                                <Route path="/sports" render={(props) => <Sport {...props} format={this.format} />} />
                                 <Route path="/bookmaker" component={Bookmaker} />
-                                <Route path="/search/:id" component={Search} />
-                                {/* <Route path="/results/:id?" component={Results} /> */}
+                                <Route path="/search/:id" render={(props) => <Search {...props} format={this.format} />} />
                                 <Route path="/resultslive" component={Resultslive} />
-                                {/* <Route path="/resultslive/:id" component={Resultslive} /> */}
                                 <Redirect to="/" />
                             </Switch>
                         </div>
@@ -132,7 +155,7 @@ class App extends React.Component {
                                     <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="https://www.rockstarsportsnews.com/">Rockstar Sports News</a></li>
                                     <li className="list-group-item" style={{ backgroundColor: "transparent", padding: ".75px 16px" }}><a target="_blank" rel="noopener noreferrer" href="https://rockstarlivescores.com/">Rockstar Live Scores </a></li>
                                 </ul>
-                               
+
                             </div>
 
                             <div className="col-sm-4 text-center" >
@@ -146,7 +169,7 @@ class App extends React.Component {
                             </div>
                             <div className="col-sm-4 right" ></div>
                             <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com - Part of the Rockstar Sports Network Limited</div>
-                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img alt="Logo" src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px"/>Website design by oclean66 </Link></div>
+                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img alt="Logo" src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px" />Website design by oclean66 </Link></div>
                             <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
                             <div className="col-sm-4 "></div>
                         </div>

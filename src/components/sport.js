@@ -1,50 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import LocalizedStrings from 'react-localization';
+// import LocalizedStrings from 'react-localization';
 // var numeral = require('numeral');
 const p = "10%";
-var convert = require('convert-units')
+// var convert = require('convert-units')
 // var number;
 const bookUrl = require('../data.json');
-
-
-let strings = new LocalizedStrings({
-    uk:{
-        format: function(number){
-            return number
-        }
-    },
-    us: {
-        format:"I'd liked {0}"
-    }
-   });
 
 
 class Sport extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: {},
-            format:""
-
+            data: {}           
         }
      
     }
 
-    static getDerivedStateFromProps(props, current_state) {
+    // static getDerivedStateFromProps(props, current_state) {
 
-        // console.log(props.match.params);
-        if (current_state.format !== props.format) {
-            strings.setLanguage(props.format);
-           return({
-               format:props.format
-           })
-        }
-        return null;
-    }
+      
+    // }
     componentDidMount() {
         let context = this;
         // this.setState(this.props.strings)
+        // console.log(this.props.format(-110))
         fetch('http://91.121.116.131/geek/api/list/model/next',{cache:"no-cache"}).then(results => {
             return results.json();
         }).then(data => {
@@ -160,35 +140,34 @@ class Sport extends React.Component {
                       
                       
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={temp[1].url} title={"Click to go to the bookmaker site "+ olo1.name+ " "+convert(1).from('l').to('ml')} >
+                            <a target="_blank"  id="link-2" href={temp[1].url} title={"Click to go to the bookmaker site "+ olo1.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo1:olo1.idLogo)}></span>
-                            {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
-                            
+                            {this.props.format(y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2))}                            
                             </a>
                             </td>
                         <td className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  || raw[i].sportName==="Basketball")?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2"href={temp[2].url} title={"Click to go to the bookmaker site "+ olo2.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
-                            {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
+                            {this.props.format(y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={temp[3].url} title={"Click to go to the bookmaker site "+ olo3.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo3:olo3.idLogo)}></span>
-                            {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}
+                            {this.props.format(y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
 
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={tempo[1].url} title={"Click to go to the bookmaker site "+ olo4.name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo1:olo4.idLogo)}></span>
-                            {y.data[29992] ? y.data[29992].o1+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}
+                            {y.data[29992] ? this.props.format(y.data[29992].o1)+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={tempo[2].url} title={"Click to go to the bookmaker site "+ olo5.name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo2:olo5.idLogo)}></span>
-                            {y.data[29992] ? y.data[29992].o2+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}
+                            {y.data[29992] ? this.props.format(y.data[29992].o2)+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
                     </tr>
