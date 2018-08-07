@@ -252,9 +252,10 @@ class Match extends React.Component {
             mino1 = mino1 - 0.07;
             mino2 = mino2 - 0.07;
             mino3 = mino3 - 0.07;
-            mayo1 = mayo1 + 0.07;
-            mayo2 = mayo2 + 0.07;
-            mayo3 = mayo3 + 0.07;
+            console.log(mayo1,mayo2,mayo3)
+            mayo1 = mayo1 - 0.03;
+            mayo2 = mayo2 - 0.03;
+            mayo3 = mayo3 - 0.03;
 
             // let min = 1, max = 4.5;
             if (auxc.length < 30 && tipoDraw !== "3" && tipoDraw !== "4") {

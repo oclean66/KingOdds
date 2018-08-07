@@ -99,6 +99,59 @@ class Sport extends React.Component {
                 let olo4 = bookUrl[bookies[(Math.random() * (bookies.length - 2) + 1).toFixed(0)]];
                 let olo5 = bookUrl[bookies[(Math.random() * (bookies.length - 2) + 1).toFixed(0)]];
 
+                let temp={
+                    0: {url:"#",name:"no name"},
+                    1: {url:"#",name:"no name"},
+                    2: {url:"#",name:"no name"},
+                    3: {url:"#",name:"no name"}
+                };
+                let tempo={
+                    0: {url:"#",name:"no name"},
+                    1: {url:"#",name:"no name"},
+                    2: {url:"#",name:"no name"},
+                    3: {url:"#",name:"no name"}
+                };
+
+                bookies.sort();
+                // let bool = false;
+
+                if(y.data[19992])
+                bookies.map(i => {
+                    // console.log(bookUrl[i].idLogo,y.data[19992].bookIdo1)
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo1) {
+                        temp[1] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo2) {
+                        temp[2] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo3) {
+                        temp[3] = bookUrl[i];
+                        // bool = true;
+                    }
+                    return 1;
+                })
+
+                if(y.data[29992])
+                bookies.map(i => {
+                    // console.log(bookUrl[i].idLogo,y.data[19992].bookIdo1)
+                    if (bookUrl[i].idLogo == y.data[29992].bookIdo1) {
+                        tempo[1] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[29992].bookIdo2) {
+                        tempo[2] = bookUrl[i];
+                        // bool = true;
+                    }
+                    // if (bookUrl[i].idLogo == y.data[29992].bookIdo3) {
+                    //     tempo[3] = bookUrl[i];
+                    //     // bool = true;
+                    // }
+                    return 1;
+                })
+                
+
                 return (
                     <tr key={y.idmatch}>
                         <th className="text-center" style={{ width: p, fontWeight: "bolder",backgroundColor:y.status==="In Play"?"#ffd559":(y.status==="Fin"?"red":"#d3d3d34f"), color:y.status==="Fin"?"white":"black" }}>{hours + ":" + minutes}<br /><small><b>{timess}</b></small></th>
@@ -107,34 +160,34 @@ class Sport extends React.Component {
                       
                       
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={olo1.url} title={"Click to go to the bookmaker site "+ olo1.name+ " "+convert(1).from('l').to('ml')} >
-                                <span className={"logos l" + olo1.idLogo}></span>
+                            <a target="_blank"  id="link-2" href={temp[1].url} title={"Click to go to the bookmaker site "+ olo1.name+ " "+convert(1).from('l').to('ml')} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo1:olo1.idLogo)}></span>
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
                             
                             </a>
                             </td>
-                        <td className={raw[i].sportName==="Baseball"?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2"href={olo2.url} title={"Click to go to the bookmaker site "+ olo2.name} >
-                                <span className={"logos l" + olo2.idLogo}></span>
+                        <td className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  || raw[i].sportName==="Basketball")?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                            <a target="_blank"  id="link-2"href={temp[2].url} title={"Click to go to the bookmaker site "+ olo2.name} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
                             {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={olo3.url} title={"Click to go to the bookmaker site "+ olo3.name} >
-                                <span className={"logos l" + olo3.idLogo}></span>
+                            <a target="_blank"  id="link-2" href={temp[3].url} title={"Click to go to the bookmaker site "+ olo3.name} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo3:olo3.idLogo)}></span>
                             {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
 
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={olo4.url} title={"Click to go to the bookmaker site "+ olo4.name} >
-                                <span className={"logos l" +olo4.idLogo}></span>
+                            <a target="_blank"  id="link-2" href={tempo[1].url} title={"Click to go to the bookmaker site "+ olo4.name} >
+                                <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo1:olo4.idLogo)}></span>
                             {y.data[29992] ? y.data[29992].o1+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
-                            <a target="_blank"  id="link-2" href={olo5.url} title={"Click to go to the bookmaker site "+ olo5.name} >
-                                <span className={"logos l" + olo5.idLogo}></span>
+                            <a target="_blank"  id="link-2" href={tempo[2].url} title={"Click to go to the bookmaker site "+ olo5.name} >
+                                <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo2:olo5.idLogo)}></span>
                             {y.data[29992] ? y.data[29992].o2+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}
                             </a>
                             </td>
@@ -147,7 +200,7 @@ class Sport extends React.Component {
                         <tr >
                             <th colSpan='3' >{raw[i].sportName + " " + raw[i].name}</th>
                             <th className='text-center'>1</th>
-                            <th className={raw[i].sportName==="Baseball"?'hide':'text-center'}>X</th>
+                            <th className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"   || raw[i].sportName==="Basketball")?'hide':'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                              <th className='text-center'>Under</th>

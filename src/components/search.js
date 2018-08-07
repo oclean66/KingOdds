@@ -100,6 +100,58 @@ class Search extends React.Component {
                 let olo4 = bookUrl[bookies[(Math.random() * (bookies.length - 2) + 1).toFixed(0)]];
                 let olo5 = bookUrl[bookies[(Math.random() * (bookies.length - 2) + 1).toFixed(0)]];
 
+                // let list = Object.keys(bookUrls);
+                let temp={
+                    0: {url:"#",name:"no name"},
+                    1: {url:"#",name:"no name"},
+                    2: {url:"#",name:"no name"},
+                    3: {url:"#",name:"no name"}
+                };
+                let tempo={
+                    0: {url:"#",name:"no name"},
+                    1: {url:"#",name:"no name"},
+                    2: {url:"#",name:"no name"},
+                    3: {url:"#",name:"no name"}
+                };
+                bookies.sort();
+                // let bool = false;
+
+                if(y.data[19992])
+                bookies.map(i => {
+                    // console.log(bookUrl[i].idLogo,y.data[19992].bookIdo1)
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo1) {
+                        temp[1] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo2) {
+                        temp[2] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[19992].bookIdo3) {
+                        temp[3] = bookUrl[i];
+                        // bool = true;
+                    }
+                    return 1;
+                })
+
+                if(y.data[29992])
+                bookies.map(i => {
+                    // console.log(bookUrl[i].idLogo,y.data[19992].bookIdo1)
+                    if (bookUrl[i].idLogo == y.data[29992].bookIdo1) {
+                        tempo[1] = bookUrl[i];
+                        // bool = true;
+                    }
+                    if (bookUrl[i].idLogo == y.data[29992].bookIdo2) {
+                        tempo[2] = bookUrl[i];
+                        // bool = true;
+                    }
+                    // if (bookUrl[i].idLogo == y.data[29992].bookIdo3) {
+                    //     tempo[3] = bookUrl[i];
+                    //     // bool = true;
+                    // }
+                    return 1;
+                })
+
               
 
                 return (
@@ -110,22 +162,22 @@ class Search extends React.Component {
 
 
                         <td className="text-center" style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={olo1.url} title={"Click to go to the bookmaker site " + olo1.name} >
-                                <span className={"logos l" + olo1.idLogo}></span>
+                            <a id="link-2" target="_blank" href={temp[1].url} title={"Click to go to the bookmaker site " +  temp[1].name} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo1:olo1.idLogo)}></span>
                             </a>
                             {y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2)}
                         </td>
 
-                        <td className={item.sportName==="Baseball"?"hide":"text-center"} style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={olo2.url} title={"Click to go to the bookmaker site " + olo2.name} >
-                                <span className={"logos l" + olo2.idLogo}></span>
+                        <td className={(item.sportName==="Baseball" || item.sportName==="Tennis" || item.sportName==="ESports" || item.sportName==="volleyball" || item.sportName==="Basketball")?"hide":"text-center"} style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
+                            <a id="link-2" target="_blank" href={temp[2].url} title={"Click to go to the bookmaker site " +temp[2].name} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
                             </a>
                             {y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2)}
                         </td>
 
                         <td className="text-center" style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={olo3.url} title={"Click to go to the bookmaker site " + olo3.name} >
-                                <span className={"logos l" + olo3.idLogo}></span>
+                            <a id="link-2" target="_blank" href={temp[3].url} title={"Click to go to the bookmaker site " + temp[3].name} >
+                                <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo3:olo3.idLogo)}></span>
                             </a>
                             {y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2)}
                         </td>
@@ -134,15 +186,15 @@ class Search extends React.Component {
 
 
                         <td className="text-center" style={{ width: p, backgroundColor: '#AED581', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={olo4.url} title={"Click to go to the bookmaker site " + olo4.name} >
-                                <span className={"logos l" + olo4.idLogo}></span>
+                            <a id="link-2" target="_blank" href={tempo[1].url} title={"Click to go to the bookmaker site " + tempo[1].name} >
+                                <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo1:olo4.idLogo)}></span>
                             </a>
                             {y.data[29992] ? y.data[29992].o1 + "(> " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
                         </td>
 
                         <td className="text-center" style={{ width: p, backgroundColor: '#AED581', fontWeight: "bolder" }}>
-                            <a id="link-2" target="_blank" href={olo5.url} title={"Click to go to the bookmaker site " + olo5.name} >
-                                <span className={"logos l" + olo5.idLogo}></span>
+                            <a id="link-2" target="_blank" href={tempo[2].url} title={"Click to go to the bookmaker site " + tempo[2].name} >
+                                <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo2:olo5.idLogo)}></span>
                             </a>
                             {y.data[29992] ? y.data[29992].o2 + "(< " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
                         </td>
@@ -156,7 +208,7 @@ class Search extends React.Component {
                         <tr >
                             <th colSpan='3' >{item.name}</th>
                             <th className='text-center'>1</th>
-                            <th className={item.sportName==="Baseball"?"hide":'text-center'}>X</th>
+                            <th className={(item.sportName==="Baseball" || item.sportName==="Tennis" || item.sportName==="ESports"  || item.sportName==="volleyball"  || item.sportName==="Basketball")?"hide":'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                             <th className='text-center'>Under</th>
