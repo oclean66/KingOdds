@@ -189,14 +189,14 @@ class Search extends React.Component {
                             <a id="link-2" target="_blank" href={tempo[1].url} title={"Click to go to the bookmaker site " + tempo[1].name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo1:olo4.idLogo)}></span>
                             </a>
-                            {y.data[29992] ? this.props.format(y.data[29992].o1) + "(> " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
+                            {y.data[29992] ? this.props.format(y.data[29992].o1) + "(> " + y.data[29992].o3 + ")" : this.props.format((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
                         </td>
 
                         <td className="text-center" style={{ width: p, backgroundColor: '#AED581', fontWeight: "bolder" }}>
                             <a id="link-2" target="_blank" href={tempo[2].url} title={"Click to go to the bookmaker site " + tempo[2].name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo2:olo5.idLogo)}></span>
                             </a>
-                            {y.data[29992] ? this.props.format(y.data[29992].o2) + "(< " + y.data[29992].o3 + ")" : ((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
+                            {y.data[29992] ? this.props.format(y.data[29992].o2) + "(< " + y.data[29992].o3 + ")" : this.props.format((Math.random() * (max - min) + min).toFixed(2)) + " (2.5)"}
                         </td>
 
                     </tr>

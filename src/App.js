@@ -4,6 +4,7 @@ import {
     Route, Switch
 } from 'react-router-dom'
 
+
 import Sidebar from "./components/sidebar";
 import Affil from "./components/affil";
 // import Odds from "./components/odds";
@@ -14,7 +15,8 @@ import Resultslive from './components/resultslive_asia';
 // import Resultslive from './components/resultslive';
 import Search from './components/search';
 
-
+import * as math from 'mathjs'
+var Fraction = require('fraction.js')
 const OldSchoolMenuLink = ({ label, to, activeOnlyWhenExact }) => (
 
     <Route
@@ -44,21 +46,25 @@ class App extends React.Component {
     }
 
     componentDidMount() {
-        let val = localStorage.getItem("format")?localStorage.getItem("format"):"UK";
+        let val = localStorage.getItem("format") ? localStorage.getItem("format") : "UK";
         this.setState({
-            format:val
+            format: val
         })
     }
     changeFormat() {
 
-        if (this.state.format == "UK"){
+        if (this.state.format == "UK") {
             this.setState({ format: "US" });
-            localStorage.setItem("format","US")
+            localStorage.setItem("format", "US")
         }
 
-        if (this.state.format == "US"){
+        if (this.state.format == "US") {
+            this.setState({ format: "DEC" });
+            localStorage.setItem("format", "DEC")
+        }
+        if (this.state.format == "DEC") {
             this.setState({ format: "UK" });
-            localStorage.setItem("format","UK")
+            localStorage.setItem("format", "UK")
         }
 
     }
@@ -69,14 +75,27 @@ class App extends React.Component {
         if (this.state.format == "US") {
             if (into >= 2) {
                 outo = parseInt((into - 1) * 100);
-            }else if(into < 2){
-                outo = parseInt((-100)/(into-1));
-            }            
+            } else if (into < 2) {
+                outo = parseInt((-100) / (into - 1));
+            }
         }
-        else if (this.state.format == "UK"){
-            outo=value;
-        }
-            return outo;
+        else
+            if (this.state.format == "UK") {
+
+                if (into > 0) {
+                    var f = new Fraction((into-1));                
+                    return (f.n+" / "+f.d+" ").toString()
+                }
+                else return 0
+
+
+
+            }
+            else
+                if (this.state.format == "DEC") {
+                    outo = value;
+                }
+        return outo;
     }
     render() {
         return (
