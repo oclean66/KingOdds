@@ -142,32 +142,32 @@ class Sport extends React.Component {
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={temp[1].url} title={"Click to go to the bookmaker site "+ olo1.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo1:olo1.idLogo)}></span>
-                            {this.props.format(y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2))}                            
+                            {y.data[19992] ? this.props.format(y.data[19992].o1) : this.props.format((Math.random() * (max - min) + min).toFixed(2))}                            
                             </a>
                             </td>
                         <td className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  || raw[i].sportName==="Basketball")?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2"href={temp[2].url} title={"Click to go to the bookmaker site "+ olo2.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
-                            {this.props.format(y.data[19992] ? y.data[19992].o2 : (Math.random() * (max - min) + min).toFixed(2))}
+                            {y.data[19992] ? this.props.format(y.data[19992].o2) : this.props.format((Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={temp[3].url} title={"Click to go to the bookmaker site "+ olo3.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo3:olo3.idLogo)}></span>
-                            {this.props.format(y.data[19992] ? y.data[19992].o3 : (Math.random() * (max - min) + min).toFixed(2))}
+                            {y.data[19992] ? this.props.format(y.data[19992].o3) : this.props.format((Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
 
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={tempo[1].url} title={"Click to go to the bookmaker site "+ olo4.name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo1:olo4.idLogo)}></span>
-                            {y.data[29992] ? this.props.format(y.data[29992].o1)+"(> "+y.data[29992].o3+")" : (Math.random() * (max - min) + min).toFixed(2)}
+                            {y.data[29992] ? this.props.format(y.data[29992].o1)+"(> "+y.data[29992].o3+")" : this.props.format((Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
                         <td className="text-center" style={{ width: p,backgroundColor:'#21a700a8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2" href={tempo[2].url} title={"Click to go to the bookmaker site "+ olo5.name} >
                                 <span className={"logos l" + (y.data[29992]?y.data[29992].bookIdo2:olo5.idLogo)}></span>
-                            {y.data[29992] ? this.props.format(y.data[29992].o2)+"(< "+y.data[29992].o3+")": (Math.random() * (max - min) + min).toFixed(2)}
+                            {y.data[29992] ? this.props.format(y.data[29992].o2)+"(< "+y.data[29992].o3+")": this.props.format((Math.random() * (max - min) + min).toFixed(2))}
                             </a>
                             </td>
                     </tr>

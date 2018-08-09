@@ -51,21 +51,22 @@ class App extends React.Component {
             format: val
         })
     }
-    changeFormat() {
+    changeFormat(event) {
+        console.log(event.target.value)
+        this.setState({ format: event.target.value});
+        // if (this.state.format == "UK") {
+        //     this.setState({ format: "US" });
+        //     localStorage.setItem("format", "US")
+        // }
 
-        if (this.state.format == "UK") {
-            this.setState({ format: "US" });
-            localStorage.setItem("format", "US")
-        }
-
-        if (this.state.format == "US") {
-            this.setState({ format: "DEC" });
-            localStorage.setItem("format", "DEC")
-        }
-        if (this.state.format == "DEC") {
-            this.setState({ format: "UK" });
-            localStorage.setItem("format", "UK")
-        }
+        // if (this.state.format == "US") {
+        //     this.setState({ format: "DEC" });
+        //     localStorage.setItem("format", "DEC")
+        // }
+        // if (this.state.format == "DEC") {
+        //     this.setState({ format: "UK" });
+        //     localStorage.setItem("format", "UK")
+        // }
 
     }
     format(value) {
@@ -143,12 +144,13 @@ class App extends React.Component {
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/resultslive" label="Live Scores" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />
                                     </ul>
-                                    {/* <select className="custom-select custom-select-sm" style={{marginBottom:0, width:80}} value={this.state.format} onChange={this.changeFormat}>
-                                        <option value="uk">UK</option>
-                                        <option value="us">USA</option>                                        
-                                    </select> */}
+                                    <select className="custom-select custom-select-sm" style={{marginBottom:0, width:80}} value={this.state.format} onChange={this.changeFormat}>
+                                        <option value="DEC">DEC</option>
+                                        <option value="UK">UK</option>
+                                        <option value="US">US</option>                                        
+                                    </select>
                                     <button id="cdate" className="btn btn-primary"> 0 </button>
-                                    <button id="format" onClick={this.changeFormat} className="btn btn-dark">{this.state.format}</button>
+                                    {/* <button id="format" onClick={this.changeFormat} className="btn btn-dark">{this.state.format}</button> */}
                                 </div>
                             </nav>
 
