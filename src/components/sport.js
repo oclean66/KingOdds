@@ -179,7 +179,7 @@ class Sport extends React.Component {
                         <tr >
                             <th colSpan='3' >{raw[i].sportName + " " + raw[i].name}</th>
                             <th className='text-center'>1</th>
-                            <th className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"   || raw[i].sportName==="Basketball")?'hide':'text-center'}>X</th>
+                            <th className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  raw[i].sportName==="Hockey" || raw[i].sportName==="aussie rules" || raw[i].sportName==="US Football"  || raw[i].sportName==="Basketball")?'hide':'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                              <th className='text-center'>Under</th>

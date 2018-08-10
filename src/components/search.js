@@ -208,7 +208,7 @@ class Search extends React.Component {
                         <tr >
                             <th colSpan='3' >{item.name}</th>
                             <th className='text-center'>1</th>
-                            <th className={(item.sportName==="Baseball" || item.sportName==="Tennis" || item.sportName==="ESports"  || item.sportName==="volleyball"  || item.sportName==="Basketball")?"hide":'text-center'}>X</th>
+                            <th className={(item.sportName==="Baseball" || item.sportName==="Hockey" || item.sportName==="aussie rules" || item.sportName==="US Football" || item.sportName==="Tennis" || item.sportName==="ESports"  || item.sportName==="volleyball"  || item.sportName==="Basketball")?"hide":'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                             <th className='text-center'>Under</th>
