@@ -168,7 +168,7 @@ class Search extends React.Component {
                             {this.props.format(y.data[19992] ? y.data[19992].o1 : (Math.random() * (max - min) + min).toFixed(2))}
                         </td>
 
-                        <td className={(item.sportName==="Baseball" || item.sportName==="Tennis" || item.sportName==="ESports" || item.sportName==="volleyball" || item.sportName==="Basketball")?"hide":"text-center"} style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
+                        <td className={(item.sportName==="Baseball" || item.sportName==="Hockey" || item.sportName==="aussie rules" || item.sportName==="US Football" || item.sportName==="Tennis" || item.sportName==="ESports" || item.sportName==="volleyball" || item.sportName==="Basketball")?"hide":"text-center"} style={{ width: p, backgroundColor: 'rgb(184, 218, 255)', fontWeight: "bolder" }}>
                             <a id="link-2" target="_blank" href={temp[2].url} title={"Click to go to the bookmaker site " +temp[2].name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
                             </a>
