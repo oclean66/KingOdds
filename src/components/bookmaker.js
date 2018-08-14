@@ -20,7 +20,7 @@ let Bookmaker=()=>{
            <h1>Bookmakers Comparison - Where to Bet?</h1> 
            <div className="cms" style={{ color: "darkgrey" }}>
                 <p>
-                    This is the list of all internet bookmakers we cover on Rockstar Sports Netwoek, sorted by overall ratings which take into
+                    This is the list of all internet bookmakers we cover on Rockstar Sports Network, sorted by overall ratings which take into
                 account odds quality (payout), BMR rating and user rating.
                 </p>
             </div>
