@@ -19,7 +19,7 @@ class Match extends React.Component {
          context = this;
         if (!id) return;
 
-        fetch('http://91.121.116.131/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
+        fetch('http://kingdeportes.com/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -27,7 +27,7 @@ class Match extends React.Component {
             })
             // console.log(data);
         });
-        fetch('http://91.121.116.131/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
+        fetch('http://kingdeportes.com/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
