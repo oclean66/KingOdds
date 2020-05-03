@@ -19,7 +19,7 @@ class Match extends React.Component {
          context = this;
         if (!id) return;
 
-        fetch('http://kingdeportes.com/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
+        fetch('https://kingdeportes.com/geek/api/view/model/match/id/' + this.props.match.params.id).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -27,7 +27,7 @@ class Match extends React.Component {
             })
             // console.log(data);
         });
-        fetch('http://kingdeportes.com/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
+        fetch('https://kingdeportes.com/geek/api/list/model/odds/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -356,7 +356,7 @@ class Match extends React.Component {
                         <div className="row">
 
                             <div className="col-sm-4">
-                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/" + e.hteamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
+                                <img src={"https://kingdeportes.com/geek/themes/flat/img/logos/" + e.hteamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
                             </div>
                             <div className="col-sm-4">
 
@@ -369,7 +369,7 @@ class Match extends React.Component {
 
                             </div>
                             <div className="col-sm-4">
-                                <img src={"http://kingdeportes.com/geek/themes/flat/img/logos/" + e.ateamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
+                                <img src={"https://kingdeportes.com/geek/themes/flat/img/logos/" + e.ateamId + ".png"} alt="..." className="img-thumbnail" style={{ width: 80 }} />
                             </div>
                         </div>
                     </div>

@@ -11,8 +11,8 @@ import Affil from "./components/affil";
 import Match from "./components/match";
 import Sport from './components/sport';
 import Bookmaker from './components/bookmaker';
-import Resultslive from './components/resultslive_asia';
-// import Resultslive from './components/resultslive';
+// import Resultslive from './components/resultslive_asia';
+import Resultslive from './components/resultslive';
 import Search from './components/search';
 
 import * as math from 'mathjs'
@@ -122,7 +122,6 @@ class App extends React.Component {
                         <div id="content" style={{ backgroundColor: "#e1f5fe", width: "100%" }}>
 
                             <nav className="navbar navbar-expand-lg navbar-dark" style={{ marginBottom: 5, padding: "0 10px 0 10px", backgroundColor: "rgb(0, 173, 238)", boxShadow: "-1px -3px 4px 3px rgba(0, 0, 0, 0.1)"/* marginRight: 12*/ }}>
-
                                 <button
                                     type="button"
                                     id="sidebarCollapse"
@@ -139,8 +138,8 @@ class App extends React.Component {
                                 </button>
                                 <div className="collapse navbar-collapse" id="navbarNavDropdown">
                                     <ul className="navbar-nav mr-auto">
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Home" />
-                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/sports" label="Odds Comparison" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/" label="Odds Comparison" />
+                                        <OldSchoolMenuLink activeOnlyWhenExact={true} to="/affiliate" label="Register with a Bookie" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/resultslive" label="Live Scores" />
                                         <OldSchoolMenuLink activeOnlyWhenExact={true} to="/bookmaker" label="Bookmaker" />
                                     </ul>
@@ -155,9 +154,10 @@ class App extends React.Component {
                             </nav>
 
                             <Switch>
-                                <Route exact path="/" component={Affil} />
+                                <Route exact path="/" render={(props) => <Sport {...props} format={this.format} />} />
+                                <Route exact path="/affiliate" render={(props) => <Affil {...props} format={this.format} />} />
+                                {/* <Route path="/affiliate" component={Affil} /> */}
                                 <Route path="/match/:id" render={(props) => <Match {...props} format={this.format} />} />
-                                <Route path="/sports" render={(props) => <Sport {...props} format={this.format} />} />
                                 <Route path="/bookmaker" component={Bookmaker} />
                                 <Route path="/search/:id" render={(props) => <Search {...props} format={this.format} />} />
                                 <Route path="/resultslive" component={Resultslive} />
@@ -189,8 +189,8 @@ class App extends React.Component {
                                 {/* <a href="http://www.livescore.in/" rel="noopener noreferrer" className="btn" title="Livescore.in" target="_blank" style={{width:250,height: 34, background: "url(http://www.livescore.in/res/_in/image/logo.gif) no-repeat"}}></a> */}
                             </div>
                             <div className="col-sm-4 right" ></div>
-                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com - Part of the Rockstar Sports Network Limited</div>
-                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img alt="Logo" src="http://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px" />Website design by oclean66 </Link></div>
+                            <div className="col-sm-12 text-center text-white " style={{ marginTop: 15, marginBottom: 15 }} > 2018 © Rockstarsportsnetwork.com - High Edge Sports Group Limited</div>
+                            <div className="col-sm-4 " style={{ color: 'white' }}> <Link to="http://fb.com/oclean66" target="_blank">  <img alt="Logo" src="https://kingdeportes.com/geek/themes/materialcss/images/logo.png" width="30px" />Website design by oclean66 </Link></div>
                             <div className="col-sm-4 text-center" style={{ marginBottom: 15 }}><Link to="https://www.begambleaware.org/"><img height="100" alt="BeGambleAware.org" src="/img/191x85_BeGambleAware.svg"></img></Link></div>
                             <div className="col-sm-4 "></div>
                         </div>

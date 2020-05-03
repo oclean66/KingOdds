@@ -18,7 +18,7 @@ class Search extends React.Component {
     }
 
     componentDidMount() {
-        fetch('http://kingdeportes.com/geek/api/list/model/search/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
+        fetch('https://kingdeportes.com/geek/api/list/model/search/id/' + this.props.match.params.id, { cache: "no-cache" }).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -41,7 +41,7 @@ class Search extends React.Component {
         // console.log(props.match.params);
         if (current_state.id !== props.match.params.id) {
 
-            fetch('http://kingdeportes.com/geek/api/list/model/search/id/' + props.match.params.id).then(results => {
+            fetch('https://kingdeportes.com/geek/api/list/model/search/id/' + props.match.params.id).then(results => {
                 return results.json();
             }).then(data => {
                 context.setState({

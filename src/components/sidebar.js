@@ -20,7 +20,7 @@ class SideBar extends React.Component {
   }
   componentDidMount() {
     var context = this;
-    fetch('http://kingdeportes.com/geek/api/list/model/menu/',{cache:"no-cache"}
+    fetch('https://kingdeportes.com/geek/api/list/model/menu/',{cache:"no-cache"}
     ).then(results => {
       return results.json();
     }).then(data => {

@@ -1,0 +1,86 @@
+X1) Oddschecker should have minimum of 12 sports - preferably 16. (done)
+
+2) Each match under each sport should have, consistently, several different markets. done
+
+3) Each market should have between 23 to 30 different bookmakers (not 2 or 3 of the same bookmakers on the one list, which I have seen a lot - that does not make any sense). The odds should have a maximum update time of 10 to 15 mins - preferably less. 
+
+4) The front page of each match with 1 x 2 under over has a bookmaker at the moment. The bookmaker on this should be the bookmaker providing the best odds for each individual piece. i.e. 1 W Hill x Pinnacle 2 Betfair. This should be the bookmaker for the best price for that bet. 
+
+5) If I have a bookmaker on this list the bookmaker logo should link to my bookmaker link from the list I gave you. 
+
+6) It should look professional as if a customer was looking for a best price for a bet. The look you have given it is quite good on the face of it but the actual odds detail just is nowhere near professional looking enough for me to show this to customers. I am sure you would want this to look great to people too.
+
+7) I see from one of your previous jobs that you done this - Can this be added easily too? I had put this on one of my early requirements. ""My Client wanted a odds comparation software that support conversions to UK, US, and EU formats"
+
+
+    16: { name: "12Bet",id:16,logo:16},
+    10: { name: "138Bet",id:10,logo:10},
+    9: { name: "18Bet",id: 9,logo: 9},
+    38: { name: "1xbet",id:38,logo:38},
+    31: { name: "888Sport",id:31,logo:31},
+    39: { name: "Bet at Home",id:39,logo:39},
+    21: { name: "Bet Bright",id:21,logo:21},
+    28: { name: "Betboro",id:28,logo:28},
+    18: { name: "BetEast",id:18,logo:18},
+    40: { name: "Betfred",id:40,logo:40},
+    6: { name: "Betsafe",id: 6,logo: 6},
+    5: { name: "Betsson",id: 5,logo: 5},
+    13: { name: "Betvision",id:13,logo:13},
+    42: { name: "Bwin",id:42,logo:42},
+    23: { name: "Come on",id:23,logo:23},
+    26: { name: "Dafabet",id:26,logo:26},
+    14: { name: "Fun88",id:14,logo:14},
+    3: { name: "Intertops",id: 3,logo: 3},
+    12: { name: "Jennings",id:12,logo:12},
+    8: { name: "Kroon",id: 8,logo: 8},
+    19: { name: "Letou",id:19,logo:19},
+    29: { name: "LSBet", id:29, logo:29 },
+    24: { name: "LVBet",id:24,logo:24},
+    35: { name: "Mansion",id:35,logo:35},
+    22: { name: "Matchbook",id:22,logo:22},
+    44: { name: "Maxbet Sports",id:44,logo:44},
+    30: { name: "MYBet",id:30,logo:30},
+    27: { name: "NetBet",id:27,logo:27},
+    7: { name: "Nordicbet",id: 7,logo: 7},
+    33: { name: "Novibet",id:33,logo:33},
+    20: { name: "Ole",id:20,logo:20},
+    2: { name: "Pinnacle",id: 2,logo: 2},
+    36: { name: "Royal Panda",id:36,logo:36},
+    11: { name: "Setantabet",id:11,logo:11},
+    37: { name: "SLBet",id:37,logo:37},
+    17: { name: "SportPesa",id:17,logo:17},
+    34: { name: "SportsBetting.ag &amp; Betonline",id:34,logo:34},
+    45: { name: "test",id:45,logo:45},
+    32: { name: "TitanBet ",id:32,logo:32},
+    15: { name: "TLCBet",id:15,logo:15},
+    25: { name: "VBet",id:25,logo:25},
+    4: { name: "William Hill",id: 4,logo: 4},
+    43: { name: "Winner Sports",id:43,logo:43},
+    41: { name: "Youwin",id:41,logo:41},
+
+
+    <option value="5">American Football</option>
+						<option value="18">Aussie Rules</option>
+						<option value="21">Badminton</option>
+						<option value="10">Bandy</option>
+						<option value="6">Baseball</option>
+						<option value="3">Basketball</option>
+						<option value="26">Beach Soccer</option>
+						<option value="17">Beach Volleyball</option>
+						<option value="16">Boxing</option>
+						<option value="13">Cricket</option>
+						<option value="14">Darts</option>
+						<option value="9">Floorball</option>
+						<option value="11">Futsal</option>
+						<option value="7">Handball</option>
+						<option value="4">Hockey</option>
+						<option value="28">MMA</option>
+						<option value="30">Pesäpallo</option>
+						<option value="19">Rugby League</option>
+						<option value="8">Rugby Union</option>
+						<option value="15">Snooker</option>
+						<option value="1" selected="selected">Soccer</option>
+						<option value="2">Tennis</option>
+						<option value="12">Volleyball</option>
+						<option value="22">Water polo</option>
+						<option value="36">eSports</option>

@@ -25,7 +25,7 @@ class Sport extends React.Component {
         let context = this;
         // this.setState(this.props.strings)
         // console.log(this.props.format(-110))
-        fetch('http://kingdeportes.com/geek/api/list/model/next',{cache:"no-cache"}).then(results => {
+        fetch('https://kingdeportes.com/geek/api/list/model/next',{cache:"no-cache"}).then(results => {
             return results.json();
         }).then(data => {
             context.setState({
@@ -145,7 +145,7 @@ class Sport extends React.Component {
                             {y.data[19992] ? this.props.format(y.data[19992].o1) : this.props.format((Math.random() * (max - min) + min).toFixed(2))}                            
                             </a>
                             </td>
-                        <td className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  || raw[i].sportName==="Hockey" || raw[i].sportName==="aussie rules" || raw[i].sportName==="US Football"  || raw[i].sportName==="Basketball")?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
+                        <td className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball"  || raw[i].sportName==="hockey" || raw[i].sportName==="aussie rules" || raw[i].sportName==="US Football"  || raw[i].sportName==="basketball" || raw[i].sportName==="handball")?"hide":"text-center"} style={{ width: p,backgroundColor:'#007bffa8',fontWeight:"bolder" }}>
                             <a target="_blank"  id="link-2"href={temp[2].url} title={"Click to go to the bookmaker site "+ olo2.name} >
                                 <span className={"logos l" + (y.data[19992]?y.data[19992].bookIdo2:olo2.idLogo)}></span>
                             {y.data[19992] ? this.props.format(y.data[19992].o2) : this.props.format((Math.random() * (max - min) + min).toFixed(2))}
@@ -179,7 +179,7 @@ class Sport extends React.Component {
                         <tr >
                             <th colSpan='3' >{raw[i].sportName + " " + raw[i].name}</th>
                             <th className='text-center'>1</th>
-                            <th className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball" || raw[i].sportName==="Hockey" || raw[i].sportName==="aussie rules" || raw[i].sportName==="US Football"  || raw[i].sportName==="Basketball")?'hide':'text-center'}>X</th>
+                            <th className={(raw[i].sportName==="Baseball" || raw[i].sportName==="Tennis" || raw[i].sportName==="ESports"  || raw[i].sportName==="volleyball" || raw[i].sportName==="hockey" || raw[i].sportName==="aussie rules" || raw[i].sportName==="US Football"  || raw[i].sportName==="basketball"  || raw[i].sportName==="handball")?'hide':'text-center'}>X</th>
                             <th className='text-center'>2</th>
 
                              <th className='text-center'>Under</th>
